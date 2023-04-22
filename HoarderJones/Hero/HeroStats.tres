@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=4 format=3 uid="uid://doeticvoapt47"]
+
+[ext_resource type="Script" path="res://Stats.gd" id="1_3ayfr"]
+
+[sub_resource type="Curve" id="Curve_fec0o"]
+_data = [Vector2(0, 0), 0.0, 2.63449, 0, 0, Vector2(1, 1), 0.0654529, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_j5i0d"]
+_data = [Vector2(0, 0), 0.0, 1.77368, 0, 0, Vector2(1, 1), 0.596211, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_3ayfr")
+speed = 36
+jump_force = 64
+long_jump_max_ticks = 1000
+long_jump_curve = SubResource("Curve_fec0o")
+short_jump_max_ticks = 250
+short_jump_curve = SubResource("Curve_j5i0d")
