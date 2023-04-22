@@ -6,6 +6,7 @@ extends State
 @onready var run := $Run as RunState
 
 func enter():
+	super.enter()
 	self.set_state(idle)
 
 func do(delta: float) -> void:

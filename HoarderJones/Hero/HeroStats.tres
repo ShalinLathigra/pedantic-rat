@@ -2,19 +2,21 @@
 
 [ext_resource type="Script" path="res://Stats.gd" id="1_3ayfr"]
 
-[sub_resource type="Curve" id="Curve_fec0o"]
-_data = [Vector2(0, 0), 0.0, 2.63449, 0, 0, Vector2(1, 1), 0.0654529, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_u0inu"]
+_data = [Vector2(0, 1), 0.0, -2.49233, 0, 0, Vector2(1, 0), -0.426927, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_j5i0d"]
-_data = [Vector2(0, 0), 0.0, 1.77368, 0, 0, Vector2(1, 1), 0.596211, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_q5hes"]
+_data = [Vector2(0, 0), 0.0, 2.4556, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [resource]
 script = ExtResource("1_3ayfr")
 speed = 36
-jump_force = 64
-long_jump_max_ticks = 1000
-long_jump_curve = SubResource("Curve_fec0o")
-short_jump_max_ticks = 250
-short_jump_curve = SubResource("Curve_j5i0d")
+jump_curve = SubResource("Curve_q5hes")
+jump_max_height_pixels = 40
+jump_max_ticks = 1000
+jump_min_ticks = 500
+fall_curve = SubResource("Curve_u0inu")
+max_fall_rate_pixels = 160
+ticks_to_max_fall_rate = 750
