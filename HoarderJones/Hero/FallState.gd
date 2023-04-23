@@ -10,12 +10,17 @@ var max_fall_rate: int:
 
 var t: float
 var previous_t: float
+var skip_winddown: bool
 
 func enter():
-	super.enter()
 	t = 0
 	previous_t = 0
-	self.core.animator.animation_set_next(anim, looping_fall_anim)
+
+	if skip_winddown:
+		self.core.animator.play(looping_fall_anim)
+	else:
+		super.enter()
+		self.core.animator.animation_set_next(anim, looping_fall_anim)
 
 func do(delta: float):
 	# need to evaluate the jump curve here

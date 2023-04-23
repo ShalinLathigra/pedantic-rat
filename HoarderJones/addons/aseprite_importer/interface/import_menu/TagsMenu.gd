@@ -50,7 +50,7 @@ func _ready():
 	tree.set_column_custom_minimum_width(Columns.DIRECTION, 84)
 
 	tree.set_column_titles_visible(true)
-	
+
 	select_all_button.toggled.connect(_on_SelectAllButton_toggled)
 	tree.cell_selected.connect(_on_Tree_cell_selected)
 	tree.item_edited.connect(_on_Tree_item_edited)

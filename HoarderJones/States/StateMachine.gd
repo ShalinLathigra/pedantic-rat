@@ -35,8 +35,8 @@ func do(delta: float) -> void:
 	if current:
 		current.do(delta)
 
-func set_state(target: State) -> void:
-	if target == current:
+func set_state(target: State, override: bool = false) -> void:
+	if target == current and not override:
 		return
 	if current:
 		current.exit()

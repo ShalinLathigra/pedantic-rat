@@ -13,6 +13,9 @@ extends Resource
 @export_range(0, 128, 4) var jump_max_height_pixels: int
 @export_range(0, 2500, 50) var jump_max_ticks: int
 @export_range(0, 2500, 50) var jump_min_ticks: int
+@export_category("Expanded Jump Statistics")
+@export_range(0, 500, 50) var jump_buffer_ticks: int
+@export_range(0, 500, 50) var coyote_time_ticks: int
 
 # Time vs max fall speed
 @export_category("Fall Statistics")

@@ -5,16 +5,18 @@ extends State
 @onready var jump := %StateMachine/Air/Jump as State
 @onready var fall := %StateMachine/Air/Fall as State
 
-func should_jump() -> bool:
-	return Input.is_action_pressed("space") and self.core.is_on_floor()
+var should_jump: bool:
+	get: return current != fall and jump.is_jump_buffered
 
 func enter():
 	super.enter()
-	set_state(jump if should_jump() else fall)
+	super.set_state(jump if should_jump else fall, true)
 
 func do(delta: float):
-	if jump.is_finished or Input.is_action_just_released("space"):
-		set_state(fall)
+	# Handle Coyote Time
+	if current == fall and jump.do_late_jump:
+		super.set_state(jump, true)
+
 	# Handle X component of movement
 	var dir = Input.get_axis("left", "right")
 	if dir:
@@ -25,4 +27,7 @@ func do(delta: float):
 	current.do(delta)
 	self.core.move_and_slide()
 
+	# Transition to jump if needed
+	if jump.is_finished:
+		set_state(fall)
 
