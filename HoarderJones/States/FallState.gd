@@ -25,10 +25,11 @@ func enter():
 func do(delta: float):
 	# need to evaluate the jump curve here
 	t += delta
-	self.is_finished = t >= 1
-
 	var evaluated_t = 1.0 - fall_curve.sample(t)
 
 	# Swap these around to handle the *-1 without adding lines
 	self.core.velocity.y = evaluated_t * max_fall_rate
 	previous_t = t
+
+	if t >= 1:
+		self.finished.emit()

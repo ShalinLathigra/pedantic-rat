@@ -27,7 +27,7 @@ var do_late_jump: int:
 var tick_of_last_jump_input: int
 var start_tick: int
 var previous_t: float
-var start_height:int
+var start_height:float
 var jump_held: bool
 
 func enter() -> void:
@@ -49,7 +49,8 @@ func do(delta: float) -> void:
 	self.core.velocity.y = (last_height - current_height) / (delta)
 	previous_t = t
 	# Detect early cancel
-	self.is_finished = t >= 1 or is_jump_cancelled
+	if t >= 1 or is_jump_cancelled:
+		self.finished.emit()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("space"):

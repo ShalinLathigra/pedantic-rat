@@ -10,7 +10,7 @@ extends Resource
 # Time to max elevation
 @export_category("Jump Statistics")
 @export var jump_curve: Curve
-@export_range(0, 128, 4) var jump_max_height_pixels: int
+@export_range(0, 128, 2) var jump_max_height_pixels: int
 @export_range(0, 2500, 50) var jump_max_ticks: int
 @export_range(0, 2500, 50) var jump_min_ticks: int
 @export_category("Expanded Jump Statistics")

@@ -2,8 +2,8 @@ class_name AirState
 extends State
 
 # Sub States
-@onready var jump := %StateMachine/Air/Jump as State
-@onready var fall := %StateMachine/Air/Fall as State
+@onready var jump := $Jump as State
+@onready var fall := $Fall as State
 
 var should_jump: bool:
 	get: return current != fall and jump.is_jump_buffered
@@ -11,6 +11,7 @@ var should_jump: bool:
 func enter():
 	super.enter()
 	super.set_state(jump if should_jump else fall, true)
+	jump.finished.connect(func(): set_state(fall))
 
 func do(delta: float):
 	# Handle Coyote Time
@@ -26,8 +27,4 @@ func do(delta: float):
 
 	current.do(delta)
 	self.core.move_and_slide()
-
-	# Transition to jump if needed
-	if jump.is_finished:
-		set_state(fall)
 
