@@ -1,20 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://fmb4b3bc5wo4"]
+[gd_scene load_steps=32 format=3 uid="uid://c0r38qoaisx32"]
 
-[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_3mj70"]
+[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
 [ext_resource type="Resource" uid="uid://doeticvoapt47" path="res://Hero/HeroStats.tres" id="2_ulgu6"]
 [ext_resource type="Script" path="res://States/StateMachine.gd" id="3_thlpy"]
 [ext_resource type="Script" path="res://Hero/FlipSprite.gd" id="4_bigcf"]
 [ext_resource type="Script" path="res://States/RunState.gd" id="5_a6lm4"]
 [ext_resource type="Script" path="res://States/GroundState.gd" id="5_togkl"]
-[ext_resource type="Script" path="res://States/State.gd" id="6_a1yu6"]
+[ext_resource type="Script" path="res://States/State.gd" id="7_i1upq"]
 [ext_resource type="Script" path="res://States/AirState.gd" id="9_72ong"]
 [ext_resource type="Script" path="res://States/FallState.gd" id="10_e4sw5"]
 [ext_resource type="Script" path="res://States/JumpState.gd" id="11_684q0"]
-[ext_resource type="Script" path="res://States/FringeState.gd" id="12_7b8n6"]
 [ext_resource type="Script" path="res://Hero/LedgeDetector.gd" id="12_541cb"]
-[ext_resource type="Script" path="res://Hero/LedgeGrab.gd" id="13_jh8yt"]
+[ext_resource type="Script" path="res://States/LedgeGrabState.gd" id="13_hwaaw"]
 [ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="13_ueqv6"]
+[ext_resource type="Script" path="res://Hero/ChildFlipper.gd" id="14_67ya3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -391,15 +391,17 @@ _data = {
 "Super Attack": SubResource("Animation_1sfuf")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ui30q"]
-radius = 1.41421
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63fuj"]
+radius = 1.0
+height = 2.0
 
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 0
-script = ExtResource("1_3mj70")
+script = ExtResource("1_36g06")
 stats = ExtResource("2_ulgu6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_7qvwf")
 
@@ -427,8 +429,7 @@ core = NodePath("..")
 script = ExtResource("5_togkl")
 
 [node name="Idle" type="Node" parent="StateMachine/Ground"]
-script = ExtResource("6_a1yu6")
-anim = "Idle"
+script = ExtResource("7_i1upq")
 
 [node name="Run" type="Node" parent="StateMachine/Ground"]
 script = ExtResource("5_a6lm4")
@@ -446,43 +447,47 @@ anim = "Jet Stop"
 script = ExtResource("11_684q0")
 anim = "Jet Pack"
 
-[node name="Fringe" type="Node" parent="StateMachine"]
-script = ExtResource("12_7b8n6")
-
-[node name="LedgeGrab" type="Node" parent="StateMachine/Fringe"]
-script = ExtResource("13_jh8yt")
-anim = "Idle"
-
 [node name="LedgeDetector" type="Node2D" parent="." node_paths=PackedStringArray("core")]
-position = Vector2(7, -6)
+unique_name_in_owner = true
 script = ExtResource("12_541cb")
 core = NodePath("..")
 
-[node name="HighChecker" type="Area2D" parent="LedgeDetector"]
-position = Vector2(0, -8)
+[node name="Ledge" type="Node" parent="LedgeDetector"]
+script = ExtResource("13_hwaaw")
+
+[node name="LedgeOrigin" type="Marker2D" parent="LedgeDetector"]
+position = Vector2(3, -12)
+script = ExtResource("14_67ya3")
+
+[node name="HighChecker" type="Area2D" parent="LedgeDetector/LedgeOrigin"]
+position = Vector2(2, -1)
 collision_layer = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/HighChecker"]
+[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/HighChecker"]
 modulate = Color(1, 1, 1, 0.701961)
+z_index = -1
 scale = Vector2(0.032, 0.032)
 texture = ExtResource("13_ueqv6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/HighChecker"]
-shape = SubResource("CircleShape2D_ui30q")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/HighChecker"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_63fuj")
 
-[node name="LowChecker" type="Area2D" parent="LedgeDetector"]
+[node name="LowChecker" type="Area2D" parent="LedgeDetector/LedgeOrigin"]
+position = Vector2(2, 3)
 collision_layer = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LowChecker"]
+[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/LowChecker"]
 modulate = Color(1, 1, 1, 0.701961)
+z_index = -1
 scale = Vector2(0.032, 0.032)
 texture = ExtResource("13_ueqv6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LowChecker"]
-shape = SubResource("CircleShape2D_ui30q")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/LowChecker"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_63fuj")
 
-[connection signal="reached_grabbable_ledge" from="LedgeDetector" to="." method="_on_reached_grabbable_ledge"]
-[connection signal="body_entered" from="LedgeDetector/HighChecker" to="LedgeDetector" method="_on_checker_body_entered" binds= [true]]
-[connection signal="body_exited" from="LedgeDetector/HighChecker" to="LedgeDetector" method="_on_checker_body_exited" binds= [true]]
-[connection signal="body_entered" from="LedgeDetector/LowChecker" to="LedgeDetector" method="_on_checker_body_entered" binds= [false]]
-[connection signal="body_exited" from="LedgeDetector/LowChecker" to="LedgeDetector" method="_on_checker_body_exited" binds= [false]]
+[connection signal="body_entered" from="LedgeDetector/LedgeOrigin/HighChecker" to="LedgeDetector" method="_on_checker_body_entered" binds= [true]]
+[connection signal="body_exited" from="LedgeDetector/LedgeOrigin/HighChecker" to="LedgeDetector" method="_on_checker_body_exited" binds= [true]]
+[connection signal="body_entered" from="LedgeDetector/LedgeOrigin/LowChecker" to="LedgeDetector" method="_on_checker_body_entered" binds= [false]]
+[connection signal="body_exited" from="LedgeDetector/LedgeOrigin/LowChecker" to="LedgeDetector" method="_on_checker_body_exited" binds= [false]]

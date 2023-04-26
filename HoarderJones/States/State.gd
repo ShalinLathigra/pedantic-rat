@@ -10,10 +10,8 @@ func enter():
 	if anim != "":
 		core.animator.stop()
 		core.animator.play(anim)
-	print("entering state: " + name)
 
 func exit() -> void:
 	if current:
 		current.exit()
 	current = null
-	print("exiting state: " + name)

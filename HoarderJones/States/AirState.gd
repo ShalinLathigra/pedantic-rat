@@ -15,10 +15,8 @@ func enter():
 
 func do(delta: float):
 	# Handle Coyote Time
-	if current == fall and jump.do_late_jump:
+	if (current == fall) and jump.do_late_jump:
 		super.set_state(jump, true)
-
-	# Handle X component of movement
 	var dir = Input.get_axis("left", "right")
 	if dir:
 		self.core.velocity.x = dir * self.core.stats.speed

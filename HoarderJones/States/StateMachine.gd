@@ -4,6 +4,7 @@ extends Node
 @export var core: Character
 
 var current: State
+var is_locked: bool
 
 func _ready():
 	if core == null:
@@ -29,9 +30,13 @@ func do(delta: float) -> void:
 		current.do(delta)
 
 func set_state(target: State, override: bool = false) -> void:
+	if is_locked:
+		return
 	if target == current and not override:
 		return
 	if current:
+#		prints("exiting state: ", current.name)
 		current.exit()
 	current = target
+#	prints("entering state: ", current.name)
 	current.enter()
