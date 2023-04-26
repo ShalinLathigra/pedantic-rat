@@ -18,7 +18,7 @@ func enter() -> void:
 	core.lock()
 #
 func do(_delta: float) -> void:
-	if Input.is_action_just_released("down") or Input.is_action_just_pressed("space"):
+	if Input.is_action_just_released("down") or (Input.is_action_just_pressed("space") and core.direction != ledge_detector.ledge_direction):
 		core.release()
 	if Input.is_action_just_released("up"):
 		core.global_translate(ledge_detector.find_landing_pad() - core.global_position)

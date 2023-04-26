@@ -456,7 +456,7 @@ core = NodePath("..")
 script = ExtResource("13_hwaaw")
 
 [node name="LedgeOrigin" type="Marker2D" parent="LedgeDetector"]
-position = Vector2(3, -12)
+position = Vector2(4, -12)
 script = ExtResource("14_67ya3")
 
 [node name="HighChecker" type="Area2D" parent="LedgeDetector/LedgeOrigin"]
