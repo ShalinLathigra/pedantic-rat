@@ -23,12 +23,9 @@ var is_transition_blocked: bool:
 	get: return machine.is_locked
 
 func _physics_process(delta: float) -> void:
-	# update state tracking variables
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
 	direction = Input.get_vector("left", "right", "up", "down")
-	# manage current state
-	# if need to handle fringe state:
 	if not is_transition_blocked:
 		if air.should_jump or not is_on_floor():
 			machine.set_state(air)

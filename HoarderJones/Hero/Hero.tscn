@@ -430,6 +430,7 @@ script = ExtResource("5_togkl")
 
 [node name="Idle" type="Node" parent="StateMachine/Ground"]
 script = ExtResource("7_i1upq")
+anim = "Idle"
 
 [node name="Run" type="Node" parent="StateMachine/Ground"]
 script = ExtResource("5_a6lm4")
@@ -454,6 +455,7 @@ core = NodePath("..")
 
 [node name="Ledge" type="Node" parent="LedgeDetector"]
 script = ExtResource("13_hwaaw")
+anim = "Idle"
 
 [node name="LedgeOrigin" type="Marker2D" parent="LedgeDetector"]
 position = Vector2(4, -12)
