@@ -26,22 +26,23 @@ func _ready() -> void:
 	ledge_state.core = core
 
 func _process(_delta: float) -> void:
-	if core.is_transition_blocked: return
+	# Adjust detector directions
+	if core.direction_raw.x != 0 and not core.is_direction_locked:
+		ledge_direction = Vector2.RIGHT * core.direction_raw.x
+		ledge_origin.set_facing(core.direction_raw.x == 1)
+		ledge_origin.position = Vector2(core.direction_raw.x * checker_offset.x, checker_offset.y)
 
-	if core.direction.x < 0:
-		ledge_origin.position = Vector2(-1 * checker_offset.x, checker_offset.y)
-		ledge_origin.set_facing(false)
-		ledge_direction = Vector2.LEFT
-	if core.direction.x > 0:
-		ledge_origin.position = checker_offset
-		ledge_origin.set_facing(true)
-		ledge_direction = Vector2.RIGHT
-
+	# Check if should update state
+	if core.is_state_locked: return
+	if not ledge_state.is_ready_to_reenter: return
 	if is_near_ledge and core.velocity.y > 0 and not Input.is_action_pressed("down"):
+		ledge_state.hanging_spot = find_hanging_spot()
+		ledge_state.landing_pad = find_landing_pad()
+		ledge_state.ledge_direction = ledge_direction
 		core.machine.set_state(ledge_state)
 
 func find_hanging_spot() -> Vector2:
-	return World.find_tile_intersection(ledge_origin.global_position) - ledge_origin.position
+	return World.find_tile_intersection_world(ledge_origin.global_position) - ledge_origin.position
 
 func find_landing_pad() -> Vector2:
-	return World.find_tile_intersection(ledge_origin.global_position) + ledge_direction * 2.0
+	return World.find_tile_intersection_world(ledge_origin.global_position) + ledge_direction * 2.0

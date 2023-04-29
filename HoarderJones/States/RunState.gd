@@ -2,7 +2,7 @@ class_name RunState
 extends State
 
 var speed: int:
-	get: return self.core.stats.speed
+	get: return self.core.stats.run_speed
 
 func do(_delta: float) -> void:
 	var dir = Input.get_axis("left", "right")

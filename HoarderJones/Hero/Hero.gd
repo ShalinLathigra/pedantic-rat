@@ -18,24 +18,29 @@ var coyote_time_grounded: bool:
 	get: return Time.get_ticks_msec() <= coyote_time_start + stats.coyote_time_ticks
 
 var direction: Vector2
+var direction_raw: Vector2
 var coyote_time_start: int
-var is_transition_blocked: bool:
+var is_state_locked: bool:
 	get: return machine.is_locked
+var is_direction_locked: bool
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
 	direction = Input.get_vector("left", "right", "up", "down")
-	if not is_transition_blocked:
+	direction_raw.x = Input.get_axis("left", "right")
+	direction_raw.y = Input.get_axis("up", "down")
+	if not is_state_locked:
 		if air.should_jump or not is_on_floor():
 			machine.set_state(air)
 		else:
 			machine.set_state(ground)
-
 	machine.do(delta)
 
 func release() -> void:
 	machine.is_locked = false
+	is_direction_locked = false
 
-func lock() -> void:
+func lock_components(dir_lock: bool=true) -> void:
 	machine.is_locked = true
+	is_direction_locked = dir_lock

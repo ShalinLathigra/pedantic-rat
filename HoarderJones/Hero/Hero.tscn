@@ -394,12 +394,11 @@ _data = {
 "Super Attack": SubResource("Animation_1sfuf")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63fuj"]
-radius = 1.0
-height = 2.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax165"]
+radius = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uf7x"]
-radius = 2.23607
+radius = 0.5
 
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
@@ -474,7 +473,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/HighChecker"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_63fuj")
+shape = SubResource("CircleShape2D_ax165")
 
 [node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/HighChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
@@ -492,7 +491,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/LowChecker"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_63fuj")
+shape = SubResource("CircleShape2D_ax165")
 
 [node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/LowChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
@@ -505,6 +504,7 @@ on = Color(0, 0.529412, 0, 0.670588)
 target_bodies = true
 
 [node name="LadderDetector" type="Node2D" parent="." node_paths=PackedStringArray("core")]
+unique_name_in_owner = true
 script = ExtResource("16_2oblr")
 core = NodePath("..")
 
@@ -512,8 +512,26 @@ core = NodePath("..")
 script = ExtResource("18_en5dt")
 anim = "Idle"
 
+[node name="AscentChecker" type="Area2D" parent="LadderDetector"]
+position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector/AscentChecker"]
+shape = SubResource("CircleShape2D_5uf7x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/AscentChecker" node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("13_ueqv6")
+script = ExtResource("16_k8gwg")
+target = NodePath("..")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+target_bodies = true
+
 [node name="LadderChecker" type="Area2D" parent="LadderDetector"]
-position = Vector2(0, -14)
+position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 2
 
@@ -522,11 +540,31 @@ shape = SubResource("CircleShape2D_5uf7x")
 
 [node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/LadderChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
-position = Vector2(0, -1)
-scale = Vector2(0.048, 0.048)
+scale = Vector2(0.032, 0.032)
 texture = ExtResource("13_ueqv6")
 script = ExtResource("16_k8gwg")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
 target_bodies = true
+
+[node name="DescentChecker" type="Area2D" parent="LadderDetector"]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector/DescentChecker"]
+shape = SubResource("CircleShape2D_5uf7x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/DescentChecker" node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("13_ueqv6")
+script = ExtResource("16_k8gwg")
+target = NodePath("..")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+target_bodies = true
+
+[node name="GroundRaycast" type="RayCast2D" parent="LadderDetector"]
+target_position = Vector2(0, 8)

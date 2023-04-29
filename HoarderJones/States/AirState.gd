@@ -5,6 +5,9 @@ extends State
 @onready var jump := $Jump as State
 @onready var fall := $Fall as State
 
+var speed: int:
+	get: return self.core.stats.air_speed
+
 var should_jump: bool:
 	get: return current != fall and jump.is_jump_buffered
 
@@ -19,9 +22,9 @@ func do(delta: float):
 		super.set_state(jump, true)
 	var dir = Input.get_axis("left", "right")
 	if dir:
-		self.core.velocity.x = dir * self.core.stats.speed
+		self.core.velocity.x = dir * speed
 	else:
-		self.core.velocity.x = move_toward(self.core.velocity.x, 0, self.core.stats.speed)
+		self.core.velocity.x = move_toward(self.core.velocity.x, 0, speed)
 
 	current.do(delta)
 	self.core.move_and_slide()
