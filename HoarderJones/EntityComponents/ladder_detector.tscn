@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2ul4c0rc2rqo"]
+[gd_scene load_steps=6 format=3 uid="uid://cv65doeu5hlwa"]
 
 [ext_resource type="Script" path="res://EntityComponents/LadderDetector.gd" id="1_sah1q"]
-[ext_resource type="Script" path="res://States/LadderClimbState.gd" id="2_yb3tq"]
+[ext_resource type="Script" path="res://NodeVariants/States/LadderClimbState.gd" id="2_isy3m"]
 [ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="3_eiby3"]
 [ext_resource type="Script" path="res://NodeVariants/AreaVisualizer.gd" id="4_fb8v8"]
 
@@ -12,7 +12,7 @@ radius = 0.5
 script = ExtResource("1_sah1q")
 
 [node name="LadderClimb" type="Node" parent="."]
-script = ExtResource("2_yb3tq")
+script = ExtResource("2_isy3m")
 anim = "Idle"
 
 [node name="AscentChecker" type="Area2D" parent="."]

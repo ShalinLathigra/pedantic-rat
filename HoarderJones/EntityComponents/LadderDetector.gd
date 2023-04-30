@@ -20,6 +20,9 @@ var descent_covered : bool:
 var at_climb_bottom: bool:
 	get: return ground_ray.is_colliding() and core.direction.y >= 0
 
+var at_climb_top: bool:
+	get: return core_covered and not descent_covered
+
 func _ready() -> void:
 	ladder_state.core = core
 

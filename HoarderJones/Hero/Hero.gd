@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			machine.set_state(ground)
 	machine.do(delta)
+	move_and_slide()
 
 func release() -> void:
 	machine.is_locked = false

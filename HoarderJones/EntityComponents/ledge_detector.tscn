@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c305d1vhw6h80"]
+[gd_scene load_steps=7 format=3 uid="uid://bcblxtnymx61q"]
 
 [ext_resource type="Script" path="res://EntityComponents/LedgeDetector.gd" id="1_jtinw"]
-[ext_resource type="Script" path="res://States/LedgeGrabState.gd" id="2_japkn"]
+[ext_resource type="Script" path="res://NodeVariants/States/LedgeGrabState.gd" id="2_a032m"]
 [ext_resource type="Script" path="res://NodeVariants/Node2D/ChildFlipper.gd" id="3_d2ibe"]
 [ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="4_v4qsd"]
 [ext_resource type="Script" path="res://NodeVariants/AreaVisualizer.gd" id="5_bj6qi"]
@@ -13,7 +13,7 @@ radius = 0.5
 script = ExtResource("1_jtinw")
 
 [node name="Ledge" type="Node" parent="."]
-script = ExtResource("2_japkn")
+script = ExtResource("2_a032m")
 anim = "Idle"
 
 [node name="LedgeOrigin" type="Marker2D" parent="."]
