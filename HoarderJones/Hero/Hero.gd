@@ -12,7 +12,6 @@ extends CharacterBody2D
 # Player Specific, to be moved later
 @onready var ground: GroundState = %StateMachine/Ground as GroundState
 @onready var air: AirState = %StateMachine/Air as AirState
-#@onready var fringe: FringeState = %StateMachine/Fringe as FringeState
 
 var coyote_time_grounded: bool:
 	get: return Time.get_ticks_msec() <= coyote_time_start + stats.coyote_time_ticks

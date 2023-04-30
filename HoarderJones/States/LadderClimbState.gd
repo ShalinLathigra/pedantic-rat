@@ -1,13 +1,18 @@
 class_name LadderClimbState
 extends State
 
-@onready var ladder_detector := %LadderDetector as LadderDetector
 
 var speed: int:
 	get: return core.stats.climb_speed
 
 var tween: Tween
 var snap_point: Vector2
+var ladder_detector: LadderDetector
+
+func _ready() -> void:
+	await owner.ready
+	assert(owner is LadderDetector)
+	ladder_detector = owner
 
 func enter() -> void:
 	super.enter()

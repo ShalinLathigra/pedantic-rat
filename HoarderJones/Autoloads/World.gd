@@ -28,7 +28,6 @@ func find_nearest_ladder_center(origin: Vector2, x_only: bool=true) -> Vector2:
 
 	return map.map_to_local(target_cell)
 
-
 func find_nearest_half_tile(origin: Vector2, on_x: bool=true, on_y: bool=false) -> Vector2:
 	if not on_x or on_y:
 		return origin

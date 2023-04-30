@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ul4c0rc2rqo"]
+
+[ext_resource type="Script" path="res://EntityComponents/LadderDetector.gd" id="1_sah1q"]
+[ext_resource type="Script" path="res://States/LadderClimbState.gd" id="2_yb3tq"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="3_eiby3"]
+[ext_resource type="Script" path="res://NodeVariants/AreaVisualizer.gd" id="4_fb8v8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uf7x"]
+radius = 0.5
+
+[node name="LadderDetector" type="Node2D"]
+script = ExtResource("1_sah1q")
+
+[node name="LadderClimb" type="Node" parent="."]
+script = ExtResource("2_yb3tq")
+anim = "Idle"
+
+[node name="AscentChecker" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AscentChecker"]
+shape = SubResource("CircleShape2D_5uf7x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AscentChecker" node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("3_eiby3")
+script = ExtResource("4_fb8v8")
+target = NodePath("..")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+target_bodies = true
+
+[node name="LadderChecker" type="Area2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderChecker"]
+shape = SubResource("CircleShape2D_5uf7x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LadderChecker" node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("3_eiby3")
+script = ExtResource("4_fb8v8")
+target = NodePath("..")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+target_bodies = true
+
+[node name="DescentChecker" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DescentChecker"]
+shape = SubResource("CircleShape2D_5uf7x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DescentChecker" node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("3_eiby3")
+script = ExtResource("4_fb8v8")
+target = NodePath("..")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+target_bodies = true
+
+[node name="GroundRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)

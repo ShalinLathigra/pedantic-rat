@@ -61,11 +61,14 @@ down={
 
 [layer_names]
 
-2d_physics/layer_1="Ground"
+2d_physics/layer_1="ClimbableGround"
 2d_physics/layer_2="Ladder"
 2d_physics/layer_3="Player"
+2d_physics/layer_5="NonClimbableGround"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/decals/filter=0
+textures/light_projectors/filter=0

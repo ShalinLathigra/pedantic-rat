@@ -28,10 +28,10 @@ func _process(_delta: float) -> void:
 	if core.is_state_locked: return
 	if not ladder_state.is_ready_to_reenter: return
 	if not core_covered: return
-	if not Input.is_action_pressed("up") or Input.is_action_pressed("down"): return
+	if not (Input.is_action_pressed("up") or Input.is_action_pressed("down")): return
 	var snap_point := World.find_nearest_ladder_center(global_position)
 	var to_snap_point = global_position.direction_to(snap_point)
-	if sign(to_snap_point.x) == sign(core.direction_raw.x):
+	if sign(to_snap_point.x) == sign(core.direction_raw.x) or core.direction_raw.x == 0:
 		ladder_state.snap_point = snap_point
 		core.machine.set_state(ladder_state)
 

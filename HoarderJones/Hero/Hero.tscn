@@ -1,23 +1,18 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0r38qoaisx32"]
+[gd_scene load_steps=29 format=3 uid="uid://cnhpxf7cxmlbx"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
 [ext_resource type="Resource" uid="uid://doeticvoapt47" path="res://Hero/HeroStats.tres" id="2_ulgu6"]
 [ext_resource type="Script" path="res://States/StateMachine.gd" id="3_thlpy"]
-[ext_resource type="Script" path="res://Hero/FlipSprite.gd" id="4_bigcf"]
+[ext_resource type="Script" path="res://NodeVariants/Sprites/FlipSprite.gd" id="4_04y6s"]
 [ext_resource type="Script" path="res://States/RunState.gd" id="5_a6lm4"]
 [ext_resource type="Script" path="res://States/GroundState.gd" id="5_togkl"]
 [ext_resource type="Script" path="res://States/State.gd" id="7_i1upq"]
 [ext_resource type="Script" path="res://States/AirState.gd" id="9_72ong"]
 [ext_resource type="Script" path="res://States/FallState.gd" id="10_e4sw5"]
 [ext_resource type="Script" path="res://States/JumpState.gd" id="11_684q0"]
-[ext_resource type="Script" path="res://Hero/LedgeDetector.gd" id="12_541cb"]
-[ext_resource type="Script" path="res://States/LedgeGrabState.gd" id="13_hwaaw"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="13_ueqv6"]
-[ext_resource type="Script" path="res://Hero/ChildFlipper.gd" id="14_67ya3"]
-[ext_resource type="Script" path="res://Hero/LadderDetector.gd" id="16_2oblr"]
-[ext_resource type="Script" path="res://Hero/AreaVisualizer.gd" id="16_k8gwg"]
-[ext_resource type="Script" path="res://Hero/LadderClimbState.gd" id="18_en5dt"]
+[ext_resource type="PackedScene" path="res://EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
+[ext_resource type="PackedScene" uid="uid://b2ul4c0rc2rqo" path="res://EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -394,12 +389,6 @@ _data = {
 "Super Attack": SubResource("Animation_1sfuf")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ax165"]
-radius = 0.5
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5uf7x"]
-radius = 0.5
-
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_36g06")
@@ -417,7 +406,7 @@ texture = ExtResource("1_xk5an")
 offset = Vector2(10, -16)
 region_enabled = true
 region_rect = Rect2(7936, 0, 128, 64)
-script = ExtResource("4_bigcf")
+script = ExtResource("4_04y6s")
 core = NodePath("..")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -454,117 +443,10 @@ anim = "Jet Stop"
 script = ExtResource("11_684q0")
 anim = "Jet Pack"
 
-[node name="LedgeDetector" type="Node2D" parent="." node_paths=PackedStringArray("core")]
+[node name="LedgeDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("12_rfi8r")]
 unique_name_in_owner = true
-script = ExtResource("12_541cb")
 core = NodePath("..")
 
-[node name="Ledge" type="Node" parent="LedgeDetector"]
-script = ExtResource("13_hwaaw")
-anim = "Idle"
-
-[node name="LedgeOrigin" type="Marker2D" parent="LedgeDetector"]
-position = Vector2(4, -12)
-script = ExtResource("14_67ya3")
-
-[node name="HighChecker" type="Area2D" parent="LedgeDetector/LedgeOrigin"]
-position = Vector2(2, -1)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/HighChecker"]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_ax165")
-
-[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/HighChecker" node_paths=PackedStringArray("target")]
-modulate = Color(1, 1, 1, 0.701961)
-scale = Vector2(0.032, 0.032)
-texture = ExtResource("13_ueqv6")
-script = ExtResource("16_k8gwg")
-target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
-target_bodies = true
-
-[node name="LowChecker" type="Area2D" parent="LedgeDetector/LedgeOrigin"]
-position = Vector2(2, 3)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeDetector/LedgeOrigin/LowChecker"]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_ax165")
-
-[node name="Sprite2D" type="Sprite2D" parent="LedgeDetector/LedgeOrigin/LowChecker" node_paths=PackedStringArray("target")]
-modulate = Color(1, 1, 1, 0.701961)
-scale = Vector2(0.032, 0.032)
-texture = ExtResource("13_ueqv6")
-script = ExtResource("16_k8gwg")
-target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
-target_bodies = true
-
-[node name="LadderDetector" type="Node2D" parent="." node_paths=PackedStringArray("core")]
+[node name="LadderDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("13_x2i4r")]
 unique_name_in_owner = true
-script = ExtResource("16_2oblr")
 core = NodePath("..")
-
-[node name="LadderClimb" type="Node" parent="LadderDetector"]
-script = ExtResource("18_en5dt")
-anim = "Idle"
-
-[node name="AscentChecker" type="Area2D" parent="LadderDetector"]
-position = Vector2(0, -5)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector/AscentChecker"]
-shape = SubResource("CircleShape2D_5uf7x")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/AscentChecker" node_paths=PackedStringArray("target")]
-modulate = Color(1, 1, 1, 0.701961)
-scale = Vector2(0.032, 0.032)
-texture = ExtResource("13_ueqv6")
-script = ExtResource("16_k8gwg")
-target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
-target_bodies = true
-
-[node name="LadderChecker" type="Area2D" parent="LadderDetector"]
-position = Vector2(0, -7)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector/LadderChecker"]
-shape = SubResource("CircleShape2D_5uf7x")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/LadderChecker" node_paths=PackedStringArray("target")]
-modulate = Color(1, 1, 1, 0.701961)
-scale = Vector2(0.032, 0.032)
-texture = ExtResource("13_ueqv6")
-script = ExtResource("16_k8gwg")
-target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
-target_bodies = true
-
-[node name="DescentChecker" type="Area2D" parent="LadderDetector"]
-position = Vector2(0, -9)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector/DescentChecker"]
-shape = SubResource("CircleShape2D_5uf7x")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LadderDetector/DescentChecker" node_paths=PackedStringArray("target")]
-modulate = Color(1, 1, 1, 0.701961)
-scale = Vector2(0.032, 0.032)
-texture = ExtResource("13_ueqv6")
-script = ExtResource("16_k8gwg")
-target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
-target_bodies = true
-
-[node name="GroundRaycast" type="RayCast2D" parent="LadderDetector"]
-target_position = Vector2(0, 8)
