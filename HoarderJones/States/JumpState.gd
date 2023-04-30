@@ -20,7 +20,7 @@ var elapsed_ticks: int:
 var is_jump_cancelled: bool:
 	get: return (not jump_held) and elapsed_ticks > min_jump_ticks
 var is_jump_buffered: bool:
-	get: return Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
+	get: return not InputManager.is_action_pressed("down") and Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
 var do_late_jump: int:
 	get: return is_jump_buffered and self.core.coyote_time_grounded
 
@@ -35,7 +35,7 @@ func enter() -> void:
 	start_tick = Time.get_ticks_msec()
 	previous_t = 0
 	start_height = self.core.position.y
-	jump_held = Input.is_action_pressed("space")
+	jump_held = InputManager.is_action_pressed("space")
 
 func do(delta: float) -> void:
 	# need to evaluate the jump curve here

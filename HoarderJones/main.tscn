@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://2eoipmoo0ld1"]
+[gd_scene load_steps=11 format=3 uid="uid://2eoipmoo0ld1"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dyk7q"]
 [ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="1_gvkk3"]
-[ext_resource type="PackedScene" uid="uid://c0r38qoaisx32" path="res://Hero/Hero.tscn" id="1_mgdqw"]
+[ext_resource type="PackedScene" uid="uid://cnhpxf7cxmlbx" path="res://Hero/Hero.tscn" id="1_mgdqw"]
 [ext_resource type="Texture2D" uid="uid://bhgn6rwupwoc3" path="res://Assets/climbable_platform.png" id="3_mj3cy"]
 [ext_resource type="Script" path="res://NodeVariants/Sprites/AutoResizeSprite2D.gd" id="4_3b4od"]
 [ext_resource type="Script" path="res://NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="5_dx5yt"]
+[ext_resource type="Script" path="res://FallThroughPlatform.gd" id="5_tbv5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
 texture = ExtResource("1_gvkk3")
@@ -120,6 +121,7 @@ script = ExtResource("4_3b4od")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ClimbablePlatform"]
 collision_mask = 0
+script = ExtResource("5_tbv5c")
 
 [node name="RegionTrackingRectangleShape2D" type="CollisionShape2D" parent="ClimbablePlatform/StaticBody2D" node_paths=PackedStringArray("target")]
 position = Vector2(8, 4)

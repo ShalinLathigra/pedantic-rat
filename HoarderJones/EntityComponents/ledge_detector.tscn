@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2y7230g2h2dj"]
+[gd_scene load_steps=7 format=3 uid="uid://c305d1vhw6h80"]
 
 [ext_resource type="Script" path="res://EntityComponents/LedgeDetector.gd" id="1_jtinw"]
 [ext_resource type="Script" path="res://States/LedgeGrabState.gd" id="2_japkn"]

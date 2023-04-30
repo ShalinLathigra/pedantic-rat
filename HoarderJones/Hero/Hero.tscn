@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://States/AirState.gd" id="9_72ong"]
 [ext_resource type="Script" path="res://States/FallState.gd" id="10_e4sw5"]
 [ext_resource type="Script" path="res://States/JumpState.gd" id="11_684q0"]
-[ext_resource type="PackedScene" path="res://EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
+[ext_resource type="PackedScene" uid="uid://c305d1vhw6h80" path="res://EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
 [ext_resource type="PackedScene" uid="uid://b2ul4c0rc2rqo" path="res://EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]

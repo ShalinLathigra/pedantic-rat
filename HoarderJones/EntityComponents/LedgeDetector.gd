@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 	# Check if should update state
 	if core.is_state_locked: return
 	if not ledge_state.is_ready_to_reenter: return
-	if is_near_ledge and core.velocity.y > 0 and not Input.is_action_pressed("down"):
+	if is_near_ledge and core.velocity.y > 0 and not InputManager.is_action_pressed("down"):
 		ledge_state.hanging_spot = find_hanging_spot()
 		ledge_state.landing_pad = find_landing_pad()
 		ledge_state.ledge_direction = ledge_direction

@@ -26,9 +26,9 @@ var is_direction_locked: bool
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
-	direction = Input.get_vector("left", "right", "up", "down")
-	direction_raw.x = Input.get_axis("left", "right")
-	direction_raw.y = Input.get_axis("up", "down")
+	direction = InputManager.get_vector("left", "right", "up", "down")
+	direction_raw.x = InputManager.get_axis("left", "right")
+	direction_raw.y = InputManager.get_axis("up", "down")
 	if not is_state_locked:
 		if air.should_jump or not is_on_floor():
 			machine.set_state(air)

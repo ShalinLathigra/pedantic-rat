@@ -23,7 +23,7 @@ func enter() -> void:
 	tween.tween_property(core, "global_position:x", snap_point.x, 0.125)
 
 func do(_delta) -> void:
-	if Input.is_action_just_pressed("space") or ladder_detector.at_climb_bottom:
+	if InputManager.is_action_just_pressed("space") or ladder_detector.at_climb_bottom:
 		core.release()
 
 	self.core.velocity.y = core.direction_raw.y * speed

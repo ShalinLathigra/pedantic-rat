@@ -5,7 +5,7 @@ var speed: int:
 	get: return self.core.stats.run_speed
 
 func do(_delta: float) -> void:
-	var dir = Input.get_axis("left", "right")
+	var dir = InputManager.get_axis("left", "right")
 	if dir:
 		self.core.velocity.x = dir * speed
 	else:

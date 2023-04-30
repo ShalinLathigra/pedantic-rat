@@ -18,9 +18,9 @@ func enter() -> void:
 	started_mantle_animation = false
 #
 func do(_delta: float) -> void:
-	if Input.is_action_just_pressed("down") or (Input.is_action_just_pressed("space") and core.direction != ledge_direction):
+	if InputManager.is_action_just_pressed("down") or (InputManager.is_action_just_pressed("space") and core.direction != ledge_direction):
 		core.release()
-	if Input.is_action_just_pressed("up") and not started_mantle_animation:
+	if InputManager.is_action_just_pressed("up") and not started_mantle_animation:
 		started_mantle_animation = true
 		if tween: tween.stop()
 		tween = create_tween().set_parallel()
