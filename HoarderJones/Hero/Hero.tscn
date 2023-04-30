@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnhpxf7cxmlbx"]
+[gd_scene load_steps=30 format=3 uid="uid://cnhpxf7cxmlbx"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://States/JumpState.gd" id="11_684q0"]
 [ext_resource type="PackedScene" uid="uid://c305d1vhw6h80" path="res://EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
 [ext_resource type="PackedScene" uid="uid://b2ul4c0rc2rqo" path="res://EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
+[ext_resource type="Script" path="res://Hero/FallThroughDetector.gd" id="14_borj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -391,6 +392,7 @@ _data = {
 
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_36g06")
 stats = ExtResource("2_ulgu6")
 
@@ -449,4 +451,8 @@ core = NodePath("..")
 
 [node name="LadderDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("13_x2i4r")]
 unique_name_in_owner = true
+core = NodePath("..")
+
+[node name="FallThroughDetector" type="Node" parent="." node_paths=PackedStringArray("core")]
+script = ExtResource("14_borj3")
 core = NodePath("..")
