@@ -29,14 +29,12 @@ func find_nearest_ladder_center(origin: Vector2, x_only: bool=true) -> Vector2:
 func find_highest_ladder_center(origin: Vector2) -> Vector2:
 	if not map: return origin
 	var start_tile = map.local_to_map(origin)
-	var tiles_to_check = [Vector2i.DOWN, Vector2i.ZERO, Vector2i.UP]
+	var tiles_to_check = [Vector2i.ZERO, Vector2i.UP]
 	var target_cell: Vector2
 	for tile in tiles_to_check:
 		var cell = map.get_cell_tile_data(0, start_tile + tile)
-		if not cell:
+		if not cell or not cell.get_custom_data("is_ladder"):
 			target_cell = start_tile + tile
-			break
-		if cell.get_custom_data("is_ladder"): continue
 	if target_cell == Vector2.ZERO:
 		return origin
 	prints(origin, start_tile, target_cell, map.map_to_local(target_cell))

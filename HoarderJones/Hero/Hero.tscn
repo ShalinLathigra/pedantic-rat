@@ -1,19 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://baoa3xh75tdt4"]
+[gd_scene load_steps=31 format=3 uid="uid://dqwdfwd3fwi6y"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
-[ext_resource type="Resource" uid="uid://doeticvoapt47" path="res://Hero/HeroStats.tres" id="2_ulgu6"]
-[ext_resource type="Script" path="res://NodeVariants/Sprites/FlipSprite.gd" id="4_04y6s"]
-[ext_resource type="Script" path="res://NodeVariants/States/StateMachine.gd" id="5_1rdy3"]
-[ext_resource type="Script" path="res://NodeVariants/States/GroundState.gd" id="6_xa7en"]
-[ext_resource type="Script" path="res://NodeVariants/States/State.gd" id="7_5j38d"]
-[ext_resource type="Script" path="res://NodeVariants/States/RunState.gd" id="8_feq7c"]
-[ext_resource type="Script" path="res://NodeVariants/States/AirState.gd" id="9_4ab82"]
-[ext_resource type="Script" path="res://NodeVariants/States/FallState.gd" id="10_wm1k2"]
-[ext_resource type="Script" path="res://NodeVariants/States/JumpState.gd" id="11_cqjg5"]
-[ext_resource type="PackedScene" uid="uid://bcblxtnymx61q" path="res://EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
-[ext_resource type="PackedScene" uid="uid://cv65doeu5hlwa" path="res://EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
-[ext_resource type="Script" path="res://Hero/FallThroughDetector.gd" id="14_borj3"]
+[ext_resource type="Resource" uid="uid://bfjbjja2qch54" path="res://Hero/HeroStats.tres" id="2_ulgu6"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/FlipSprite.gd" id="4_04y6s"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/StateMachine.gd" id="5_1rdy3"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/GroundState.gd" id="6_xa7en"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/State.gd" id="7_5j38d"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/RunState.gd" id="8_feq7c"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/AirState.gd" id="9_4ab82"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/FallState.gd" id="10_wm1k2"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/JumpState.gd" id="11_cqjg5"]
+[ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
+[ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
+[ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/rope_swing_detector.tscn" id="14_rj8vc"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/FallThroughDetector.gd" id="15_bi32u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -453,6 +454,9 @@ core = NodePath("..")
 unique_name_in_owner = true
 core = NodePath("..")
 
+[node name="RopeSwingDetector" parent="." instance=ExtResource("14_rj8vc")]
+unique_name_in_owner = true
+
 [node name="FallThroughDetector" type="Node" parent="." node_paths=PackedStringArray("core")]
-script = ExtResource("14_borj3")
+script = ExtResource("15_bi32u")
 core = NodePath("..")

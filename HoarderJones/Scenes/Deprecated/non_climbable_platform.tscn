@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://h7u8vqgr4krc"]
+
+[ext_resource type="Texture2D" uid="uid://d4mljc37xkcdr" path="res://Assets/non_climbable_platform.png" id="1_g00te"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/AutoResizeSprite2D.gd" id="2_b3f5a"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="3_i0uwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joh6e"]
+size = Vector2(16, 8)
+
+[node name="NonClimbablePlatform" type="Sprite2D"]
+texture_repeat = 2
+position = Vector2(56, 104)
+scale = Vector2(4, 1)
+texture = ExtResource("1_g00te")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 8)
+script = ExtResource("2_b3f5a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 24
+collision_mask = 0
+
+[node name="Shape2D" type="CollisionShape2D" parent="StaticBody2D" node_paths=PackedStringArray("target")]
+position = Vector2(8, 4)
+shape = SubResource("RectangleShape2D_joh6e")
+one_way_collision = true
+script = ExtResource("3_i0uwv")
+target = NodePath("../..")

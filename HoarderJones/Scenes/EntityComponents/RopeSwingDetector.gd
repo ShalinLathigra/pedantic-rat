@@ -1,0 +1,2 @@
+class_name RopeSwingDetector
+extends Node2D

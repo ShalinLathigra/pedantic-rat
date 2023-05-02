@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Stats" load_steps=4 format=3 uid="uid://doeticvoapt47"]
+[gd_resource type="Resource" script_class="Stats" load_steps=4 format=3 uid="uid://bfjbjja2qch54"]
 
-[ext_resource type="Script" path="res://Stats.gd" id="1_3ayfr"]
+[ext_resource type="Script" path="res://Resources/Stats.gd" id="1_3ayfr"]
 
 [sub_resource type="Curve" id="Curve_u0inu"]
 _data = [Vector2(0, 1), 0.0, -2.49233, 0, 0, Vector2(1, 0), -0.426927, 0.0, 0, 0]
@@ -12,8 +12,10 @@ point_count = 3
 
 [resource]
 script = ExtResource("1_3ayfr")
-run_speed = 32
-air_speed = 28
+run_speed = 40
+brake_speed = 180
+air_speed = 36
+air_brake_speed = 80
 jump_curve = SubResource("Curve_q5hes")
 jump_max_height_pixels = 26
 jump_max_ticks = 1000
@@ -23,4 +25,4 @@ coyote_time_ticks = 150
 fall_curve = SubResource("Curve_u0inu")
 max_fall_rate_pixels = 256
 ticks_to_max_fall_rate = 750
-climb_speed = 24
+climb_speed = 32

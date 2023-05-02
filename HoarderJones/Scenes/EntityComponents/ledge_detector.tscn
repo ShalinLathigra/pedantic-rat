@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcblxtnymx61q"]
+[gd_scene load_steps=7 format=3 uid="uid://cqitui35p4ybl"]
 
-[ext_resource type="Script" path="res://EntityComponents/LedgeDetector.gd" id="1_jtinw"]
-[ext_resource type="Script" path="res://NodeVariants/States/LedgeGrabState.gd" id="2_a032m"]
-[ext_resource type="Script" path="res://NodeVariants/Node2D/ChildFlipper.gd" id="3_d2ibe"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="4_v4qsd"]
-[ext_resource type="Script" path="res://NodeVariants/AreaVisualizer.gd" id="5_bj6qi"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/LedgeDetector.gd" id="1_d5hbe"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/LedgeGrabState.gd" id="2_rpeer"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Node2D/ChildFlipper.gd" id="3_jkkfh"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="4_6lt0u"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="5_bo016"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ax165"]
 radius = 0.5
 
 [node name="LedgeDetector" type="Node2D"]
-script = ExtResource("1_jtinw")
+script = ExtResource("1_d5hbe")
 
 [node name="Ledge" type="Node" parent="."]
-script = ExtResource("2_a032m")
+script = ExtResource("2_rpeer")
 anim = "Idle"
 
 [node name="LedgeOrigin" type="Marker2D" parent="."]
 position = Vector2(4, -12)
-script = ExtResource("3_d2ibe")
+script = ExtResource("3_jkkfh")
 
 [node name="HighChecker" type="Area2D" parent="LedgeOrigin"]
 position = Vector2(2, -1)
@@ -31,8 +31,8 @@ shape = SubResource("CircleShape2D_ax165")
 [node name="Sprite2D" type="Sprite2D" parent="LedgeOrigin/HighChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("4_v4qsd")
-script = ExtResource("5_bj6qi")
+texture = ExtResource("4_6lt0u")
+script = ExtResource("5_bo016")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -49,8 +49,8 @@ shape = SubResource("CircleShape2D_ax165")
 [node name="Sprite2D" type="Sprite2D" parent="LedgeOrigin/LowChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("4_v4qsd")
-script = ExtResource("5_bj6qi")
+texture = ExtResource("4_6lt0u")
+script = ExtResource("5_bo016")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
