@@ -37,7 +37,6 @@ func find_highest_ladder_center(origin: Vector2) -> Vector2:
 			target_cell = start_tile + tile
 	if target_cell == Vector2.ZERO:
 		return origin
-	prints(origin, start_tile, target_cell, map.map_to_local(target_cell))
 	return map.map_to_local(target_cell)
 
 func find_nearest_half_tile(origin: Vector2, on_x: bool=true, on_y: bool=false) -> Vector2:

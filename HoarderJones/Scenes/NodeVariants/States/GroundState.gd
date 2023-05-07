@@ -10,7 +10,7 @@ func enter():
 	self.set_state(idle)
 
 func do(delta: float) -> void:
-	if self.core.direction.x != 0 or self.core.velocity.x != 0:
+	if core.direction.x != 0 or core.velocity.x != 0:
 		self.set_state(run)
 	else:
 		self.set_state(idle)

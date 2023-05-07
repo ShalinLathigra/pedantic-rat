@@ -87,7 +87,6 @@ texture = ExtResource("3_bj55p")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rj5f0"]
 resource_name = "Basic"
 scenes/1/scene = ExtResource("4_id0e1")
-scenes/1/display_placeholder = ExtResource("4_id0e1")
 
 [sub_resource type="TileSet" id="TileSet_nd4c8"]
 physics_layer_0/collision_layer = 1
@@ -125,9 +124,9 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-262138, 1, 65536, -65524, 65536, 1, 12, 65536, 1, 65548, 65536, 1)
+layer_1/tile_data = PackedInt32Array(-65524, 65536, 1, 12, 65536, 1, 65548, 65536, 1, -262138, 1, 65536)
 
 [node name="Hero" parent="." instance=ExtResource("4_s5rju")]
-position = Vector2(136, 8)
+position = Vector2(152, -16)
 rotation = 0.0152468
 collision_mask = 25

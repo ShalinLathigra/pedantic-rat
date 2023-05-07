@@ -4,15 +4,15 @@ extends State
 # Properties
 # Stats links
 var jump_curve: Curve:
-	get: return self.core.stats.jump_curve
+	get: return core.stats.jump_curve
 var jump_pixels: int:
-	get: return self.core.stats.jump_max_height_pixels
+	get: return core.stats.jump_max_height_pixels
 var max_jump_ticks: int:
-	get: return self.core.stats.jump_max_ticks
+	get: return core.stats.jump_max_ticks
 var min_jump_ticks: int:
-	get: return self.core.stats.jump_min_ticks
+	get: return core.stats.jump_min_ticks
 var jump_buffer: int:
-	get: return self.core.stats.jump_buffer_ticks
+	get: return core.stats.jump_buffer_ticks
 
 # Jump buffering
 var elapsed_ticks: int:
@@ -22,7 +22,7 @@ var is_jump_cancelled: bool:
 var is_jump_buffered: bool:
 	get: return not InputManager.is_action_pressed("down") and Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
 var do_late_jump: int:
-	get: return is_jump_buffered and self.core.coyote_time_grounded
+	get: return is_jump_buffered and core.coyote_time_grounded
 
 var tick_of_last_jump_input: int
 var start_tick: int
@@ -34,7 +34,7 @@ func enter() -> void:
 	super.enter()
 	start_tick = Time.get_ticks_msec()
 	previous_t = 0
-	start_height = self.core.position.y
+	start_height = core.position.y
 	jump_held = InputManager.is_action_pressed("space")
 
 func do(delta: float) -> void:
@@ -46,7 +46,7 @@ func do(delta: float) -> void:
 	var last_height = jump_curve.sample(previous_t) * jump_pixels
 
 	# Swap these around to handle the *-1 without adding lines
-	self.core.velocity.y = (last_height - current_height) / (delta)
+	core.velocity.y = (last_height - current_height) / (delta)
 	previous_t = t
 	# Detect early cancel
 	if t >= 1 or is_jump_cancelled:

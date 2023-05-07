@@ -2,16 +2,16 @@ class_name RunState
 extends State
 
 var speed: int:
-	get: return self.core.stats.run_speed
+	get: return core.stats.run_speed
+var gas: int:
+	get: return core.stats.acc_rate
 var brakes: int:
-	get: return self.core.stats.brake_speed
+	get: return core.stats.brake_speed
 
 func do(delta: float) -> void:
 	var dir = InputManager.get_axis("left", "right")
 	if dir:
-		self.core.velocity.x = dir * speed
+		core.velocity.x = move_toward(core.velocity.x, dir * speed, gas * delta)
 	else:
-		self.core.velocity.x = move_toward(self.core.velocity.x, 0, brakes*delta)
+		core.velocity.x = move_toward(core.velocity.x, 0, brakes*delta)
 
-func exit() -> void:
-	self.core.velocity.x = 0

@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw27pil0fod1c"]
+[gd_scene load_steps=6 format=3 uid="uid://cw27pil0fod1c"]
 
 [ext_resource type="Script" path="res://Scenes/EntityComponents/RopeSwingDetector.gd" id="1_kt863"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="2_oylh4"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="3_foq4p"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/RopeSwingState.gd" id="4_rcegl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0esws"]
+radius = 4.0
 
 [node name="RopeSwingDetector" type="Node2D"]
 script = ExtResource("1_kt863")
+
+[node name="Visualizer" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
+modulate = Color(1, 1, 1, 0.701961)
+position = Vector2(0, -8)
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("2_oylh4")
+script = ExtResource("3_foq4p")
+target = NodePath("../RopeChecker")
+off = Color(0.690196, 0, 0, 0.709804)
+on = Color(0, 0.529412, 0, 0.670588)
+
+[node name="RopeChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeChecker"]
+shape = SubResource("CircleShape2D_0esws")
+
+[node name="RopeSwingState" type="Node" parent="."]
+script = ExtResource("4_rcegl")
+anim = "Hop"
+
+[connection signal="area_entered" from="RopeChecker" to="." method="on_rope_checker_area_entered"]

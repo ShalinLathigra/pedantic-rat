@@ -5,10 +5,12 @@ extends State
 @onready var jump := $Jump as State
 @onready var fall := $Fall as State
 
+var gas: int:
+	get: return core.stats.air_acc_rate
 var speed: int:
-	get: return self.core.stats.air_speed
+	get: return core.stats.air_speed
 var brakes: int:
-	get: return self.core.stats.air_brake_speed
+	get: return core.stats.air_brake_speed
 
 var should_jump: bool:
 	get: return current != fall and jump.is_jump_buffered
@@ -24,9 +26,9 @@ func do(delta: float):
 		super.set_state(jump, true)
 	var dir = InputManager.get_axis("left", "right")
 	if dir:
-		self.core.velocity.x = dir * speed
+		core.velocity.x = move_toward(core.velocity.x, dir * speed, brakes*delta)
 	else:
-		self.core.velocity.x = move_toward(self.core.velocity.x, 0, brakes*delta)
+		core.velocity.x = move_toward(core.velocity.x, 0, brakes*delta)
 
 	current.do(delta)
 

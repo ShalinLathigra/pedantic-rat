@@ -31,12 +31,10 @@ func do(_delta) -> void:
 		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2 - 1)
 		tween.tween_property(core, "global_position:y", snap_point.y, 0.25)
 		tween.tween_callback(core.release)
-
-
 	if ladder_detector.can_climb_in_direction(core.direction_raw):
-		self.core.velocity.y = core.direction_raw.y * speed
+		core.velocity.y = core.direction_raw.y * speed
 	else:
-		self.core.velocity.y = 0
+		core.velocity.y = 0
 
 func exit() -> void:
 	super.exit()

@@ -2,9 +2,9 @@ class_name FallState
 extends State
 
 var fall_curve: Curve:
-	get: return self.core.stats.fall_curve
+	get: return core.stats.fall_curve
 var max_fall_rate: int:
-	get: return self.core.stats.max_fall_rate_pixels
+	get: return core.stats.max_fall_rate_pixels
 
 @export var looping_fall_anim: String
 
@@ -17,10 +17,10 @@ func enter():
 	previous_t = 0
 
 	if skip_winddown:
-		self.core.animator.play(looping_fall_anim)
+		core.animator.play(looping_fall_anim)
 	else:
 		super.enter()
-		self.core.animator.animation_set_next(anim, looping_fall_anim)
+		core.animator.animation_set_next(anim, looping_fall_anim)
 
 func do(delta: float):
 	# need to evaluate the jump curve here
@@ -28,7 +28,7 @@ func do(delta: float):
 	var evaluated_t = 1.0 - fall_curve.sample(t)
 
 	# Swap these around to handle the *-1 without adding lines
-	self.core.velocity.y = evaluated_t * max_fall_rate
+	core.velocity.y = evaluated_t * max_fall_rate
 	previous_t = t
 
 	if t >= 1:

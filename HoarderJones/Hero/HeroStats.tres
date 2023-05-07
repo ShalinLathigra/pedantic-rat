@@ -13,8 +13,10 @@ point_count = 3
 [resource]
 script = ExtResource("1_3ayfr")
 run_speed = 40
+acc_rate = 256
 brake_speed = 180
 air_speed = 36
+air_acc_rate = 80
 air_brake_speed = 80
 jump_curve = SubResource("Curve_q5hes")
 jump_max_height_pixels = 26
@@ -26,3 +28,4 @@ fall_curve = SubResource("Curve_u0inu")
 max_fall_rate_pixels = 256
 ticks_to_max_fall_rate = 750
 climb_speed = 32
+rope_swing_speed = 64
