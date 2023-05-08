@@ -5,8 +5,9 @@
 [ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="3_foq4p"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/RopeSwingState.gd" id="4_rcegl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0esws"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6htrd"]
+radius = 5.0
+height = 18.0
 
 [node name="RopeSwingDetector" type="Node2D"]
 script = ExtResource("1_kt863")
@@ -26,7 +27,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RopeChecker"]
-shape = SubResource("CircleShape2D_0esws")
+shape = SubResource("CapsuleShape2D_6htrd")
 
 [node name="RopeSwingState" type="Node" parent="."]
 script = ExtResource("4_rcegl")

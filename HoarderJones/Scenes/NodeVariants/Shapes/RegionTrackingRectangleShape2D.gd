@@ -1,4 +1,4 @@
-class_name RegionTrackingRectangleShape2D
+class_name SpriteTrackingRectangleShape2D
 extends CollisionShape2D
 
 @export var target: Sprite2D
@@ -12,4 +12,4 @@ func _ready () -> void:
 		rect_shape.size = target.texture.get_size()
 		rect_shape.size.x *= target.scale.x
 		rect_shape.size.y *= target.scale.y
-	position = rect_shape.size * 0.5
+	position = target.offset * 0.5

@@ -17,10 +17,13 @@ var ascent_covered : bool:
 var descent_covered : bool:
 	get: return descent_checker.has_overlapping_bodies()
 
-var at_climb_bottom: bool:
-	get: return ground_ray.is_colliding() and core.direction.y >= 0
+var at_ladder_ground: bool:
+	get: return ground_ray.is_colliding()
 
-var at_climb_top: bool:
+var at_bottom_of_ladder: bool:
+	get: return core_covered and not ascent_covered
+
+var at_top_of_ladder: bool:
 	get: return core_covered and not descent_covered
 
 func _ready() -> void:
@@ -28,6 +31,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Check if should transition to state
+	print(ground_ray.is_colliding())
 	if core.is_state_locked: return
 	if not ladder_state.is_ready_to_reenter: return
 	if not core_covered: return

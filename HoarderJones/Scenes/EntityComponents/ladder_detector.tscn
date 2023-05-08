@@ -70,4 +70,5 @@ on = Color(0, 0.529412, 0, 0.670588)
 target_bodies = true
 
 [node name="GroundRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(0, 8)
+target_position = Vector2(0, 16)
+collision_mask = 25

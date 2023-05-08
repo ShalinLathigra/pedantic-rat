@@ -23,9 +23,9 @@ func enter() -> void:
 	tween.tween_property(core, "global_position:x", snap_point.x, 0.125)
 
 func do(_delta) -> void:
-	if InputManager.is_action_just_pressed("space") or ladder_detector.at_climb_bottom:
+	if InputManager.is_action_just_pressed("space") or (ladder_detector.at_ladder_ground and core.direction_raw.x != 0) or (ladder_detector.at_bottom_of_ladder and InputManager.is_action_just_pressed("down")):
 		core.release()
-	if ladder_detector.at_climb_top and InputManager.is_action_pressed("up"):
+	if ladder_detector.at_top_of_ladder and InputManager.is_action_just_pressed("up"):
 		if tween: tween.stop()
 		tween = create_tween().set_parallel()
 		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2 - 1)

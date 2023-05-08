@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ost280cq5rx"]
+[gd_scene load_steps=11 format=3 uid="uid://8ost280cq5rx"]
 
 [ext_resource type="Script" path="res://Scenes/LevelObjects/RopeSwing.gd" id="1_i7we0"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="1_mh6et"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_eqrky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwys"]
+size = Vector2(2, 48)
 
 [sub_resource type="Animation" id="Animation_yrmwa"]
 resource_name = "SwingLeftFast"
@@ -35,6 +35,48 @@ tracks/1/keys = {
 "args": [],
 "method": &"emit_on_reached_peak"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_d752l"]
+resource_name = "SwingLeftSlow"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.325, 0.4, 0.475, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.959931, 1.00356, 0.959931, 0.0, -0.174533, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_on_reached_peak"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.764706, 0.658824, 0.411765, 1), Color(0.764706, 0.658824, 0.411765, 1), Color(5, 5, 5, 1), Color(0.764706, 0.658824, 0.411765, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fkmb2"]
@@ -104,52 +146,10 @@ tracks/2/path = NodePath("Body:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.275, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_d752l"]
-resource_name = "SwingLeftSlow"
-step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.325, 0.4, 0.475, 0.75, 0.875, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.959931, 1.00356, 0.959931, 0.0, -0.174533, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"emit_on_reached_peak"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.764706, 0.658824, 0.411765, 1), Color(0.764706, 0.658824, 0.411765, 1), Color(5, 5, 5, 1), Color(0.764706, 0.658824, 0.411765, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fch8"]
@@ -160,7 +160,16 @@ _data = {
 "SwingRightSlow": SubResource("Animation_bj67d")
 }
 
+[sub_resource type="Gradient" id="Gradient_cp23s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybyb1"]
+gradient = SubResource("Gradient_cp23s")
+width = 128
+height = 128
+
 [node name="RopeSwing" type="Area2D"]
+self_modulate = Color(1, 0.596078, 0, 1)
 position = Vector2(0, -8)
 collision_layer = 32
 collision_mask = 0
@@ -168,7 +177,7 @@ script = ExtResource("1_i7we0")
 suffix = &"Slow"
 
 [node name="RegionTrackingRectangleShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("target")]
-visible = false
+position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_wtwys")
 script = ExtResource("2_eqrky")
 target = NodePath("../Body")
@@ -183,7 +192,8 @@ position = Vector2(0, 48)
 scale = Vector2(0.032, 0.375)
 
 [node name="Body" type="Sprite2D" parent="."]
-scale = Vector2(0.032, 0.375)
-texture = ExtResource("1_mh6et")
+self_modulate = Color(0.764706, 0.658824, 0.411765, 1)
+scale = Vector2(0.016, 0.375)
+texture = SubResource("GradientTexture2D_ybyb1")
 offset = Vector2(0, 64)
 region_rect = Rect2(0, 0, 128, 128)
