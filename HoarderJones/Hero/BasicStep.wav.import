@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bxew7u7jjwh6l"
-path="res://.godot/imported/blip.wav-b30aed86048a8d09a6b99458d730bd48.sample"
+uid="uid://dvsratok0s3lc"
+path="res://.godot/imported/BasicStep.wav-b56fa6ab011b3bdbe61d4348eb2f0a62.sample"
 
 [deps]
 
-source_file="res://addons/ridiculous_coding/blip.wav"
-dest_files=["res://.godot/imported/blip.wav-b30aed86048a8d09a6b99458d730bd48.sample"]
+source_file="res://Hero/BasicStep.wav"
+dest_files=["res://.godot/imported/BasicStep.wav-b56fa6ab011b3bdbe61d4348eb2f0a62.sample"]
 
 [params]
 

@@ -24,7 +24,7 @@ func do(delta: float):
 	# Handle Coyote Time
 	if (current == fall) and jump.do_late_jump:
 		super.set_state(jump, true)
-	var dir = InputManager.get_axis("left", "right")
+	var dir = core.direction.x
 	if dir:
 		core.velocity.x = move_toward(core.velocity.x, dir * speed, brakes*delta)
 	else:

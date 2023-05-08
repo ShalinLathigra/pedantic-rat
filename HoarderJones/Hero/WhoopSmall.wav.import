@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dc0mxjs3tmtnl"
-path="res://.godot/imported/boom.wav-8be8413d6a593a69a88c5aabb324258d.sample"
+uid="uid://ccfv6yhxen3ls"
+path="res://.godot/imported/WhoopSmall.wav-63f0b678ce61a454a715e58c59e1ac8b.sample"
 
 [deps]
 
-source_file="res://addons/ridiculous_coding/boom.wav"
-dest_files=["res://.godot/imported/boom.wav-8be8413d6a593a69a88c5aabb324258d.sample"]
+source_file="res://Hero/WhoopSmall.wav"
+dest_files=["res://.godot/imported/WhoopSmall.wav-63f0b678ce61a454a715e58c59e1ac8b.sample"]
 
 [params]
 

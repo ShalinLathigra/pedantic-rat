@@ -31,7 +31,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Check if should transition to state
-	print(ground_ray.is_colliding())
 	if core.is_state_locked: return
 	if not ladder_state.is_ready_to_reenter: return
 	if not core_covered: return

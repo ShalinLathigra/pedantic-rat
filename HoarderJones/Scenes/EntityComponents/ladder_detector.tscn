@@ -13,7 +13,7 @@ script = ExtResource("1_su1vl")
 
 [node name="LadderClimb" type="Node" parent="."]
 script = ExtResource("2_1rj4n")
-anim = "Idle"
+anim = "Climb"
 
 [node name="AscentChecker" type="Area2D" parent="."]
 position = Vector2(0, -5)

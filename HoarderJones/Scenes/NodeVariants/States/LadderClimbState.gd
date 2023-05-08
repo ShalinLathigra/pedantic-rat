@@ -28,12 +28,16 @@ func do(_delta) -> void:
 	if ladder_detector.at_top_of_ladder and InputManager.is_action_just_pressed("up"):
 		if tween: tween.stop()
 		tween = create_tween().set_parallel()
-		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2 - 1)
+		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2.0 - 1)
 		tween.tween_property(core, "global_position:y", snap_point.y, 0.25)
 		tween.tween_callback(core.release)
 	if ladder_detector.can_climb_in_direction(core.direction_raw):
+		if not core.animator.is_playing():
+			core.animator.play()
 		core.velocity.y = core.direction_raw.y * speed
 	else:
+		if core.animator.is_playing():
+			core.animator.pause()
 		core.velocity.y = 0
 
 func exit() -> void:
