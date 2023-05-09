@@ -1,6 +1,9 @@
 class_name Stats
 extends Resource
 
+@export_subgroup("Controller Statistics")
+@export_range(0, 1, 0.05) var threshold: float
+
 @export_subgroup("Ground Statistics")
 @export_range(0, 64, 4) var run_speed: int
 @export_range(0, 256, 4) var acc_rate: int

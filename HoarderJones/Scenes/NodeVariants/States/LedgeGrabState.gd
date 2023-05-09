@@ -18,9 +18,7 @@ func enter() -> void:
 	started_mantle_animation = false
 #
 func do(_delta: float) -> void:
-	if InputManager.is_action_just_pressed("down") or (InputManager.is_action_just_pressed("space") and core.direction != ledge_direction):
-		core.release()
-	if InputManager.is_action_just_pressed("up") and not started_mantle_animation:
+	if InputManager.is_action_just_pressed("mantle") and not started_mantle_animation:
 		started_mantle_animation = true
 		if tween: tween.stop()
 		tween = create_tween().set_parallel()
@@ -31,6 +29,8 @@ func do(_delta: float) -> void:
 		.set_trans(Tween.TRANS_EXPO)\
 		.tween_property(core, "global_position:y", landing_pad.y, 0.5)
 		tween.chain().tween_callback(core.release)
+	elif InputManager.is_action_just_pressed("drop") or InputManager.is_action_just_pressed("space"):
+		core.release()
 
 func exit() -> void:
 	super.exit()
