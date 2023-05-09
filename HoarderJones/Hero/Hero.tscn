@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqwdfwd3fwi6y"]
+[gd_scene load_steps=43 format=3 uid="uid://dqwdfwd3fwi6y"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/rope_swing_detector.tscn" id="14_rj8vc"]
 [ext_resource type="Script" path="res://Scenes/EntityComponents/FallThroughDetector.gd" id="15_bi32u"]
 [ext_resource type="Script" path="res://Hero/OnGroundDetector.gd" id="19_qv3re"]
-[ext_resource type="Script" path="res://Hero/SpeedTrackingAudioPlayer.gd" id="20_4r2sn"]
+[ext_resource type="Script" path="res://Hero/ParticleSpawner.gd" id="20_8nr36"]
+[ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="21_vjknx"]
+[ext_resource type="Gradient" uid="uid://xi1v0jlqsjk2" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="22_4ycmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -247,7 +249,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioPlayer")
+tracks/2/path = NodePath("Animator/AudioPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -266,7 +268,7 @@ tracks/2/use_blend = true
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioPlayer:volume_db")
+tracks/3/path = NodePath("Animator/AudioPlayer:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -334,7 +336,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioPlayer")
+tracks/2/path = NodePath("Animator/AudioPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -353,7 +355,7 @@ tracks/2/use_blend = true
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioPlayer:volume_db")
+tracks/3/path = NodePath("Animator/AudioPlayer:volume_db")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -489,6 +491,34 @@ _data = {
 "Super Attack": SubResource("Animation_1sfuf")
 }
 
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t0flr"]
+gradient = ExtResource("22_4ycmq")
+
+[sub_resource type="Curve" id="Curve_mu42u"]
+_data = [Vector2(0, 0), 0.0, 4.13994, 0, 1, Vector2(0.127303, 0.527027), 4.13994, 1.98586, 1, 0, Vector2(1, 0.572072), -1.64713, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xn3ap"]
+curve = SubResource("Curve_mu42u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ngynp"]
+lifetime_randomness = 0.25
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, -8, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_xn3ap")
+color = Color(1, 1, 1, 0.815686)
+color_ramp = SubResource("GradientTexture1D_t0flr")
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_speed = Vector3(0.5, 0.5, 0)
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.2
+
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 0
@@ -506,7 +536,7 @@ unique_name_in_owner = true
 texture = ExtResource("1_xk5an")
 offset = Vector2(10, -16)
 region_enabled = true
-region_rect = Rect2(9472, 0, 128, 64)
+region_rect = Rect2(4096, 0, 128, 64)
 script = ExtResource("4_04y6s")
 core = NodePath("..")
 
@@ -515,6 +545,9 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_nvmpb")
 }
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="Animator"]
+volume_db = -30.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("core")]
 unique_name_in_owner = true
@@ -544,37 +577,48 @@ anim = "Jet Stop"
 script = ExtResource("11_cqjg5")
 anim = "Jet Pack"
 
-[node name="LedgeDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("12_rfi8r")]
-unique_name_in_owner = true
-core = NodePath("..")
+[node name="Detectors" type="Node2D" parent="."]
 
-[node name="LadderDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("13_x2i4r")]
+[node name="LedgeDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("12_rfi8r")]
 unique_name_in_owner = true
-core = NodePath("..")
+core = NodePath("../..")
 
-[node name="RopeSwingDetector" parent="." node_paths=PackedStringArray("core") instance=ExtResource("14_rj8vc")]
+[node name="LadderDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("13_x2i4r")]
+unique_name_in_owner = true
+core = NodePath("../..")
+
+[node name="RopeSwingDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("14_rj8vc")]
 unique_name_in_owner = true
 position = Vector2(0, -8)
-core = NodePath("..")
+core = NodePath("../..")
 
-[node name="FallThroughDetector" type="Node" parent="." node_paths=PackedStringArray("core")]
+[node name="FallThroughDetector" type="Node" parent="Detectors" node_paths=PackedStringArray("core")]
 script = ExtResource("15_bi32u")
-core = NodePath("..")
+core = NodePath("../..")
 
-[node name="LandingEffectController" type="Node" parent="." node_paths=PackedStringArray("core")]
+[node name="LandingEffects" type="Node2D" parent="." node_paths=PackedStringArray("core")]
 script = ExtResource("19_qv3re")
 core = NodePath("..")
+hard_hit_threshold = 0.5
 
-[node name="OnGroundPlayer" type="AudioStreamPlayer2D" parent="LandingEffectController" node_paths=PackedStringArray("core")]
+[node name="OnGroundPlayer" type="AudioStreamPlayer2D" parent="LandingEffects"]
 stream = ExtResource("5_aw3f1")
 volume_db = -15.0
 pitch_scale = 0.75
-script = ExtResource("20_4r2sn")
-core = NodePath("../..")
-max_volume_db = -8.0
-min_volume_db = -35.0
 
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-volume_db = -25.0
+[node name="ParticleSpawner" type="Node2D" parent="LandingEffects"]
+script = ExtResource("20_8nr36")
+particle_scene = ExtResource("21_vjknx")
 
-[connection signal="on_hit_ground" from="LandingEffectController" to="LandingEffectController/OnGroundPlayer" method="play" binds= [0.0]]
+[node name="RunEffects" type="Node2D" parent="."]
+
+[node name="RunParticles2D" type="GPUParticles2D" parent="RunEffects"]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_ngynp")
+lifetime = 2.0
+
+[connection signal="entered" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [true]]
+[connection signal="exited" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [false]]
+[connection signal="on_hit_ground" from="LandingEffects" to="LandingEffects/OnGroundPlayer" method="play" flags=18]
+[connection signal="on_hit_ground_hard" from="LandingEffects" to="LandingEffects/ParticleSpawner" method="emit"]
