@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c52qtu2hkkh2c"]
 
-[ext_resource type="Gradient" uid="uid://xi1v0jlqsjk2" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="1_1f2yb"]
+[ext_resource type="Gradient" uid="uid://bsm67je3hst1f" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="1_1f2yb"]
 [ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.gd" id="1_rsxhm"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_iy373"]

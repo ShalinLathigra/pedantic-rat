@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6yt51a1bmv2c"]
+[gd_scene load_steps=12 format=3 uid="uid://c6yt51a1bmv2c"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_lvx0p"]
 [ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="3_bj55p"]
 [ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="4_id0e1"]
 [ext_resource type="PackedScene" uid="uid://dqwdfwd3fwi6y" path="res://Hero/Hero.tscn" id="4_s5rju"]
+[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="5_7nn0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
 texture = ExtResource("3_bj55p")
@@ -53,6 +54,7 @@ texture = ExtResource("3_bj55p")
 4:0/0/physics_layer_3/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0/physics_layer_3/polygon_0/one_way = true
 4:0/0/custom_data_0 = true
+5:1/next_alternative_id = 7
 5:1/0 = 0
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
@@ -158,11 +160,28 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_v5k6r")
 sources/1 = SubResource("TileSetScenesCollectionSource_rj5f0")
 
+[sub_resource type="Curve" id="Curve_rbh1p"]
+_data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_d3ta4"]
+curve = SubResource("Curve_rbh1p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ms6lb"]
+emission_shape = 3
+emission_box_extents = Vector3(160, 100, 1)
+particle_flag_disable_z = true
+gravity = Vector3(12, 6, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_d3ta4")
+color = Color(0.745098, 0.745098, 0.745098, 0.678431)
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_lvx0p")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(96, 0)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nd4c8")
@@ -181,3 +200,16 @@ layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 position = Vector2(48, -8)
 rotation = 0.0152468
 collision_mask = 25
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(96, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_ms6lb")
+lifetime = 16.0
+preprocess = 8.0
+
+[node name="BackgroundPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7nn0y")
+volume_db = -35.0

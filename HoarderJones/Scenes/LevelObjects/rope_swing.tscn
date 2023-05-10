@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://8ost280cq5rx"]
+[gd_scene load_steps=12 format=3 uid="uid://8ost280cq5rx"]
 
 [ext_resource type="Script" path="res://Scenes/LevelObjects/RopeSwing.gd" id="1_i7we0"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_eqrky"]
+[ext_resource type="AudioStream" uid="uid://d1tnw5j58yk5o" path="res://Scenes/LevelObjects/Whoosh.wav" id="3_o621x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwys"]
 size = Vector2(2, 48)
@@ -78,6 +79,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(0.764706, 0.658824, 0.411765, 1), Color(0.764706, 0.658824, 0.411765, 1), Color(5, 5, 5, 1), Color(0.764706, 0.658824, 0.411765, 1)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.25,
+"stream": ExtResource("3_o621x")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fkmb2"]
 resource_name = "SwingRightFast"
@@ -151,6 +167,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(0.764706, 0.658824, 0.411765, 1), Color(0.764706, 0.658824, 0.411765, 1), Color(5, 5, 5, 1), Color(0.764706, 0.658824, 0.411765, 1)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.25,
+"stream": ExtResource("3_o621x")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fch8"]
 _data = {
@@ -197,3 +228,5 @@ scale = Vector2(0.016, 0.375)
 texture = SubResource("GradientTexture2D_ybyb1")
 offset = Vector2(0, 64)
 region_rect = Rect2(0, 0, 128, 128)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
