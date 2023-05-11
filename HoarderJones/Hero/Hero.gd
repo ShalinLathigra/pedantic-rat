@@ -10,8 +10,8 @@ extends CharacterBody2D
 @onready var machine := %StateMachine as StateMachine
 
 # Player Specific, to be moved later
-@onready var ground: GroundState = %StateMachine/Ground as GroundState
-@onready var air: AirState = %StateMachine/Air as AirState
+@onready var ground := %StateMachine/Ground as GroundState
+@onready var air := %StateMachine/Air as AirState
 
 var coyote_time_grounded: bool:
 	get: return Time.get_ticks_msec() <= coyote_time_start + stats.coyote_time_ticks

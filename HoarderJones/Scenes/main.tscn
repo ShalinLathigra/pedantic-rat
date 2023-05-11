@@ -1,10 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6yt51a1bmv2c"]
+[gd_scene load_steps=15 format=3 uid="uid://c6yt51a1bmv2c"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_lvx0p"]
 [ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="3_bj55p"]
 [ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="4_id0e1"]
 [ext_resource type="PackedScene" uid="uid://dqwdfwd3fwi6y" path="res://Hero/Hero.tscn" id="4_s5rju"]
 [ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="5_7nn0y"]
+
+[sub_resource type="Curve" id="Curve_qqh4p"]
+_data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ogo31"]
+curve = SubResource("Curve_qqh4p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uyoka"]
+emission_shape = 3
+emission_box_extents = Vector3(160, 100, 1)
+particle_flag_disable_z = true
+gravity = Vector3(6, -3, 0)
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ogo31")
+color = Color(0.803922, 0.811765, 0.796078, 0.27451)
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_speed = Vector3(0.2, 0.1, 0.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
 texture = ExtResource("3_bj55p")
@@ -171,23 +194,32 @@ curve = SubResource("Curve_rbh1p")
 emission_shape = 3
 emission_box_extents = Vector3(160, 100, 1)
 particle_flag_disable_z = true
-gravity = Vector3(12, 6, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(-6, -12, 0)
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_d3ta4")
-color = Color(0.745098, 0.745098, 0.745098, 0.678431)
+color = Color(0.737255, 0.776471, 0.756863, 1)
 turbulence_enabled = true
-turbulence_noise_strength = 5.0
+turbulence_noise_speed = Vector3(0.15, 0.1, 0.3)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_lvx0p")
+
+[node name="BackgroundParticles" type="GPUParticles2D" parent="."]
+position = Vector2(96, 0)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_uyoka")
+lifetime = 16.0
+preprocess = 8.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nd4c8")
 format = 2
 layer_0/name = "LevelBlocks"
-layer_0/tile_data = PackedInt32Array(327673, 0, 2, 327674, 0, 2, 327675, 0, 2, 327676, 0, 2, 327677, 0, 2, 327678, 0, 2, 327679, 0, 2, 262144, 0, 2, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262151, 0, 2, -262152, 0, 2, -262149, 0, 1, -262148, 0, 1, -262147, 0, 1, -262146, 0, 1, -262145, 0, 1, -327680, 0, 1, -196616, 0, 1, -131080, 0, 1, -65544, 0, 1, -327672, 0, 1, 262152, 0, 2, -327671, 0, 1, 262153, 0, 2, -327670, 0, 1, 262154, 0, 2, -327669, 0, 1, 262155, 0, 2, -327668, 0, 1, 262156, 0, 2, -327667, 0, 1, 262157, 0, 2, -327666, 0, 1, 262158, 0, 2, -327665, 0, 1, 262159, 0, 1, -327664, 0, 1, 262160, 0, 1, -327663, 0, 1, 262161, 0, 2, -327662, 0, 1, 262162, 0, 2, -327661, 0, 1, 262163, 0, 2, -327660, 0, 1, 262164, 0, 1, -327659, 0, 1, 262166, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, -65526, 65536, 2, 65546, 393216, 2, 65547, 0, 2, 131094, 0, 1, 196630, 0, 1, -65543, 0, 2, -65542, 0, 2, -65541, 0, 2, -65540, 0, 2, -65539, 0, 2, -65536, 0, 1, -262144, 0, 1, -196608, 0, 1, -131072, 0, 1, 131067, 0, 2, 131068, 0, 2, 131069, 0, 2, 131070, 0, 2, 131071, 0, 1, 65535, 0, 1, 196613, 0, 1, 196614, 0, 2, 0, 0, 1, 131065, 262144, 2, 196602, 0, 1, 131066, 0, 2, -3, 0, 1, 196609, 0, 2, 131074, 0, 2, 131077, 0, 2, 131076, 0, 2, 196612, 0, 1, 196611, 0, 1, 131075, 0, 2, 196610, 0, 1, -131071, 0, 0, -196607, 0, 0, 1, 0, 2, 2, 262144, 2, -65535, 0, 0, -65538, 262144, 1, -262143, 0, 0, -327679, 262144, 0, -327678, 0, 1, -327677, 0, 1, -327676, 0, 1, -327675, 0, 1, -327674, 0, 1, -327673, 0, 1, -65523, 65536, 2, -65522, 0, 2, -65521, 262144, 2, -65520, 327680, 2, -65519, 327680, 2, -65518, 327680, 2, -65517, 327680, 2, -65516, 327680, 2, -65515, 65536, 2, 196628, 65536, 1, 131092, 65536, 1, 65556, 65536, 2, 65557, 65536, 2, 196624, 65536, 1, 196623, 65536, 1, 131087, 65536, 2, 131088, 65536, 2, -65525, 327680, 2, 262149, 0, 1, 262150, 0, 1, 131082, 0, 0, 13, 0, 1, 65548, 0, 2, 65549, 262144, 1, -65524, 327680, 2, -262150, 0, 1, -8, 0, 1, 65528, 0, 1, 131064, 0, 1, 196600, 0, 1, 262136, 0, 1, 327672, 0, 1, 196629, 0, 1, 262165, 0, 1, -327658, 0, 1, -262122, 0, 1, -196586, 0, 1, -131050, 0, 1, -65514, 0, 1, 22, 0, 1, 65558, 0, 1, 131093, 0, 1)
+layer_0/tile_data = PackedInt32Array(327673, 0, 2, 327674, 0, 2, 327675, 0, 2, 327676, 0, 2, 327677, 0, 2, 327678, 0, 2, 327679, 0, 2, 262144, 0, 2, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262151, 0, 2, -262152, 0, 2, -262149, 0, 1, -262148, 0, 1, -262147, 0, 1, -262146, 0, 1, -262145, 0, 1, -327680, 0, 1, -196616, 0, 1, -131080, 0, 1, -65544, 0, 1, -327672, 0, 1, 262152, 0, 2, -327671, 0, 1, 262153, 0, 2, -327670, 0, 1, 262154, 0, 2, -327669, 0, 1, 262155, 0, 2, -327668, 0, 1, 262156, 0, 2, -327667, 0, 1, 262157, 0, 2, -327666, 0, 1, 262158, 0, 2, -327665, 0, 1, 262159, 0, 1, -327664, 0, 1, 262160, 0, 1, -327663, 0, 1, 262161, 0, 2, -327662, 0, 1, 262162, 0, 2, -327661, 0, 1, 262163, 0, 2, -327660, 0, 1, 262164, 0, 1, -327659, 0, 1, 262166, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, -65526, 65536, 2, 65546, 393216, 2, 65547, 0, 2, 131094, 0, 1, 196630, 0, 1, -65543, 0, 2, -65542, 0, 2, -65541, 0, 2, -65540, 0, 2, -65539, 0, 2, -65536, 0, 1, -262144, 0, 1, -196608, 0, 1, -131072, 0, 1, 131067, 0, 2, 131068, 0, 2, 131069, 0, 2, 131070, 0, 2, 131071, 0, 1, 65535, 0, 1, 196613, 0, 1, 196614, 0, 2, 131065, 262144, 2, 196602, 0, 1, 131066, 0, 2, -3, 0, 1, 196609, 0, 2, 131074, 0, 2, 131077, 0, 2, 131076, 0, 2, 196612, 0, 1, 196611, 0, 1, 131075, 0, 2, 196610, 0, 1, -131071, 0, 0, -196607, 0, 0, 1, 0, 2, 2, 262144, 2, -65535, 0, 0, -65538, 262144, 1, -262143, 0, 0, -327679, 262144, 0, -327678, 0, 1, -327677, 0, 1, -327676, 0, 1, -327675, 0, 1, -327674, 0, 1, -327673, 0, 1, -65523, 65536, 2, -65522, 0, 2, -65521, 262144, 2, -65520, 327680, 2, -65519, 327680, 2, -65518, 327680, 2, -65517, 327680, 2, -65516, 327680, 2, -65515, 65536, 2, 196628, 65536, 1, 131092, 65536, 1, 65556, 65536, 2, 65557, 65536, 2, 196624, 65536, 1, 196623, 65536, 1, 131087, 65536, 2, 131088, 65536, 2, -65525, 327680, 2, 262149, 0, 1, 262150, 0, 1, 131082, 0, 0, 13, 0, 1, 65548, 0, 2, 65549, 262144, 1, -65524, 327680, 2, -262150, 0, 1, -8, 0, 1, 65528, 0, 1, 131064, 0, 1, 196600, 0, 1, 262136, 0, 1, 327672, 0, 1, 196629, 0, 1, 262165, 0, 1, -327658, 0, 1, -262122, 0, 1, -196586, 0, 1, -131050, 0, 1, -65514, 0, 1, 22, 0, 1, 65558, 0, 1, 131093, 0, 1, 0, 0, 1)
 layer_1/name = "LevelElements"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -204,8 +236,8 @@ collision_mask = 25
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(96, 0)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
-amount = 64
+[node name="ForegroundParticles" type="GPUParticles2D" parent="Camera2D"]
+amount = 32
 process_material = SubResource("ParticleProcessMaterial_ms6lb")
 lifetime = 16.0
 preprocess = 8.0

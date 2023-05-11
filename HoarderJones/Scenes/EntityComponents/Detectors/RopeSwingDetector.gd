@@ -5,6 +5,7 @@ extends Node2D
 @onready var rope_swing_state := $RopeSwingState as RopeSwingState
 
 func _ready() -> void:
+	assert(core)
 	rope_swing_state.core = core
 
 func on_rope_checker_area_entered(area: Area2D) -> void:

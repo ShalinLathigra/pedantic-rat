@@ -14,12 +14,12 @@
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/AirState.gd" id="9_4ab82"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/FallState.gd" id="10_wm1k2"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/JumpState.gd" id="11_cqjg5"]
-[ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/ledge_detector.tscn" id="12_rfi8r"]
-[ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/ladder_detector.tscn" id="13_x2i4r"]
-[ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/rope_swing_detector.tscn" id="14_rj8vc"]
-[ext_resource type="Script" path="res://Scenes/EntityComponents/FallThroughDetector.gd" id="15_bi32u"]
-[ext_resource type="Script" path="res://Hero/OnGroundDetector.gd" id="19_qv3re"]
-[ext_resource type="Script" path="res://Hero/ParticleSpawner.gd" id="20_8nr36"]
+[ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/Detectors/ledge_detector.tscn" id="12_rfi8r"]
+[ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/Detectors/ladder_detector.tscn" id="13_x2i4r"]
+[ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/Detectors/rope_swing_detector.tscn" id="14_rj8vc"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/FallThroughDetector.gd" id="15_bi32u"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/ParticleSpawner.gd" id="18_oue3f"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/LandingEffectController.gd" id="19_6eh6c"]
 [ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="21_vjknx"]
 [ext_resource type="Gradient" uid="uid://bsm67je3hst1f" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="22_4ycmq"]
 
@@ -616,9 +616,11 @@ script = ExtResource("15_bi32u")
 core = NodePath("../..")
 
 [node name="LandingEffects" type="Node2D" parent="." node_paths=PackedStringArray("core")]
-script = ExtResource("19_qv3re")
+script = ExtResource("19_6eh6c")
 core = NodePath("..")
-hard_hit_threshold = 0.5
+max_volume_db = -5.0
+min_volume_db = -35.0
+hard_hit_threshold = 0.2
 
 [node name="OnGroundPlayer" type="AudioStreamPlayer2D" parent="LandingEffects"]
 stream = ExtResource("5_aw3f1")
@@ -626,7 +628,7 @@ volume_db = -15.0
 pitch_scale = 0.75
 
 [node name="ParticleSpawner" type="Node2D" parent="LandingEffects"]
-script = ExtResource("20_8nr36")
+script = ExtResource("18_oue3f")
 particle_scene = ExtResource("21_vjknx")
 
 [node name="RunEffects" type="Node2D" parent="."]

@@ -27,6 +27,7 @@ var at_top_of_ladder: bool:
 	get: return core_covered and not descent_covered
 
 func _ready() -> void:
+	assert(core)
 	ladder_state.core = core
 
 func _process(_delta: float) -> void:

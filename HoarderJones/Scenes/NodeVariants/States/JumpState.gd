@@ -20,7 +20,7 @@ var elapsed_ticks: int:
 var is_jump_cancelled: bool:
 	get: return (not jump_held) and elapsed_ticks > min_jump_ticks
 var is_jump_buffered: bool:
-	get: return core.direction_raw.y <= 0 and Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
+	get: return Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
 var do_late_jump: int:
 	get: return is_jump_buffered and core.coyote_time_grounded
 

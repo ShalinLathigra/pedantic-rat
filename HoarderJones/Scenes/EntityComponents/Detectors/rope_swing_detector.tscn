@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cw27pil0fod1c"]
 
-[ext_resource type="Script" path="res://Scenes/EntityComponents/RopeSwingDetector.gd" id="1_kt863"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/RopeSwingDetector.gd" id="1_kt863"]
 [ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="2_oylh4"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="3_foq4p"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/RopeSwingState.gd" id="4_rcegl"]

@@ -13,8 +13,7 @@ func find_tile_intersection_world(origin: Vector2) -> Vector2:
 func find_nearest_ladder_center(origin: Vector2, x_only: bool=true) -> Vector2:
 	if not map: return origin
 	var start_tile = map.local_to_map(origin)
-	var tiles_to_check = [Vector2i.ZERO, Vector2i.LEFT, Vector2i.RIGHT]
-	if not x_only: tiles_to_check.append_array([Vector2i.UP, Vector2i.DOWN])
+	var tiles_to_check = [Vector2i.ZERO, Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.LEFT + Vector2i.UP, Vector2i.RIGHT + Vector2i.UP]
 	var target_cell: Vector2
 	for tile in tiles_to_check:
 		var cell = map.get_cell_tile_data(0, start_tile + tile)

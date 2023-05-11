@@ -1,18 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://t37l0rbi6ik8"]
 
-[ext_resource type="Script" path="res://Scenes/EntityComponents/LadderDetector.gd" id="1_su1vl"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/LadderClimbState.gd" id="2_1rj4n"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="3_0fak5"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="4_q6s08"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/LadderDetector.gd" id="1_rvpe5"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/LadderClimbState.gd" id="2_swr6v"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="3_mv2lo"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="4_t7j3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uf7x"]
 radius = 0.5
 
 [node name="LadderDetector" type="Node2D"]
-script = ExtResource("1_su1vl")
+script = ExtResource("1_rvpe5")
 
 [node name="LadderClimb" type="Node" parent="."]
-script = ExtResource("2_1rj4n")
+script = ExtResource("2_swr6v")
 anim = "Climb"
 
 [node name="AscentChecker" type="Area2D" parent="."]
@@ -26,8 +26,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="AscentChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("3_0fak5")
-script = ExtResource("4_q6s08")
+texture = ExtResource("3_mv2lo")
+script = ExtResource("4_t7j3m")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -44,8 +44,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="LadderChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("3_0fak5")
-script = ExtResource("4_q6s08")
+texture = ExtResource("3_mv2lo")
+script = ExtResource("4_t7j3m")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -62,8 +62,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="DescentChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("3_0fak5")
-script = ExtResource("4_q6s08")
+texture = ExtResource("3_mv2lo")
+script = ExtResource("4_t7j3m")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)

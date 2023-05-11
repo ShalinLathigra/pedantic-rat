@@ -22,6 +22,7 @@ var ledge_hang_offset: Vector2
 var ledge_direction: Vector2
 
 func _ready() -> void:
+	assert(core)
 	checker_offset = ledge_origin.position
 	ledge_state.core = core
 
