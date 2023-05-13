@@ -9,4 +9,4 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("drop"): return
 	if not core.is_on_floor() or core.is_state_locked: return
-	core.position += Vector2.DOWN
+	core.position += Vector2.DOWN * 2

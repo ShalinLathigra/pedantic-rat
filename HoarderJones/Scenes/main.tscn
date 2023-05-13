@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6yt51a1bmv2c"]
+[gd_scene load_steps=20 format=3 uid="uid://c6yt51a1bmv2c"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_lvx0p"]
 [ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="3_bj55p"]
 [ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="4_id0e1"]
 [ext_resource type="PackedScene" uid="uid://dqwdfwd3fwi6y" path="res://Hero/Hero.tscn" id="4_s5rju"]
 [ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="5_7nn0y"]
+[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="5_p60e7"]
+[ext_resource type="Script" path="res://Scenes/Camera/WorldRegion2D.gd" id="6_bgm3i"]
+[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="7_45owq"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="7_678j7"]
 
 [sub_resource type="Curve" id="Curve_qqh4p"]
 _data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
@@ -205,6 +209,13 @@ color = Color(0.737255, 0.776471, 0.756863, 1)
 turbulence_enabled = true
 turbulence_noise_speed = Vector3(0.15, 0.1, 0.3)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4pr1"]
+shader = ExtResource("7_45owq")
+shader_parameter/background_color = null
+shader_parameter/camera_size = Vector2(256, 160)
+shader_parameter/rect_pos = Vector2(-64, 0)
+shader_parameter/rect_size = Vector2(128, 160)
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_lvx0p")
 
@@ -229,19 +240,51 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 
 [node name="Hero" parent="." instance=ExtResource("4_s5rju")]
-position = Vector2(48, -8)
+position = Vector2(-96, -40)
 rotation = 0.0152468
 collision_mask = 25
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="ForegroundParticles" type="GPUParticles2D" parent="."]
 position = Vector2(96, 0)
-
-[node name="ForegroundParticles" type="GPUParticles2D" parent="Camera2D"]
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_ms6lb")
 lifetime = 16.0
 preprocess = 8.0
 
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("core")]
+position = Vector2(-96, -40)
+script = ExtResource("5_p60e7")
+core = NodePath("../Hero")
+
+[node name="ScreenSpaceBlockOut" type="Sprite2D" parent="Camera2D"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_e4pr1")
+scale = Vector2(4, 2.25)
+texture = ExtResource("7_678j7")
+
+[node name="AnchorPoints" type="Node" parent="Camera2D"]
+
+[node name="Anchor1" type="Marker2D" parent="Camera2D/AnchorPoints"]
+visible = false
+position = Vector2(-64, 0)
+script = ExtResource("6_bgm3i")
+size = Vector2(128, 160)
+
+[node name="Anchor2" type="Marker2D" parent="Camera2D/AnchorPoints"]
+visible = false
+position = Vector2(112, 0)
+script = ExtResource("6_bgm3i")
+size = Vector2(224, 160)
+
+[node name="Anchor3" type="Marker2D" parent="Camera2D/AnchorPoints"]
+visible = false
+position = Vector2(296, 0)
+script = ExtResource("6_bgm3i")
+size = Vector2(144, 160)
+
 [node name="BackgroundPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7nn0y")
 volume_db = -35.0
+
+[node name="Room" type="Node2D" parent="."]
