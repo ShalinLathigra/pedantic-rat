@@ -2,6 +2,8 @@ extends Node
 
 const TILE_SIZE := 16
 
+@onready var foreground_layer = $ForegroundLayer as CanvasLayer
+
 var map: TileMap
 
 func find_tile_intersection_world(origin: Vector2) -> Vector2:

@@ -7,4 +7,4 @@ func _ready() -> void:
 func emit() -> void:
 	var new_particles = particle_scene.instantiate() as GPUParticles2D
 	new_particles.global_position = global_position
-	get_tree().root.add_child(new_particles)
+	World.foreground_layer.add_child(new_particles)

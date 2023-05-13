@@ -9,15 +9,6 @@ uniform vec2 camera_size;
 uniform vec2 rect_pos;
 uniform vec2 rect_size;
 
-
-/*
-needs to be aware of:
-	- Camera position
-	- Rectangle position
-	- Screen width
-	- rectangle width
-*/
-
 varying vec2 pos;
 
 void vertex() {

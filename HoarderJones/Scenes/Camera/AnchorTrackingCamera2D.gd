@@ -16,10 +16,12 @@ var tw: Tween
 
 const duration: float = 0.5
 
-# when the areas are entered, emit the "transition" event.
+# TODO: Use render passes to have this component occur afterwards
+# Alternatively achieve this with two textures + screen effects.
 
 func _ready() -> void:
 	$ScreenSpaceBlockOut.visible = true
+	anchor_position = global_position
 	assert(core)
 	for child in $AnchorPoints.get_children():
 		if child is WorldArea2D:
@@ -28,7 +30,24 @@ func _ready() -> void:
 			child.on_entered.connect(_set_anchor.bind(child))
 
 func _process(delta: float) -> void:
-	global_position = lerp(global_position, core.global_position, 0.2)
+	# Requirements
+	# While tracking_player == true:
+	#	move position towards this
+	# 	position is
+	var target_position: Vector2 = lerp(global_position, core.global_position, 0.2)
+	var top_left: Vector2 = anchor_position - anchor_size * 0.5
+	var bot_right: Vector2 = anchor_position + anchor_size * 0.5
+	target_position.x = anchor_position.x if screen_size.x >= anchor_size.x \
+									else clamp(target_position.x, \
+									top_left.x + screen_size.x * 0.5, \
+									bot_right.x - screen_size.x * 0.5)
+
+	target_position.y = anchor_position.y if screen_size.y >= anchor_size.y \
+									else clamp(target_position.y, \
+									top_left.y + screen_size.y * 0.5, \
+									bot_right.y - screen_size.y * 0.5)
+
+	global_position = target_position
 	blackout_shader.set_shader_parameter("rect_pos", anchor_position)
 	blackout_shader.set_shader_parameter("rect_size", anchor_size)
 
