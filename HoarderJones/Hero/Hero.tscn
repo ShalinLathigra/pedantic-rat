@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dqwdfwd3fwi6y"]
+[gd_scene load_steps=44 format=3 uid="uid://dqwdfwd3fwi6y"]
 
 [ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/Detectors/ladder_detector.tscn" id="13_x2i4r"]
 [ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/Detectors/rope_swing_detector.tscn" id="14_rj8vc"]
 [ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/FallThroughDetector.gd" id="15_bi32u"]
+[ext_resource type="Script" path="res://Hero/CombatState.gd" id="15_wpcqn"]
 [ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/ParticleSpawner.gd" id="18_oue3f"]
 [ext_resource type="Script" path="res://Scenes/EntityComponents/LandingEffectController.gd" id="19_6eh6c"]
 [ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="21_vjknx"]
@@ -410,6 +411,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:can_early_exit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_f8ho2"]
 length = 0.6
@@ -437,6 +450,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:can_early_exit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_bsoor"]
 length = 0.5
@@ -463,6 +488,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16), Vector2(10, -16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:can_early_exit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_1sfuf"]
@@ -543,6 +580,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_36g06")
 stats = ExtResource("2_ulgu6")
+can_early_exit = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -555,7 +593,7 @@ unique_name_in_owner = true
 texture = ExtResource("1_xk5an")
 offset = Vector2(10, -16)
 region_enabled = true
-region_rect = Rect2(0, 0, 128, 64)
+region_rect = Rect2(3328, 0, 128, 64)
 script = ExtResource("4_04y6s")
 core = NodePath("..")
 
@@ -583,6 +621,21 @@ anim = "Idle"
 [node name="Run" type="Node" parent="StateMachine/Ground"]
 script = ExtResource("8_feq7c")
 anim = "Run"
+
+[node name="LightCombo" type="Node" parent="StateMachine/Ground"]
+script = ExtResource("15_wpcqn")
+
+[node name="Strike 1" type="Node" parent="StateMachine/Ground/LightCombo"]
+script = ExtResource("7_5j38d")
+anim = "Strike 1"
+
+[node name="Strike 2" type="Node" parent="StateMachine/Ground/LightCombo"]
+script = ExtResource("7_5j38d")
+anim = "Strike 2"
+
+[node name="Strike 3" type="Node" parent="StateMachine/Ground/LightCombo"]
+script = ExtResource("7_5j38d")
+anim = "Strike 3"
 
 [node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource("9_4ab82")
@@ -639,7 +692,7 @@ amount = 16
 process_material = SubResource("ParticleProcessMaterial_ngynp")
 lifetime = 2.0
 
-[connection signal="entered" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [true]]
-[connection signal="exited" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [false]]
+[connection signal="on_entered" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [true]]
+[connection signal="on_exited" from="StateMachine/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [false]]
 [connection signal="on_hit_ground" from="LandingEffects" to="LandingEffects/OnGroundPlayer" method="play" flags=18]
 [connection signal="on_hit_ground_hard" from="LandingEffects" to="LandingEffects/ParticleSpawner" method="emit"]

@@ -13,12 +13,16 @@ signal on_exited
 	set(value):
 		debug_colour = value
 		queue_redraw()
+@export var zoom: Vector2 = Vector2.ONE
 
 @onready var rect := Rect2(global_position - size * 0.5, size)
 
 var core: Character
 var is_occupied: bool
 # Emit a signal when/if the player is inside this object
+
+func _ready() -> void:
+	assert(zoom.x > 0 and zoom.y > 0)
 
 func _draw() -> void:
 	if Engine.is_editor_hint():

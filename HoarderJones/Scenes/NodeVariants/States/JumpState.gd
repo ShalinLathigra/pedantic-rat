@@ -19,10 +19,6 @@ var elapsed_ticks: int:
 	get: return Time.get_ticks_msec() - start_tick
 var is_jump_cancelled: bool:
 	get: return (not jump_held) and elapsed_ticks > min_jump_ticks
-var is_jump_buffered: bool:
-	get: return Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
-var do_late_jump: int:
-	get: return is_jump_buffered and core.coyote_time_grounded
 
 var tick_of_last_jump_input: int
 var start_tick: int
@@ -30,12 +26,15 @@ var previous_t: float
 var start_height:float
 var jump_held: bool
 
+func should_process() -> bool:
+	return Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
+
 func enter() -> void:
 	super.enter()
 	start_tick = Time.get_ticks_msec()
 	previous_t = 0
 	start_height = core.position.y
-	jump_held = InputManager.is_action_pressed("space")
+	jump_held = InputManager.is_action_pressed("jump")
 
 func do(delta: float) -> void:
 	# need to evaluate the jump curve here
@@ -50,10 +49,10 @@ func do(delta: float) -> void:
 	previous_t = t
 	# Detect early cancel
 	if t >= 1 or is_jump_cancelled:
-		self.finished.emit()
+		self.on_finished.emit()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("space"):
+	if event.is_action_pressed("jump"):
 		tick_of_last_jump_input = Time.get_ticks_msec()
-	if event.is_action_released("space"):
+	if event.is_action_released("jump"):
 		jump_held = false

@@ -6,7 +6,6 @@ var landing_pad: Vector2
 var ledge_direction: Vector2
 
 var started_mantle_animation: bool
-var tween: Tween
 
 func enter() -> void:
 	super.enter()
@@ -29,7 +28,7 @@ func do(_delta: float) -> void:
 		.set_trans(Tween.TRANS_EXPO)\
 		.tween_property(core, "global_position:y", landing_pad.y, 0.5)
 		tween.chain().tween_callback(core.release)
-	elif InputManager.is_action_just_pressed("drop") or InputManager.is_action_just_pressed("space"):
+	elif InputManager.is_action_just_pressed("drop") or InputManager.is_action_just_pressed("jump"):
 		core.release()
 
 func exit() -> void:

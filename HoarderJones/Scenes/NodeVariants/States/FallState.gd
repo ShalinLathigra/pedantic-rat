@@ -32,4 +32,4 @@ func do(delta: float):
 	previous_t = t
 
 	if t >= 1:
-		self.finished.emit()
+		self.on_finished.emit()

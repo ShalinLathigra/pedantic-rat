@@ -8,20 +8,25 @@ extends CharacterBody2D
 @onready var animator := %Animator as AnimationPlayer
 @onready var sprite := %Sprite as Sprite2D
 @onready var machine := %StateMachine as StateMachine
-
+# exported to expose to animator
+@export var can_early_exit: bool
 # Player Specific, to be moved later
 @onready var ground := %StateMachine/Ground as GroundState
 @onready var air := %StateMachine/Air as AirState
 
+# Player Specific
 var coyote_time_grounded: bool:
 	get: return Time.get_ticks_msec() <= coyote_time_start + stats.coyote_time_ticks
 
 var direction: Vector2
 var direction_raw: Vector2
-var coyote_time_start: int
+
 var is_state_locked: bool:
 	get: return machine.is_locked
 var is_direction_locked: bool
+
+# Player Specific
+var coyote_time_start: int
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -29,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	direction = InputManager.get_vector("left", "right", "up", "down")
 	direction_raw = InputManager.get_vector_raw("left", "right", "up", "down", 0.5)
 
+	# basic movement inputs
 	if not is_state_locked:
 		if air.should_jump or not is_on_floor():
 			machine.set_state(air)

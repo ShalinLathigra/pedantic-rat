@@ -8,6 +8,9 @@ var gas: int:
 var brakes: int:
 	get: return core.stats.brake_speed
 
+func should_process() -> bool:
+	return abs(core.direction.x) > core.stats.threshold or core.velocity.x != 0
+
 func do(delta: float) -> void:
 	var dir = core.direction.x
 	if dir != 0:

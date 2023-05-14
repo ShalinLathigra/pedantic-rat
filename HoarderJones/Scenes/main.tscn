@@ -268,7 +268,6 @@ script = ExtResource("5_p60e7")
 core = NodePath("../../Hero")
 
 [node name="ScreenSpaceBlockOut" type="Sprite2D" parent="CameraLayer/Camera2D"]
-visible = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_e4pr1")
 scale = Vector2(4, 2.25)
@@ -280,6 +279,7 @@ texture = ExtResource("7_678j7")
 position = Vector2(-66, 0)
 script = ExtResource("6_bgm3i")
 size = Vector2(124, 160)
+zoom = Vector2(2, 2)
 
 [node name="Anchor2" type="Marker2D" parent="CameraLayer/Camera2D/AnchorPoints"]
 position = Vector2(112, 0)

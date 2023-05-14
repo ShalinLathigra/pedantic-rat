@@ -13,19 +13,19 @@ var brakes: int:
 	get: return core.stats.air_brake_speed
 
 var should_jump: bool:
-	get: return current != fall and jump.is_jump_buffered
+	get: return current != fall and jump.should_process()
 
 var used_jump: bool
 
 func enter():
 	super.enter()
 	super.set_state(jump if should_jump else fall)
-	jump.finished.connect(func(): set_state(fall))
+	jump.on_finished.connect(func(): set_state(fall))
 	used_jump = should_jump
 
 func do(delta: float):
 	# Handle Coyote Time
-	if (current == fall) and jump.do_late_jump and not used_jump:
+	if not used_jump and core.coyote_time_grounded and jump.should_process():
 		super.set_state(jump)
 		used_jump = true
 	var dir = core.direction.x

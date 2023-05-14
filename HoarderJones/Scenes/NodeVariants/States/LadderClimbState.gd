@@ -5,7 +5,6 @@ extends State
 var speed: int:
 	get: return core.stats.climb_speed
 
-var tween: Tween
 var snap_point: Vector2
 var ladder_detector: LadderDetector
 
@@ -31,7 +30,7 @@ func do(_delta) -> void:
 		tween.tween_property(core, "global_position:y", snap_point.y, 0.25)
 		tween.tween_callback(core.release)
 	# Other Ladder Exit logic
-	elif InputManager.is_action_just_pressed("space") \
+	elif InputManager.is_action_just_pressed("jump") \
 		or InputManager.is_action_just_pressed("drop") \
 		or (ladder_detector.at_ladder_ground and abs(core.direction.x) > core.stats.threshold and core.direction.y > 0) \
 		or (ladder_detector.at_bottom_of_ladder and InputManager.is_action_just_pressed("down")):
