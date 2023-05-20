@@ -45,7 +45,7 @@ signal zoom_changed(new_zoom)
 func _ready() -> void:
 	h_scroll_bar.value = .5
 	v_scroll_bar.value = .5
-	
+
 	resized.connect(_on_resized)
 	h_scroll_bar.value_changed.connect(_on_HScrollBar_value_changed)
 	v_scroll_bar.value_changed.connect(_on_VScrollBar_value_changed)

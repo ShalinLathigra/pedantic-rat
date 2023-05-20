@@ -17,4 +17,3 @@ func do(delta: float) -> void:
 		core.velocity.x = move_toward(core.velocity.x, dir * speed, gas * delta)
 	else:
 		core.velocity.x = move_toward(core.velocity.x, 0, brakes*delta)
-

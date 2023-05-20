@@ -11,8 +11,8 @@ var max_jump_ticks: int:
 	get: return core.stats.jump_max_ticks
 var min_jump_ticks: int:
 	get: return core.stats.jump_min_ticks
-var jump_buffer: int:
-	get: return core.stats.jump_buffer_ticks
+var input_buffer_ticks: int:
+	get: return core.stats.input_buffer_ticks
 
 # Jump buffering
 var elapsed_ticks: int:
@@ -27,7 +27,7 @@ var start_height:float
 var jump_held: bool
 
 func should_process() -> bool:
-	return Time.get_ticks_msec() <= tick_of_last_jump_input + jump_buffer
+	return Time.get_ticks_msec() <= tick_of_last_jump_input + input_buffer_ticks
 
 func enter() -> void:
 	super.enter()

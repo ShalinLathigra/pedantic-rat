@@ -52,6 +52,4 @@ scale = Vector2(0.032, 0.032)
 texture = ExtResource("4_bm0vb")
 script = ExtResource("5_xuh03")
 target = NodePath("..")
-off = Color(0.690196, 0, 0, 0.709804)
-on = Color(0, 0.529412, 0, 0.670588)
 target_bodies = true

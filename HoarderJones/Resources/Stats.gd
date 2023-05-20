@@ -3,6 +3,7 @@ extends Resource
 
 @export_subgroup("Controller Statistics")
 @export_range(0, 1, 0.05) var threshold: float
+@export_range(0, 512, 50) var input_buffer_ticks: int
 
 @export_subgroup("Ground Statistics")
 @export_range(0, 64, 4) var run_speed: int
@@ -20,8 +21,7 @@ extends Resource
 @export_range(0, 2500, 50) var jump_max_ticks: int
 @export_range(0, 2500, 50) var jump_min_ticks: int
 @export_subgroup("Jump Control Statistics")
-@export_range(0, 500, 50) var jump_buffer_ticks: int
-@export_range(0, 500, 50) var coyote_time_ticks: int
+@export_range(0, 512, 50) var coyote_time_ticks: int
 
 # Time vs max fall speed
 @export_subgroup("Fall Statistics")
@@ -34,3 +34,6 @@ extends Resource
 
 @export_subgroup("Rope Swing Statistics")
 @export_range(0, 128, 4) var rope_swing_speed: int
+
+@export_subgroup("Combat Statistics")
+@export_range(0, 512, 4) var combo_input_window: int

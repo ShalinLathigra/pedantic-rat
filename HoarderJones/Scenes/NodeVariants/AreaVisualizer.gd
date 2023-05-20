@@ -1,8 +1,8 @@
 extends Sprite2D
 
 @export var target: Area2D
-@export var off: Color
-@export var on: Color
+@export var off := Color("b00000b5")
+@export var on := Color("008700ab")
 @export var target_bodies: bool
 
 func _ready() -> void:

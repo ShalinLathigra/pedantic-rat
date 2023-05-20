@@ -12,4 +12,12 @@ func _ready () -> void:
 		rect_shape.size = target.texture.get_size()
 		rect_shape.size.x *= target.scale.x
 		rect_shape.size.y *= target.scale.y
-	position = target.offset * 0.5
+	position = target.offset * target.scale.y
+
+	# offset = 0, -64
+	# scale = 0.125, 0.25
+	# size = 128, 128
+	#
+
+	# expected size = 16,32
+	# expected location = 0, -16

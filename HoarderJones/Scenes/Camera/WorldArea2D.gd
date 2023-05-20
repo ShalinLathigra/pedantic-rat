@@ -1,28 +1,18 @@
 @tool
 class_name WorldArea2D
-extends Marker2D
+extends ShapeWrapper2D
 
 signal on_entered
 signal on_exited
 
-@export var size: Vector2:
-	set(value):
-		size = value
-		queue_redraw()
-@export var debug_colour := Color("0099b36b") :
-	set(value):
-		debug_colour = value
-		queue_redraw()
-@export var zoom: Vector2 = Vector2.ONE
-
-@onready var rect := Rect2(global_position - size * 0.5, size)
+@export var zoom: float = 1
 
 var core: Character
 var is_occupied: bool
 # Emit a signal when/if the player is inside this object
 
 func _ready() -> void:
-	assert(zoom.x > 0 and zoom.y > 0)
+	assert(zoom > 0)
 
 func _draw() -> void:
 	if Engine.is_editor_hint():
@@ -38,3 +28,10 @@ func _process(_delta: float) -> void:
 		on_entered.emit()
 
 	is_occupied = core_present
+
+
+# Need to determine coverage of player. Whichever thing is most covering the player's direction or whatever,
+# have the camera locke on to that one.
+# Therefore we need some sort of room manager which is responsible for deciding which room is which, and
+# which the camera should focus on.
+# Possibly a "peep" mode? Turn rooms into a graph allowing you to see which lanes the player is able to peep into.

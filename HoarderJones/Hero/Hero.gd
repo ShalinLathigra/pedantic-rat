@@ -20,6 +20,7 @@ var coyote_time_grounded: bool:
 
 var direction: Vector2
 var direction_raw: Vector2
+var facing: Vector2 = Vector2.RIGHT
 
 var is_state_locked: bool:
 	get: return machine.is_locked
@@ -31,8 +32,12 @@ var coyote_time_start: int
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
-	direction = InputManager.get_vector("left", "right", "up", "down")
-	direction_raw = InputManager.get_vector_raw("left", "right", "up", "down", 0.5)
+
+	if not is_direction_locked:
+		direction = InputManager.get_vector("left", "right", "up", "down")
+		direction_raw = InputManager.get_vector_raw("left", "right", "up", "down", 0.5)
+		if direction_raw.x != 0:
+			facing.x = direction_raw.x
 
 	# basic movement inputs
 	if not is_state_locked:

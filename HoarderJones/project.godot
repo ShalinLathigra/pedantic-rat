@@ -91,6 +91,8 @@ light_attack={
 2d_physics/layer_4="PassableGround"
 2d_physics/layer_5="NonClimbableGround"
 2d_physics/layer_6="RopeSwing"
+2d_physics/layer_7="PlayerHitBox"
+2d_physics/layer_8="OtherHitBox"
 
 [rendering]
 
