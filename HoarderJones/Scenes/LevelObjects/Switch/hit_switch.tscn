@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmh6fo76jsefe"]
 
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="1_uwj2d"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="2_74mog"]
-[ext_resource type="AudioStream" uid="uid://xasitdqx1m7q" path="res://Scenes/LevelObjects/SwitchToggle.wav" id="3_nftvv"]
-[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/AreaTriggeredAudioStreamPlayer2D.gd" id="4_nto1w"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="1_dqks8"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="2_xb7q8"]
+[ext_resource type="AudioStream" uid="uid://xasitdqx1m7q" path="res://Scenes/LevelObjects/SwitchToggle.wav" id="3_enggg"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/AreaTriggeredAudioStreamPlayer2D.gd" id="4_vr1ly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evevy"]
 size = Vector2(16, 16)
@@ -17,12 +17,12 @@ shape = SubResource("RectangleShape2D_evevy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
 scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_uwj2d")
-script = ExtResource("2_74mog")
+texture = ExtResource("1_dqks8")
+script = ExtResource("2_xb7q8")
 target = NodePath("..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_nftvv")
-script = ExtResource("4_nto1w")
+stream = ExtResource("3_enggg")
+script = ExtResource("4_vr1ly")
 
 [connection signal="area_entered" from="." to="AudioStreamPlayer2D" method="play_by"]

@@ -21,5 +21,6 @@ func toggle_state(_area: Area2D) -> void:
 	if tw:
 		tw.stop()
 	tw = create_tween().set_ease(tween_ease).set_trans(tween_trans)
+	tw.tween_interval(0.5)
 	tw.tween_property(self, "global_position", open_pos if open else close_pos, open_time)
 

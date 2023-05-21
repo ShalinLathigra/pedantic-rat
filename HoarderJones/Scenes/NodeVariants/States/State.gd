@@ -29,3 +29,8 @@ func exit() -> void:
 		current.exit()
 	current = null
 	on_exited.emit()
+
+func pre_exit(do_release: bool = false) -> void:
+	time_of_last_exit = Time.get_ticks_msec()
+	if do_release:
+		core.release()

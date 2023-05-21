@@ -1,16 +1,16 @@
 [gd_scene load_steps=22 format=3 uid="uid://c6yt51a1bmv2c"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_lvx0p"]
-[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="3_bj55p"]
-[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="4_id0e1"]
-[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="4_mftbu"]
-[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="4_s5rju"]
-[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="5_7nn0y"]
-[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="5_p60e7"]
-[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="7_45owq"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="7_678j7"]
-[ext_resource type="Script" path="res://Scenes/Camera/WorldArea2D.gd" id="9_2xs41"]
-[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="11_gpqux"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_stx2a"]
+[ext_resource type="Script" path="res://Scenes/Camera/WorldArea2D.gd" id="2_uwlit"]
+[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="3_tin1a"]
+[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="4_piugq"]
+[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="5_s8xq2"]
+[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="6_ixlwx"]
+[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="7_5k36f"]
+[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="8_sq2sw"]
+[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="9_fwidl"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="10_jk51p"]
+[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="11_wceam"]
 
 [sub_resource type="Curve" id="Curve_qqh4p"]
 _data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
@@ -36,7 +36,7 @@ turbulence_noise_strength = 2.0
 turbulence_noise_speed = Vector3(0.2, 0.1, 0.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
-texture = ExtResource("3_bj55p")
+texture = ExtResource("5_s8xq2")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -173,8 +173,8 @@ texture = ExtResource("3_bj55p")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rj5f0"]
 resource_name = "Basic"
-scenes/1/scene = ExtResource("4_id0e1")
-scenes/2/scene = ExtResource("4_mftbu")
+scenes/1/scene = ExtResource("6_ixlwx")
+scenes/2/scene = ExtResource("3_tin1a")
 
 [sub_resource type="TileSet" id="TileSet_nd4c8"]
 physics_layer_0/collision_layer = 1
@@ -213,14 +213,14 @@ turbulence_enabled = true
 turbulence_noise_speed = Vector3(0.15, 0.1, 0.3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4pr1"]
-shader = ExtResource("7_45owq")
+shader = ExtResource("9_fwidl")
 shader_parameter/background_color = null
 shader_parameter/camera_size = Vector2(256, 160)
 shader_parameter/rect_pos = Vector2(-64, 0)
 shader_parameter/rect_size = Vector2(128, 160)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_lvx0p")
+script = ExtResource("1_stx2a")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -50
@@ -239,47 +239,6 @@ visibility_rect = Rect2(-328, -80, 656, 160)
 layer = -1
 follow_viewport_enabled = true
 
-[node name="Room1" type="Marker2D" parent="Rooms"]
-position = Vector2(-66, 0)
-script = ExtResource("9_2xs41")
-zoom = 2.0
-size = Vector2(116, 152)
-debug_colour = Color(0.442827, 0.785211, 0.233469, 0.196078)
-
-[node name="Room2" type="Marker2D" parent="Rooms"]
-position = Vector2(112, 0)
-script = ExtResource("9_2xs41")
-zoom = 1
-size = Vector2(240, 152)
-debug_colour = Color(0.293268, 0.105683, 0.715523, 0.196078)
-
-[node name="Room3" type="Marker2D" parent="Rooms"]
-position = Vector2(312, 30)
-script = ExtResource("9_2xs41")
-zoom = 1.16
-size = Vector2(160, 92)
-debug_colour = Color(0.245825, 0.596826, 0.33857, 0.196078)
-
-[node name="HitSwitch" parent="Rooms/Room3" instance=ExtResource("4_mftbu")]
-position = Vector2(32, -22)
-
-[node name="Door" parent="Rooms/Room3" instance=ExtResource("11_gpqux")]
-position = Vector2(80, 34)
-
-[node name="Room4" type="Marker2D" parent="Rooms"]
-position = Vector2(458, 30)
-script = ExtResource("9_2xs41")
-zoom = 1.16
-size = Vector2(132, 92)
-debug_colour = Color(0.38002, 0.0923593, 0.037218, 0.419608)
-
-[node name="Room5" type="Marker2D" parent="Rooms"]
-position = Vector2(378, -44)
-script = ExtResource("9_2xs41")
-zoom = 2.0
-size = Vector2(292, 64)
-debug_colour = Color(0.348359, 0.616932, 0.819568, 0.196078)
-
 [node name="TileMap" type="TileMap" parent="Rooms"]
 tile_set = SubResource("TileSet_nd4c8")
 format = 2
@@ -293,8 +252,48 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 
-[node name="Hero" parent="Rooms" instance=ExtResource("4_s5rju")]
-position = Vector2(-103, -108)
+[node name="Room1" type="Marker2D" parent="Rooms"]
+position = Vector2(-66, 0)
+script = ExtResource("2_uwlit")
+zoom = 2.0
+size = Vector2(116, 152)
+debug_colour = Color(0.442827, 0.785211, 0.233469, 0.196078)
+
+[node name="Room2" type="Marker2D" parent="Rooms"]
+position = Vector2(112, 0)
+script = ExtResource("2_uwlit")
+size = Vector2(240, 152)
+debug_colour = Color(0.293268, 0.105683, 0.715523, 0.196078)
+
+[node name="Room3" type="Marker2D" parent="Rooms"]
+position = Vector2(312, 30)
+script = ExtResource("2_uwlit")
+zoom = 1.16
+size = Vector2(160, 92)
+debug_colour = Color(0.245825, 0.596826, 0.33857, 0.196078)
+
+[node name="HitSwitch" parent="Rooms/Room3" instance=ExtResource("3_tin1a")]
+position = Vector2(32, -22)
+
+[node name="Door" parent="Rooms/Room3" instance=ExtResource("4_piugq")]
+position = Vector2(80, 34)
+
+[node name="Room4" type="Marker2D" parent="Rooms"]
+position = Vector2(458, 30)
+script = ExtResource("2_uwlit")
+zoom = 1.16
+size = Vector2(132, 92)
+debug_colour = Color(0.38002, 0.0923593, 0.037218, 0.419608)
+
+[node name="Room5" type="Marker2D" parent="Rooms"]
+position = Vector2(378, -44)
+script = ExtResource("2_uwlit")
+zoom = 2.0
+size = Vector2(292, 64)
+debug_colour = Color(0.348359, 0.616932, 0.819568, 0.196078)
+
+[node name="Hero" parent="Rooms" instance=ExtResource("7_5k36f")]
+position = Vector2(170, -20)
 rotation = 0.0152468
 collision_mask = 25
 
@@ -320,7 +319,7 @@ follow_viewport_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraLayer" node_paths=PackedStringArray("core", "room_layer")]
 position = Vector2(-96, -40)
-script = ExtResource("5_p60e7")
+script = ExtResource("8_sq2sw")
 core = NodePath("../../Rooms/Hero")
 room_layer = NodePath("../../Rooms")
 
@@ -330,10 +329,10 @@ z_index = 8
 texture_repeat = 2
 material = SubResource("ShaderMaterial_e4pr1")
 scale = Vector2(4, 2.25)
-texture = ExtResource("7_678j7")
+texture = ExtResource("10_jk51p")
 
 [node name="BackgroundPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_7nn0y")
+stream = ExtResource("11_wceam")
 volume_db = -35.0
 
 [connection signal="area_entered" from="Rooms/Room3/HitSwitch" to="Rooms/Room3/Door" method="toggle_state"]

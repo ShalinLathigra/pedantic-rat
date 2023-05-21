@@ -1,31 +1,35 @@
-[gd_scene load_steps=50 format=3 uid="uid://bi0f1g4dak6yx"]
+[gd_scene load_steps=54 format=3 uid="uid://bi0f1g4dak6yx"]
 
-[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_36g06"]
-[ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="1_xk5an"]
-[ext_resource type="Resource" uid="uid://bfjbjja2qch54" path="res://Hero/HeroStats.tres" id="2_ulgu6"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/FlipSprite.gd" id="4_04y6s"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/StateMachine.gd" id="5_1rdy3"]
-[ext_resource type="AudioStream" uid="uid://ccfv6yhxen3ls" path="res://Hero/WhoopSmall.wav" id="5_5qwlt"]
-[ext_resource type="AudioStream" uid="uid://dvsratok0s3lc" path="res://Hero/BasicStep.wav" id="5_aw3f1"]
-[ext_resource type="AudioStream" uid="uid://c3ho1af7y8nqh" path="res://Hero/WhoopBig.mp3" id="6_dvafi"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/GroundState.gd" id="6_xa7en"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/State.gd" id="7_5j38d"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/RunState.gd" id="8_feq7c"]
-[ext_resource type="AudioStream" uid="uid://d1tnw5j58yk5o" path="res://Scenes/LevelObjects/Whoosh.wav" id="8_mt7il"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/AirState.gd" id="9_4ab82"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/FallState.gd" id="10_wm1k2"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/JumpState.gd" id="11_cqjg5"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/States/PlayerLightComboState.gd" id="12_5js7j"]
-[ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/Detectors/ledge_detector.tscn" id="12_rfi8r"]
-[ext_resource type="Script" path="res://HitBoxState.gd" id="13_17vbh"]
-[ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/Detectors/ladder_detector.tscn" id="13_x2i4r"]
-[ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/Detectors/rope_swing_detector.tscn" id="14_rj8vc"]
-[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/FallThroughDetector.gd" id="15_bi32u"]
-[ext_resource type="Script" path="res://Hero/ShapeWrapper2D.gd" id="15_wxot4"]
-[ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/ParticleSpawner.gd" id="18_oue3f"]
-[ext_resource type="Script" path="res://Scenes/EntityComponents/LandingEffectController.gd" id="19_6eh6c"]
-[ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="21_vjknx"]
-[ext_resource type="Gradient" uid="uid://bsm67je3hst1f" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="22_4ycmq"]
+[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_1i075"]
+[ext_resource type="Resource" uid="uid://bfjbjja2qch54" path="res://Hero/HeroStats.tres" id="2_x0261"]
+[ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="3_w5lke"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/FlipSprite.gd" id="4_egxxa"]
+[ext_resource type="AudioStream" uid="uid://dvsratok0s3lc" path="res://Hero/BasicStep.wav" id="5_qjlrg"]
+[ext_resource type="AudioStream" uid="uid://ccfv6yhxen3ls" path="res://Hero/WhoopSmall.wav" id="6_sx003"]
+[ext_resource type="AudioStream" uid="uid://c3ho1af7y8nqh" path="res://Hero/WhoopBig.mp3" id="7_48t16"]
+[ext_resource type="AudioStream" uid="uid://d1tnw5j58yk5o" path="res://Scenes/LevelObjects/Whoosh.wav" id="8_cgh02"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/StateMachine.gd" id="9_3ei2a"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/GroundState.gd" id="10_rqxjt"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/State.gd" id="11_14nmd"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/RunState.gd" id="12_4t3vx"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/PlayerLightComboState.gd" id="13_3nqe1"]
+[ext_resource type="Script" path="res://HitBoxState.gd" id="14_15cn6"]
+[ext_resource type="Script" path="res://Hero/ShapeWrapper2D.gd" id="15_4grr3"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/AirState.gd" id="16_snaxm"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/FallState.gd" id="17_mlmhx"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/JumpState.gd" id="18_hnllq"]
+[ext_resource type="Script" path="res://Hero/PriorityBasedStateSelector.gd" id="19_3u8ce"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/LedgeGrabState.gd" id="20_opwmd"]
+[ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/Detectors/ledge_detector.tscn" id="21_rh16w"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/LadderClimbState.gd" id="22_yffxc"]
+[ext_resource type="PackedScene" uid="uid://t37l0rbi6ik8" path="res://Scenes/EntityComponents/Detectors/ladder_detector.tscn" id="23_sbg21"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/RopeSwingState.gd" id="24_5w0br"]
+[ext_resource type="PackedScene" uid="uid://cw27pil0fod1c" path="res://Scenes/EntityComponents/Detectors/rope_swing_detector.tscn" id="25_jmaop"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/FallThroughDetector.gd" id="26_leq7x"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/LandingEffectController.gd" id="27_nbaqf"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/ParticleSpawner.gd" id="28_j1jn6"]
+[ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="29_wlolf"]
+[ext_resource type="Gradient" uid="uid://bsm67je3hst1f" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="30_k6x10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -68,11 +72,11 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_aw3f1")
+"stream": ExtResource("5_qjlrg")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_aw3f1")
+"stream": ExtResource("5_qjlrg")
 }],
 "times": PackedFloat32Array(0, 0.4)
 }
@@ -279,11 +283,11 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_5qwlt")
+"stream": ExtResource("6_sx003")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("6_dvafi")
+"stream": ExtResource("7_48t16")
 }],
 "times": PackedFloat32Array(0, 0.2)
 }
@@ -369,11 +373,11 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.05,
-"stream": ExtResource("5_aw3f1")
+"stream": ExtResource("5_qjlrg")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.05,
-"stream": ExtResource("5_aw3f1")
+"stream": ExtResource("5_qjlrg")
 }],
 "times": PackedFloat32Array(0.1, 0.4)
 }
@@ -451,7 +455,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("8_mt7il")
+"stream": ExtResource("8_cgh02")
 }],
 "times": PackedFloat32Array(-0.1)
 }
@@ -624,7 +628,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("8_mt7il")
+"stream": ExtResource("8_cgh02")
 }],
 "times": PackedFloat32Array(-0.1)
 }
@@ -689,7 +693,7 @@ _data = {
 }
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t0flr"]
-gradient = ExtResource("22_4ycmq")
+gradient = ExtResource("30_k6x10")
 
 [sub_resource type="Curve" id="Curve_mu42u"]
 _data = [Vector2(0, 0), 0.0, 4.13994, 0, 1, Vector2(0.127303, 0.527027), 4.13994, 1.98586, 1, 0, Vector2(1, 0.572072), -1.64713, 0.0, 0, 0]
@@ -704,6 +708,8 @@ emission_shape = 3
 emission_box_extents = Vector3(2, 1, 1)
 particle_flag_disable_z = true
 gravity = Vector3(0, -8, 0)
+angular_velocity_min = -32.0
+angular_velocity_max = 32.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 3.0
@@ -722,8 +728,8 @@ size = Vector2(16, 20)
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_36g06")
-stats = ExtResource("2_ulgu6")
+script = ExtResource("1_1i075")
+stats = ExtResource("2_x0261")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -733,11 +739,11 @@ shape = SubResource("RectangleShape2D_7qvwf")
 
 [node name="Sprite" type="Sprite2D" parent="." node_paths=PackedStringArray("core")]
 unique_name_in_owner = true
-texture = ExtResource("1_xk5an")
+texture = ExtResource("3_w5lke")
 offset = Vector2(10, -16)
 region_enabled = true
 region_rect = Rect2(9472, 0, 128, 64)
-script = ExtResource("4_04y6s")
+script = ExtResource("4_egxxa")
 core = NodePath("..")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -749,105 +755,117 @@ libraries = {
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="Animator"]
 volume_db = -30.0
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("core")]
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("core")]
 unique_name_in_owner = true
-script = ExtResource("5_1rdy3")
+script = ExtResource("9_3ei2a")
 core = NodePath("..")
 
-[node name="Ground" type="Node" parent="StateMachine"]
-script = ExtResource("6_xa7en")
+[node name="Ground" type="Node2D" parent="StateMachine"]
+script = ExtResource("10_rqxjt")
 
-[node name="Idle" type="Node" parent="StateMachine/Ground"]
-script = ExtResource("7_5j38d")
+[node name="Idle" type="Node2D" parent="StateMachine/Ground"]
+script = ExtResource("11_14nmd")
 anim = "Idle"
 
-[node name="Run" type="Node" parent="StateMachine/Ground"]
-script = ExtResource("8_feq7c")
+[node name="Run" type="Node2D" parent="StateMachine/Ground"]
+script = ExtResource("12_4t3vx")
 anim = "Run"
 
-[node name="LightCombo" type="Node" parent="StateMachine/Ground" node_paths=PackedStringArray("sub_states")]
-script = ExtResource("12_5js7j")
+[node name="LightCombo" type="Node2D" parent="StateMachine/Ground" node_paths=PackedStringArray("sub_states")]
+script = ExtResource("13_3nqe1")
 sub_states = [NodePath("Strike 1"), NodePath("Strike 2"), NodePath("Strike 3")]
 
-[node name="Strike 1" type="Node" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
-script = ExtResource("13_17vbh")
+[node name="Strike 1" type="Node2D" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("14_15cn6")
 hitbox = NodePath("../../../../HitBox2D/CollisionShape2D")
 anim = "Strike 1"
 
 [node name="ShapeWrapper2D" type="Marker2D" parent="StateMachine/Ground/LightCombo/Strike 1"]
 visible = false
 position = Vector2(9, -12)
-script = ExtResource("15_wxot4")
+script = ExtResource("15_4grr3")
 size = Vector2(18, 24)
 
-[node name="Strike 2" type="Node" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
-script = ExtResource("13_17vbh")
+[node name="Strike 2" type="Node2D" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("14_15cn6")
 hitbox = NodePath("../../../../HitBox2D/CollisionShape2D")
 anim = "Strike 2"
 
 [node name="ShapeWrapper2D" type="Marker2D" parent="StateMachine/Ground/LightCombo/Strike 2"]
 visible = false
 position = Vector2(0, -11)
-script = ExtResource("15_wxot4")
+script = ExtResource("15_4grr3")
 size = Vector2(36, 20)
 
-[node name="Strike 3" type="Node" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
-script = ExtResource("13_17vbh")
+[node name="Strike 3" type="Node2D" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("14_15cn6")
 hitbox = NodePath("../../../../HitBox2D/CollisionShape2D")
 anim = "Strike 3"
 
 [node name="ShapeWrapper2D" type="Marker2D" parent="StateMachine/Ground/LightCombo/Strike 3"]
 visible = false
 position = Vector2(5, -10)
-script = ExtResource("15_wxot4")
+script = ExtResource("15_4grr3")
 size = Vector2(36, 20)
 
-[node name="Air" type="Node" parent="StateMachine"]
-script = ExtResource("9_4ab82")
+[node name="Air" type="Node2D" parent="StateMachine"]
+script = ExtResource("16_snaxm")
 
-[node name="Fall" type="Node" parent="StateMachine/Air"]
-script = ExtResource("10_wm1k2")
+[node name="Fall" type="Node2D" parent="StateMachine/Air"]
+script = ExtResource("17_mlmhx")
 looping_fall_anim = "Fall"
 anim = "Jet Stop"
 
-[node name="Jump" type="Node" parent="StateMachine/Air"]
-script = ExtResource("11_cqjg5")
+[node name="Jump" type="Node2D" parent="StateMachine/Air"]
+script = ExtResource("18_hnllq")
 anim = "Jet Pack"
 
-[node name="Detectors" type="Node2D" parent="."]
+[node name="Fringe" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_set")]
+script = ExtResource("19_3u8ce")
+state_set = [NodePath("Ledge"), NodePath("LadderClimb"), NodePath("RopeSwingState")]
 
-[node name="LedgeDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("12_rfi8r")]
+[node name="Ledge" type="Node2D" parent="StateMachine/Fringe"]
+script = ExtResource("20_opwmd")
+anim = "Idle"
+
+[node name="LedgeDetector" parent="StateMachine/Fringe/Ledge" node_paths=PackedStringArray("core") instance=ExtResource("21_rh16w")]
 unique_name_in_owner = true
-core = NodePath("../..")
+core = NodePath("../../../..")
 
-[node name="LadderDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("13_x2i4r")]
+[node name="LadderClimb" type="Node2D" parent="StateMachine/Fringe"]
+script = ExtResource("22_yffxc")
+anim = "Climb"
+
+[node name="LadderDetector" parent="StateMachine/Fringe/LadderClimb" instance=ExtResource("23_sbg21")]
 unique_name_in_owner = true
-core = NodePath("../..")
 
-[node name="RopeSwingDetector" parent="Detectors" node_paths=PackedStringArray("core") instance=ExtResource("14_rj8vc")]
+[node name="RopeSwingState" type="Node2D" parent="StateMachine/Fringe"]
+script = ExtResource("24_5w0br")
+anim = "Hop"
+
+[node name="RopeSwingDetector" parent="StateMachine/Fringe/RopeSwingState" instance=ExtResource("25_jmaop")]
 unique_name_in_owner = true
 position = Vector2(0, -8)
-core = NodePath("../..")
 
-[node name="FallThroughDetector" type="Node" parent="Detectors" node_paths=PackedStringArray("core")]
-script = ExtResource("15_bi32u")
-core = NodePath("../..")
+[node name="FallThroughDetector" type="Node" parent="." node_paths=PackedStringArray("core")]
+script = ExtResource("26_leq7x")
+core = NodePath("..")
 
 [node name="LandingEffects" type="Node2D" parent="." node_paths=PackedStringArray("core")]
-script = ExtResource("19_6eh6c")
+script = ExtResource("27_nbaqf")
 core = NodePath("..")
 max_volume_db = -5.0
 min_volume_db = -35.0
 hard_hit_threshold = 0.2
 
 [node name="OnGroundPlayer" type="AudioStreamPlayer2D" parent="LandingEffects"]
-stream = ExtResource("5_aw3f1")
+stream = ExtResource("5_qjlrg")
 volume_db = -15.0
 pitch_scale = 0.75
 
 [node name="ParticleSpawner" type="Node2D" parent="LandingEffects"]
-script = ExtResource("18_oue3f")
-particle_scene = ExtResource("21_vjknx")
+script = ExtResource("28_j1jn6")
+particle_scene = ExtResource("29_wlolf")
 
 [node name="RunEffects" type="Node2D" parent="."]
 

@@ -13,6 +13,7 @@ extends CharacterBody2D
 # Player Specific, to be moved later
 @onready var ground := %StateMachine/Ground as GroundState
 @onready var air := %StateMachine/Air as AirState
+@onready var fringe := %StateMachine/Fringe as PriorityState
 
 # Player Specific
 var coyote_time_grounded: bool:
@@ -41,7 +42,9 @@ func _physics_process(delta: float) -> void:
 
 	# basic movement inputs
 	if not is_state_locked:
-		if air.should_jump or not is_on_floor():
+		if fringe.should_process():
+			machine.set_state(fringe)
+		elif air.should_jump or not is_on_floor():
 			machine.set_state(air)
 		else:
 			machine.set_state(ground)

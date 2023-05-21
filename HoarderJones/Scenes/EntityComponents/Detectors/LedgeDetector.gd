@@ -7,7 +7,6 @@ signal reached_grabbable_ledge
 @onready var ledge_origin := $LedgeOrigin as ChildFlipper
 @onready var high_checker := $LedgeOrigin/HighChecker as Area2D
 @onready var low_checker := $LedgeOrigin/LowChecker as Area2D
-@onready var ledge_state := $Ledge as LedgeGrabState
 
 var is_near_ledge: bool:
 	get: return low_checker.has_overlapping_bodies() and not high_checker.has_overlapping_bodies()
@@ -21,7 +20,6 @@ var ledge_direction: Vector2
 func _ready() -> void:
 	assert(core)
 	checker_offset = ledge_origin.position
-	ledge_state.core = core
 
 func _process(_delta: float) -> void:
 	# Adjust detector directions
@@ -29,15 +27,6 @@ func _process(_delta: float) -> void:
 		ledge_direction = Vector2.RIGHT * core.facing.x
 		ledge_origin.set_facing(core.facing.x == 1)
 		ledge_origin.position = Vector2(core.facing.x * checker_offset.x, checker_offset.y)
-
-	# Check if should update state
-	if core.is_state_locked: return
-	if not ledge_state.is_ready_to_reenter: return
-	if is_near_ledge and core.velocity.y > 0 and not core.facing.y > 0:
-		ledge_state.hanging_spot = find_hanging_spot()
-		ledge_state.landing_pad = find_landing_pad()
-		ledge_state.ledge_direction = ledge_direction
-		core.machine.set_state(ledge_state)
 
 func find_hanging_spot() -> Vector2:
 	return World.find_tile_intersection_world(ledge_origin.global_position) - ledge_origin.position

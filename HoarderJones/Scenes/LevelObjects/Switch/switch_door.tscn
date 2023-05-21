@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca5glf606c4xv"]
 
-[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/Door.gd" id="1_6q0q0"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_bjgk0"]
-[ext_resource type="Texture2D" uid="uid://cuplat2plvb12" path="res://Scenes/LevelObjects/Switch/SwitchDoor.png" id="3_5a3wx"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/Door.gd" id="1_rs74s"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_04mkv"]
+[ext_resource type="Texture2D" uid="uid://cuplat2plvb12" path="res://Scenes/LevelObjects/Switch/SwitchDoor.png" id="3_yvjdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx1fr"]
 size = Vector2(16, 32)
@@ -10,18 +10,18 @@ size = Vector2(16, 32)
 [node name="Door" type="AnimatableBody2D"]
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("1_6q0q0")
+script = ExtResource("1_rs74s")
 open_tile_offset = Vector2(0, -2)
 open_time = 1.25
 
 [node name="SpriteTrackingRectangleShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_rx1fr")
-script = ExtResource("2_bjgk0")
+script = ExtResource("2_04mkv")
 target = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_5a3wx")
+texture = ExtResource("3_yvjdh")
 offset = Vector2(0, -16)
 
 [node name="OpenPosition" type="Marker2D" parent="."]
