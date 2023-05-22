@@ -437,11 +437,11 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-262140, 1, 65536, -262136, 1, 65536)
+layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 
 [node name="Hero" parent="RoomLayer" instance=ExtResource("12_0a6m3")]
 unique_name_in_owner = true
-position = Vector2(257, -34)
+position = Vector2(414, 59)
 rotation = 0.0152468
 collision_mask = 281
 
@@ -467,7 +467,7 @@ follow_viewport_enabled = true
 
 [node name="MainCamera" type="Camera2D" parent="CameraLayer" node_paths=PackedStringArray("core", "room_layer")]
 unique_name_in_owner = true
-position = Vector2(-96, -40)
+position = Vector2(453, 29)
 script = ExtResource("13_diyy2")
 core = NodePath("../../RoomLayer/Hero")
 room_layer = NodePath("../../RoomLayer")

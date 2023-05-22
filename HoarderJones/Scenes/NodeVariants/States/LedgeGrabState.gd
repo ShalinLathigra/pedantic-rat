@@ -12,7 +12,7 @@ func _ready() -> void:
 func should_process() -> bool:
 	if not is_ready_to_reenter:
 		return false
-	if core.velocity.y < 0:
+	if core.direction_raw.y > 0:
 		return false
 	if not detector.is_near_ledge:
 		return false

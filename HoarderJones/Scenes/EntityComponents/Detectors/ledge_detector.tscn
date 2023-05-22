@@ -16,7 +16,7 @@ position = Vector2(4, -12)
 script = ExtResource("2_hhdrh")
 
 [node name="HighChecker" type="Area2D" parent="LedgeOrigin"]
-position = Vector2(2, -1)
+position = Vector2(3, -1)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeOrigin/HighChecker"]
@@ -34,7 +34,7 @@ on = Color(0, 0.529412, 0, 0.670588)
 target_bodies = true
 
 [node name="LowChecker" type="Area2D" parent="LedgeOrigin"]
-position = Vector2(2, 3)
+position = Vector2(3, 3)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeOrigin/LowChecker"]
