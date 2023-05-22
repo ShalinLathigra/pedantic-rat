@@ -1,16 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6yt51a1bmv2c"]
+[gd_scene load_steps=28 format=3 uid="uid://c6yt51a1bmv2c"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_stx2a"]
-[ext_resource type="Script" path="res://Scenes/Camera/WorldArea2D.gd" id="2_uwlit"]
-[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="3_tin1a"]
-[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="4_piugq"]
-[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="5_s8xq2"]
-[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="6_ixlwx"]
-[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="7_5k36f"]
-[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="8_sq2sw"]
-[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="9_fwidl"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="10_jk51p"]
-[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="11_wceam"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_srl8c"]
+[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="2_jess3"]
+[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="3_v2pe2"]
+[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="4_2yqjg"]
+[ext_resource type="Script" path="res://Scenes/Camera/WorldArea2D.gd" id="5_3dfg2"]
+[ext_resource type="Texture2D" uid="uid://cywvrckmx87en" path="res://Assets/BlockedTile.png" id="5_25vku"]
+[ext_resource type="PackedScene" uid="uid://dvu0afaim11m" path="res://Scenes/LevelObjects/Switch/extendable_ladder_2d.tscn" id="6_rnji6"]
+[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="7_tfsp4"]
+[ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="8_5bj6l"]
+[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="8_ithkb"]
+[ext_resource type="Script" path="res://Scenes/FadeOutArea2D.gd" id="8_ob4uw"]
+[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="9_cakdv"]
+[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="10_ryv2v"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="11_qskuq"]
+[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="12_0h3mb"]
 
 [sub_resource type="Curve" id="Curve_qqh4p"]
 _data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
@@ -35,19 +39,11 @@ turbulence_enabled = true
 turbulence_noise_strength = 2.0
 turbulence_noise_speed = Vector3(0.2, 0.1, 0.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fonyr"]
+size = Vector2(48, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
-texture = ExtResource("5_s8xq2")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_1/angular_velocity = 0.0
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_2/angular_velocity = 0.0
-0:0/0/physics_layer_3/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_3/angular_velocity = 0.0
-0:0/0/custom_data_0 = true
+texture = ExtResource("2_jess3")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -173,8 +169,22 @@ texture = ExtResource("5_s8xq2")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rj5f0"]
 resource_name = "Basic"
-scenes/1/scene = ExtResource("6_ixlwx")
-scenes/2/scene = ExtResource("3_tin1a")
+scenes/1/scene = ExtResource("3_v2pe2")
+scenes/2/scene = ExtResource("4_2yqjg")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vaskv"]
+texture = ExtResource("8_5bj6l")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_2/angular_velocity = 0.0
+0:0/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_3/angular_velocity = 0.0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_nd4c8"]
 physics_layer_0/collision_layer = 1
@@ -189,6 +199,7 @@ custom_data_layer_0/name = "is_ladder"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_v5k6r")
 sources/1 = SubResource("TileSetScenesCollectionSource_rj5f0")
+sources/3 = SubResource("TileSetAtlasSource_vaskv")
 
 [sub_resource type="Curve" id="Curve_rbh1p"]
 _data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
@@ -213,14 +224,14 @@ turbulence_enabled = true
 turbulence_noise_speed = Vector3(0.15, 0.1, 0.3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4pr1"]
-shader = ExtResource("9_fwidl")
+shader = ExtResource("10_ryv2v")
 shader_parameter/background_color = null
 shader_parameter/camera_size = Vector2(256, 160)
 shader_parameter/rect_pos = Vector2(-64, 0)
 shader_parameter/rect_size = Vector2(128, 160)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_stx2a")
+script = ExtResource("1_srl8c")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -50
@@ -235,69 +246,105 @@ lifetime = 16.0
 preprocess = 8.0
 visibility_rect = Rect2(-328, -80, 656, 160)
 
-[node name="Rooms" type="CanvasLayer" parent="."]
+[node name="RoomLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = -1
 follow_viewport_enabled = true
 
-[node name="TileMap" type="TileMap" parent="Rooms"]
+[node name="Room1" type="Marker2D" parent="RoomLayer"]
+position = Vector2(-66, 0)
+script = ExtResource("5_3dfg2")
+zoom = 2.0
+size = Vector2(116, 152)
+debug_colour = Color(0.442827, 0.785211, 0.233469, 0.196078)
+
+[node name="Room2" type="Marker2D" parent="RoomLayer"]
+position = Vector2(112, 0)
+script = ExtResource("5_3dfg2")
+size = Vector2(240, 152)
+debug_colour = Color(0.293268, 0.105683, 0.715523, 0.196078)
+
+[node name="LadderSwitch" parent="RoomLayer/Room2" instance=ExtResource("4_2yqjg")]
+position = Vector2(56, -24)
+
+[node name="ExtendableLadder2D" parent="RoomLayer/Room2" instance=ExtResource("6_rnji6")]
+position = Vector2(56, 8)
+end_tile_size = Vector2(1, 3.5)
+start_tile_size = Vector2(1, 0)
+startup_delay = 0.8
+tween_ease = 1
+tween_trans = 9
+open_time = 1.25
+
+[node name="FadeOutArea2D" type="Area2D" parent="RoomLayer/Room2"]
+z_index = 1
+position = Vector2(72, -8)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_ob4uw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/Room2/FadeOutArea2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_fonyr")
+
+[node name="BlockedTile2" type="Sprite2D" parent="RoomLayer/Room2/FadeOutArea2D"]
+position = Vector2(0, 32)
+texture = ExtResource("5_25vku")
+
+[node name="BlockedTile" type="Sprite2D" parent="RoomLayer/Room2/FadeOutArea2D"]
+texture_repeat = 2
+position = Vector2(8, 8)
+texture = ExtResource("5_25vku")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 32)
+
+[node name="Room3" type="Marker2D" parent="RoomLayer"]
+position = Vector2(312, 30)
+script = ExtResource("5_3dfg2")
+zoom = 1.16
+size = Vector2(160, 92)
+debug_colour = Color(0.245825, 0.596826, 0.33857, 0.196078)
+
+[node name="DoorSwitch" parent="RoomLayer/Room3" instance=ExtResource("4_2yqjg")]
+position = Vector2(32, -22)
+
+[node name="Door" parent="RoomLayer/Room3" instance=ExtResource("7_tfsp4")]
+position = Vector2(80, 34)
+
+[node name="Room4" type="Marker2D" parent="RoomLayer"]
+position = Vector2(458, 30)
+script = ExtResource("5_3dfg2")
+zoom = 1.16
+size = Vector2(132, 92)
+debug_colour = Color(0.38002, 0.0923593, 0.037218, 0.419608)
+
+[node name="Room5" type="Marker2D" parent="RoomLayer"]
+position = Vector2(378, -44)
+script = ExtResource("5_3dfg2")
+zoom = 2.0
+size = Vector2(292, 64)
+debug_colour = Color(0.348359, 0.616932, 0.819568, 0.196078)
+
+[node name="TileMap" type="TileMap" parent="RoomLayer"]
 tile_set = SubResource("TileSet_nd4c8")
 format = 2
 layer_0/name = "LevelBlocks"
-layer_0/tile_data = PackedInt32Array(327673, 0, 2, 327674, 0, 2, 327675, 0, 2, 327676, 0, 2, 327677, 0, 2, 327678, 0, 2, 327679, 0, 2, 262144, 0, 2, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262151, 0, 2, -262152, 0, 2, -262149, 0, 1, -262148, 0, 1, -262147, 0, 1, -262146, 0, 1, -262145, 0, 1, -327680, 0, 1, -196616, 0, 1, -131080, 0, 1, -65544, 0, 1, -327672, 0, 1, 262152, 0, 2, -327671, 0, 1, 262153, 0, 2, -327670, 0, 1, 262154, 0, 2, -327669, 0, 1, 262155, 0, 2, -327668, 0, 1, 262156, 0, 2, -327667, 0, 1, -327666, 0, 1, 262158, 0, 1, -327665, 0, 1, 262159, 0, 2, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, -65526, 65536, 2, 65546, 393216, 2, 65547, 0, 2, -65543, 0, 2, -65542, 0, 2, -65541, 0, 2, -65540, 0, 2, -65539, 0, 2, -65536, 0, 1, -262144, 0, 1, -196608, 0, 1, -131072, 0, 1, 131067, 0, 2, 131068, 0, 2, 131069, 0, 2, 131070, 0, 2, 131071, 0, 1, 65535, 0, 1, 196613, 0, 1, 196614, 0, 2, 131065, 262144, 2, 196602, 0, 1, 131066, 0, 2, -3, 0, 1, 196609, 0, 2, 131074, 0, 2, 131077, 0, 2, 131076, 0, 2, 196612, 0, 1, 196611, 0, 1, 131075, 0, 2, 196610, 0, 1, -131071, 0, 0, -196607, 0, 0, 1, 0, 2, 2, 262144, 2, -65535, 0, 0, -65538, 262144, 1, -262143, 0, 0, -327679, 262144, 0, -327678, 0, 1, -327677, 0, 1, -327676, 0, 1, -327675, 0, 1, -327674, 0, 1, -327673, 0, 1, -65523, 65536, 2, -65522, 0, 2, -65521, 0, 2, -65525, 327680, 2, 262149, 0, 1, 262150, 0, 1, 131082, 0, 0, 13, 0, 1, -65524, 327680, 2, -262150, 0, 1, -8, 0, 1, 65528, 0, 1, 131064, 0, 1, 196600, 0, 1, 262136, 0, 1, 327672, 0, 1, 0, 0, 1, -327654, 0, 1, -65510, 327680, 2, 262170, 0, 2, -327653, 0, 1, -65509, 327680, 2, 262171, 0, 1, -327652, 0, 1, -65508, 327680, 2, 262172, 0, 2, -327651, 0, 1, -65507, 327680, 2, 262173, 0, 2, -327650, 0, 1, -65506, 327680, 2, 262174, 0, 2, -327649, 0, 1, -65505, 65536, 2, 65567, 65536, 2, 131103, 0, 1, 196639, 0, 1, 262175, 0, 1, -327648, 0, 1, -262112, 0, 1, -196576, 0, 1, -131040, 0, 1, -65504, 0, 1, 32, 0, 1, 65568, 0, 1, 131104, 0, 1, 196640, 0, 1, 262176, 0, 1, 262160, 0, 2, 262161, 0, 1, 262162, 0, 2, 262163, 0, 2, 262164, 0, 2, 262165, 0, 2, 262166, 0, 2, 262167, 0, 2, 262169, 0, 2, -65520, 262144, 2, -65519, 262144, 2, -65518, 262144, 2, -65517, 262144, 2, -65516, 262144, 2, -65514, 0, 2, -65515, 262144, 2, -65511, 65536, 2, -65512, 0, 2, -65513, 0, 2, 24, 0, 1, 14, 0, 1, 65560, 0, 1, 65548, 0, 1, 65549, 0, 1, 65550, 0, 1, 196607, 262144, 1, 131086, 262144, 1, -327664, 0, 1, -327663, 0, 1, -327662, 0, 1, -327661, 0, 1, -327660, 0, 1, -327659, 0, 1, -327658, 0, 1, -327657, 0, 1, -327656, 0, 1, -327655, 0, 1, 131096, 262144, 1, 262157, 0, 2, 262168, 0, 1, 196635, 65536, 1, 131099, 65536, 2, 131087, 262144, 2, 196625, 0, 2, 65555, 262144, 2, 65556, 262144, 2, 65559, 262144, 1, 65558, 262144, 1, 65557, 262144, 2, 23, 0, 1, 22, 0, 1)
+layer_0/tile_data = PackedInt32Array(327673, 0, 2, 327674, 0, 2, 327675, 0, 2, 327676, 0, 2, 327677, 0, 2, 327678, 0, 2, 327679, 0, 2, 262144, 0, 2, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262151, 0, 2, -262152, 0, 1, -262149, 0, 1, -262148, 0, 1, -262147, 0, 1, -262146, 0, 1, -262145, 0, 1, -327680, 0, 1, -196616, 0, 1, -131080, 0, 1, -65544, 0, 1, -327672, 0, 1, 262152, 0, 2, -327671, 0, 1, 262153, 0, 2, -327670, 0, 1, 262154, 0, 2, -327669, 0, 1, 262155, 0, 2, -327668, 0, 1, 262156, 0, 2, -327667, 0, 1, -327666, 0, 1, 262158, 0, 1, -327665, 0, 1, 262159, 0, 2, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, -65526, 65536, 2, 65547, 0, 2, -65543, 0, 1, -65542, 0, 1, -65541, 0, 1, -65540, 0, 1, -65539, 0, 1, -65536, 0, 1, -262144, 0, 1, -196608, 0, 1, -131072, 0, 1, 131067, 0, 1, 131068, 0, 1, 131069, 0, 1, 131070, 0, 1, 131071, 0, 1, 65535, 0, 1, 196613, 0, 1, 196614, 0, 2, 131065, 262144, 1, 196602, 0, 1, 131066, 0, 1, -3, 0, 1, 196609, 0, 2, 131074, 0, 2, 131077, 0, 2, 131076, 0, 2, 196612, 0, 1, 196611, 0, 1, 131075, 0, 2, 196610, 0, 1, -131071, 3, 0, -196607, 3, 0, 1, 0, 2, 2, 262144, 2, -65535, 3, 0, -65538, 262144, 1, -262143, 3, 0, -327679, 262144, 0, -327678, 0, 1, -327677, 0, 1, -327676, 0, 1, -327675, 0, 1, -327673, 0, 1, -65523, 65536, 2, -65522, 0, 2, -65521, 0, 2, -65525, 327680, 2, 262149, 0, 1, 262150, 0, 1, 13, 0, 1, -65524, 327680, 2, -262150, 0, 1, -8, 0, 1, 65528, 0, 1, 131064, 0, 1, 196600, 0, 1, 262136, 0, 1, 327672, 0, 1, 0, 0, 1, -327654, 0, 1, -65510, 327680, 2, 262170, 0, 2, -327653, 0, 1, -65509, 327680, 2, 262171, 0, 1, -327652, 0, 1, -65508, 327680, 2, 262172, 0, 2, -327651, 0, 1, -65507, 327680, 2, 262173, 0, 2, -327650, 0, 1, -65506, 327680, 2, 262174, 0, 2, -327649, 0, 1, -65505, 65536, 2, 65567, 65536, 2, 131103, 0, 1, 196639, 0, 1, 262175, 0, 1, -327648, 0, 1, -262112, 0, 1, -196576, 0, 1, -131040, 0, 1, -65504, 0, 1, 32, 0, 1, 65568, 0, 1, 131104, 0, 1, 196640, 0, 1, 262176, 0, 1, 262160, 0, 2, 262161, 0, 1, 262162, 0, 2, 262163, 0, 2, 262164, 0, 2, 262165, 0, 2, 262166, 0, 2, 262167, 0, 2, 262169, 0, 2, -65520, 262144, 2, -65519, 262144, 2, -65518, 262144, 2, -65517, 262144, 2, -65516, 262144, 2, -65514, 0, 2, -65515, 262144, 2, -65511, 65536, 2, -65512, 0, 2, -65513, 0, 2, 24, 0, 1, 14, 0, 1, 65560, 0, 1, 65548, 0, 1, 65549, 0, 1, 65550, 0, 1, 196607, 262144, 1, 131086, 262144, 1, -327664, 0, 1, -327663, 0, 1, -327662, 0, 1, -327661, 0, 1, -327660, 0, 1, -327659, 0, 1, -327658, 0, 1, -327657, 0, 1, -327656, 0, 1, -327655, 0, 1, 131096, 262144, 1, 262157, 0, 2, 262168, 0, 1, 196635, 65536, 1, 131099, 65536, 2, 131087, 262144, 2, 196625, 0, 2, 65555, 262144, 2, 65556, 262144, 2, 65559, 262144, 1, 65558, 262144, 1, 65557, 262144, 2, 23, 0, 1, 22, 0, 1, -327674, 0, 1)
 layer_1/name = "LevelElements"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
+layer_1/tile_data = PackedInt32Array(-262137, 1, 65536)
 
-[node name="Room1" type="Marker2D" parent="Rooms"]
-position = Vector2(-66, 0)
-script = ExtResource("2_uwlit")
-zoom = 2.0
-size = Vector2(116, 152)
-debug_colour = Color(0.442827, 0.785211, 0.233469, 0.196078)
-
-[node name="Room2" type="Marker2D" parent="Rooms"]
-position = Vector2(112, 0)
-script = ExtResource("2_uwlit")
-size = Vector2(240, 152)
-debug_colour = Color(0.293268, 0.105683, 0.715523, 0.196078)
-
-[node name="Room3" type="Marker2D" parent="Rooms"]
-position = Vector2(312, 30)
-script = ExtResource("2_uwlit")
-zoom = 1.16
-size = Vector2(160, 92)
-debug_colour = Color(0.245825, 0.596826, 0.33857, 0.196078)
-
-[node name="HitSwitch" parent="Rooms/Room3" instance=ExtResource("3_tin1a")]
-position = Vector2(32, -22)
-
-[node name="Door" parent="Rooms/Room3" instance=ExtResource("4_piugq")]
-position = Vector2(80, 34)
-
-[node name="Room4" type="Marker2D" parent="Rooms"]
-position = Vector2(458, 30)
-script = ExtResource("2_uwlit")
-zoom = 1.16
-size = Vector2(132, 92)
-debug_colour = Color(0.38002, 0.0923593, 0.037218, 0.419608)
-
-[node name="Room5" type="Marker2D" parent="Rooms"]
-position = Vector2(378, -44)
-script = ExtResource("2_uwlit")
-zoom = 2.0
-size = Vector2(292, 64)
-debug_colour = Color(0.348359, 0.616932, 0.819568, 0.196078)
-
-[node name="Hero" parent="Rooms" instance=ExtResource("7_5k36f")]
+[node name="Hero" parent="RoomLayer" instance=ExtResource("8_ithkb")]
+unique_name_in_owner = true
 position = Vector2(170, -20)
 rotation = 0.0152468
 collision_mask = 25
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Rooms/Hero"]
+[node name="AudioListener2D" type="AudioListener2D" parent="RoomLayer/Hero"]
 current = true
 
 [node name="ForegroundLayer" type="CanvasLayer" parent="."]
@@ -317,22 +364,26 @@ visibility_rect = Rect2(-328, -80, 656, 160)
 layer = 128
 follow_viewport_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="CameraLayer" node_paths=PackedStringArray("core", "room_layer")]
+[node name="MainCamera" type="Camera2D" parent="CameraLayer" node_paths=PackedStringArray("core", "room_layer")]
+unique_name_in_owner = true
 position = Vector2(-96, -40)
-script = ExtResource("8_sq2sw")
-core = NodePath("../../Rooms/Hero")
-room_layer = NodePath("../../Rooms")
+script = ExtResource("9_cakdv")
+core = NodePath("../../RoomLayer/Hero")
+room_layer = NodePath("../../RoomLayer")
 
-[node name="ScreenSpaceBlockOut" type="Sprite2D" parent="CameraLayer/Camera2D"]
+[node name="ScreenSpaceBlockOut" type="Sprite2D" parent="CameraLayer/MainCamera"]
 visible = false
 z_index = 8
 texture_repeat = 2
 material = SubResource("ShaderMaterial_e4pr1")
 scale = Vector2(4, 2.25)
-texture = ExtResource("10_jk51p")
+texture = ExtResource("11_qskuq")
 
 [node name="BackgroundPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_wceam")
+stream = ExtResource("12_0h3mb")
 volume_db = -35.0
 
-[connection signal="area_entered" from="Rooms/Room3/HitSwitch" to="Rooms/Room3/Door" method="toggle_state"]
+[connection signal="area_entered" from="RoomLayer/Room2/LadderSwitch" to="RoomLayer/Room2/ExtendableLadder2D" method="toggle"]
+[connection signal="body_entered" from="RoomLayer/Room2/FadeOutArea2D" to="RoomLayer/Room2/FadeOutArea2D" method="fade" binds= [false]]
+[connection signal="body_exited" from="RoomLayer/Room2/FadeOutArea2D" to="RoomLayer/Room2/FadeOutArea2D" method="fade" binds= [true]]
+[connection signal="area_entered" from="RoomLayer/Room3/DoorSwitch" to="RoomLayer/Room3/Door" method="toggle_state"]

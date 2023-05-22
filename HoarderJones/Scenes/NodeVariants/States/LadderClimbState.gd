@@ -15,7 +15,7 @@ func should_process() -> bool:
 		return false
 	if core.direction_raw.y == 0:
 		return false
-	snap_point = World.find_nearest_ladder_center(core.global_position)
+	snap_point = detector.find_ladder_center(global_position)
 	var to_snap_point = core.global_position.direction_to(snap_point)
 	return sign(to_snap_point.x) == sign(core.direction_raw.x) or core.direction_raw.x == 0
 

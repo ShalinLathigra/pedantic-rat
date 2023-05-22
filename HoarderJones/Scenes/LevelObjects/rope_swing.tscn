@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://8ost280cq5rx"]
 
-[ext_resource type="Script" path="res://Scenes/LevelObjects/RopeSwing.gd" id="1_lewij"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_ffjpq"]
-[ext_resource type="AudioStream" uid="uid://d1tnw5j58yk5o" path="res://Scenes/LevelObjects/Whoosh.wav" id="3_w6t47"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/RopeSwing.gd" id="1_shiyu"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_x624e"]
+[ext_resource type="AudioStream" uid="uid://d1tnw5j58yk5o" path="res://Scenes/LevelObjects/Whoosh.wav" id="3_dnyl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwys"]
 size = Vector2(2, 48)
@@ -89,7 +89,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.25,
-"stream": ExtResource("3_w6t47")
+"stream": ExtResource("3_dnyl3")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -177,7 +177,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.25,
-"stream": ExtResource("3_w6t47")
+"stream": ExtResource("3_dnyl3")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -204,13 +204,14 @@ self_modulate = Color(1, 0.596078, 0, 1)
 position = Vector2(0, -8)
 collision_layer = 32
 collision_mask = 0
-script = ExtResource("1_lewij")
+script = ExtResource("1_shiyu")
 suffix = &"Slow"
 
 [node name="RegionTrackingRectangleShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("target")]
+visible = false
 position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_wtwys")
-script = ExtResource("2_ffjpq")
+script = ExtResource("2_x624e")
 target = NodePath("../Body")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

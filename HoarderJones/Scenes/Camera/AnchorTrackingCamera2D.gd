@@ -17,17 +17,10 @@ var tw: Tween
 
 const duration: float = 0.5
 
-# TODO: Use render passes to have this component occur afterwards
-# Alternatively achieve this with two textures + screen effects.
-
 func _ready() -> void:
 	$ScreenSpaceBlockOut.visible = true
 	anchor_position = global_position
 	assert(core)
-	for child in room_layer.get_children():
-		if child is WorldArea2D:
-			child.core = core
-			child.on_entered.connect(_set_anchor.bind(child))
 
 func _process(_delta: float) -> void:
 	# Requirements

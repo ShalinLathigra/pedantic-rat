@@ -9,7 +9,6 @@ func should_process() -> bool:
 	for s in state_set:
 		if s.should_process():
 			state = s
-			prints("should enter", state.name)
 			return true
 	return false
 
