@@ -14,7 +14,7 @@ func _ready():
 		if child is CameraAnchor2D:
 			child.core = core
 			child.on_entered.connect(camera.set_anchor.bind(child))
-			if child.rect.has_point(core.global_position):
+			if child.rect.has_point(camera.global_position):
 				camera.set_anchor(child)
 
 			# if core is inside of child, then set it as the current anchor

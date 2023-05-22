@@ -1,6 +1,8 @@
 class_name ExtendableLadder2D
 extends Area2D
 
+signal on_anim_start
+
 @export var extended: bool
 @export var end_tile_size: Vector2
 @export var start_tile_size: Vector2
@@ -22,4 +24,5 @@ func toggle(_area: Area2D) -> void:
 	extended = not extended
 	tw = create_tween().set_ease(tween_ease).set_trans(tween_trans)
 	tw.tween_interval(startup_delay)
+	tw.tween_callback(func(): on_anim_start.emit())
 	tw.tween_property(sprite, "size", end_tile_size if extended else start_tile_size, open_time)

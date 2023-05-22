@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://o5t4jmddmkh7"
+path="res://.godot/imported/Environment - Avalanche 005.wav-8f3549638a0038ea9ab99bbff9b2fe66.sample"
+
+[deps]
+
+source_file="res://Scenes/LevelObjects/Switch/Environment - Avalanche 005.wav"
+dest_files=["res://.godot/imported/Environment - Avalanche 005.wav-8f3549638a0038ea9ab99bbff9b2fe66.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

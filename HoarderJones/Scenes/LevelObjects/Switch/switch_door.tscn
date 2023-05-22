@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca5glf606c4xv"]
+[gd_scene load_steps=6 format=3 uid="uid://ca5glf606c4xv"]
 
-[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/Door.gd" id="1_rs74s"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_04mkv"]
-[ext_resource type="Texture2D" uid="uid://cuplat2plvb12" path="res://Scenes/LevelObjects/Switch/SwitchDoor.png" id="3_yvjdh"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/Door.gd" id="1_xt06y"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_620rl"]
+[ext_resource type="Texture2D" uid="uid://cuplat2plvb12" path="res://Scenes/LevelObjects/Switch/SwitchDoor.png" id="3_4swaa"]
+[ext_resource type="AudioStream" uid="uid://o5t4jmddmkh7" path="res://Scenes/LevelObjects/Switch/Environment - Avalanche 005.wav" id="4_gfqaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx1fr"]
 size = Vector2(16, 32)
@@ -10,18 +11,25 @@ size = Vector2(16, 32)
 [node name="Door" type="AnimatableBody2D"]
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("1_rs74s")
+script = ExtResource("1_xt06y")
 open_tile_offset = Vector2(0, -2)
 open_time = 1.25
 
 [node name="SpriteTrackingRectangleShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_rx1fr")
-script = ExtResource("2_04mkv")
+script = ExtResource("2_620rl")
 target = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_yvjdh")
+texture = ExtResource("3_4swaa")
 offset = Vector2(0, -16)
 
 [node name="OpenPosition" type="Marker2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gfqaq")
+volume_db = -10.0
+
+[connection signal="on_anim_end" from="." to="AudioStreamPlayer2D" method="stop"]
+[connection signal="on_anim_start" from="." to="AudioStreamPlayer2D" method="play"]

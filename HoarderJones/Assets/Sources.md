@@ -13,3 +13,8 @@ Lever Sounds: Composed into SwitchToggle.wav
 	- https://freesound.org/people/BMacZero/sounds/94121/
 	- https://freesound.org/people/BMacZero/sounds/94120/
 	- https://freesound.org/people/BMacZero/sounds/94127/
+
+Sounds of form:
+	Category - NAME #.wav are all from the big sfx library on itch
+	https://stevenmelin.itch.io/game-sfx-treasury
+
