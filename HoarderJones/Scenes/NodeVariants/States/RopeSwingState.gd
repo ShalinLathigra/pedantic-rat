@@ -16,7 +16,12 @@ func should_process() -> bool:
 func enter() -> void:
 	super.enter()
 	assert(rope)
-	rope.trigger_rope_swing(core.global_position)
+	# TODO: If this is better, switch it over. I like facing though.
+#	if core.velocity.x != 0:
+#		rope.trigger_rope_swing(core.velocity)
+#	else:
+#		rope.trigger_rope_swing(core.facing)
+	rope.trigger_rope_swing(core.facing)
 	core.lock_components(true)
 	core.velocity = Vector2.ZERO
 	# Hack to ensure that the rope state exits on time despite the detector

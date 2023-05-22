@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqitui35p4ybl"]
 
-[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/LedgeDetector.gd" id="1_fvksk"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Node2D/ChildFlipper.gd" id="3_e8s6d"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="4_wc6j4"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="5_8eagr"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/LedgeDetector.gd" id="1_gej06"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Node2D/ChildFlipper.gd" id="2_hhdrh"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="3_u4tnx"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="4_1let2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ax165"]
 radius = 0.5
 
 [node name="LedgeDetector" type="Node2D"]
-script = ExtResource("1_fvksk")
+script = ExtResource("1_gej06")
 
 [node name="LedgeOrigin" type="Marker2D" parent="."]
 position = Vector2(4, -12)
-script = ExtResource("3_e8s6d")
+script = ExtResource("2_hhdrh")
 
 [node name="HighChecker" type="Area2D" parent="LedgeOrigin"]
 position = Vector2(2, -1)
@@ -26,8 +26,8 @@ shape = SubResource("CircleShape2D_ax165")
 [node name="Sprite2D" type="Sprite2D" parent="LedgeOrigin/HighChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("4_wc6j4")
-script = ExtResource("5_8eagr")
+texture = ExtResource("3_u4tnx")
+script = ExtResource("4_1let2")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -44,7 +44,7 @@ shape = SubResource("CircleShape2D_ax165")
 [node name="Sprite2D" type="Sprite2D" parent="LedgeOrigin/LowChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("4_wc6j4")
-script = ExtResource("5_8eagr")
+texture = ExtResource("3_u4tnx")
+script = ExtResource("4_1let2")
 target = NodePath("..")
 target_bodies = true

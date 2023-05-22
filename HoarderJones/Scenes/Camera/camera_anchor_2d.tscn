@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://yjv1bnvctyir"]
+
+[ext_resource type="Script" path="res://Scenes/CameraAnchor2D.gd" id="1_r7qt5"]
+
+[node name="CameraAnchor2D" type="Marker2D"]
+position = Vector2(-66, -2)
+script = ExtResource("1_r7qt5")
+zoom = null
+size = Vector2(116, 152)
+debug_colour = Color(0.443137, 0.639216, 0.0862745, 0.419608)

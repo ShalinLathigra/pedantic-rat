@@ -8,9 +8,13 @@ extends Node2D
 func _ready():
 	World.map = $RoomLayer/TileMap as TileMap
 	background_player.play(0.0)
-
 	assert(core)
+	camera.global_position = core.global_position
 	for child in room_layer.get_children():
-		if child is WorldArea2D:
+		if child is CameraAnchor2D:
 			child.core = core
-			child.on_entered.connect(camera._set_anchor.bind(child))
+			child.on_entered.connect(camera.set_anchor.bind(child))
+			if child.rect.has_point(core.global_position):
+				camera.set_anchor(child)
+
+			# if core is inside of child, then set it as the current anchor

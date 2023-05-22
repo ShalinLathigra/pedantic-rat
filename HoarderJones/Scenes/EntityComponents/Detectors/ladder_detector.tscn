@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://t37l0rbi6ik8"]
 
-[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/LadderDetector.gd" id="1_p7nea"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="2_av73g"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="3_mpqsf"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Detectors/LadderDetector.gd" id="1_utl4u"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="2_a1av2"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="3_dpfoi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uf7x"]
 radius = 0.5
 
 [node name="LadderDetector" type="Node2D"]
-script = ExtResource("1_p7nea")
+script = ExtResource("1_utl4u")
 
 [node name="AscentChecker" type="Area2D" parent="."]
 position = Vector2(0, -5)
@@ -21,8 +21,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="AscentChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("2_av73g")
-script = ExtResource("3_mpqsf")
+texture = ExtResource("2_a1av2")
+script = ExtResource("3_dpfoi")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -39,8 +39,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="LadderChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("2_av73g")
-script = ExtResource("3_mpqsf")
+texture = ExtResource("2_a1av2")
+script = ExtResource("3_dpfoi")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)
@@ -57,8 +57,8 @@ shape = SubResource("CircleShape2D_5uf7x")
 [node name="Sprite2D2" type="Sprite2D" parent="DescentChecker" node_paths=PackedStringArray("target")]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.032, 0.032)
-texture = ExtResource("2_av73g")
-script = ExtResource("3_mpqsf")
+texture = ExtResource("2_a1av2")
+script = ExtResource("3_dpfoi")
 target = NodePath("..")
 off = Color(0.690196, 0, 0, 0.709804)
 on = Color(0, 0.529412, 0, 0.670588)

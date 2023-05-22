@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvu0afaim11m"]
 
-[ext_resource type="Script" path="res://Scenes/ExtendableLadder2D.gd" id="1_t0mvc"]
-[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_o2fwk"]
-[ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="4_hgthn"]
-[ext_resource type="Script" path="res://Scenes/ScrollingTileSprite2D.gd" id="4_urg1f"]
+[ext_resource type="Script" path="res://Scenes/ExtendableLadder2D.gd" id="1_ofx8l"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_sg64i"]
+[ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="3_nwuv0"]
+[ext_resource type="Script" path="res://Scenes/ScrollingTileSprite2D.gd" id="4_1db0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1r1"]
 
@@ -14,21 +14,21 @@ size = Vector2(16, 16)
 position = Vector2(56, 24)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_t0mvc")
+script = ExtResource("1_ofx8l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("target")]
 shape = SubResource("RectangleShape2D_eu1r1")
-script = ExtResource("2_o2fwk")
+script = ExtResource("2_sg64i")
 target = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(0, -8)
-texture = ExtResource("4_hgthn")
+texture = ExtResource("3_nwuv0")
 offset = Vector2(0, 8)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
-script = ExtResource("4_urg1f")
+script = ExtResource("4_1db0l")
 size = Vector2(1, 1)
 
 [node name="Ground" type="StaticBody2D" parent="."]

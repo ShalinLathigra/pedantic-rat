@@ -1,3 +1,4 @@
+class_name AreaVisualizer2D
 extends Sprite2D
 
 @export var target: Area2D

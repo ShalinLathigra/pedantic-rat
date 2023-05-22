@@ -15,9 +15,9 @@ func _ready() -> void:
 func emit_on_reached_peak() -> void:
 	on_reached_peak.emit()
 
-func trigger_rope_swing(origin_position: Vector2) -> void:
+func trigger_rope_swing(origin_facing: Vector2) -> void:
 	if player.is_playing(): return
-	if origin_position.x < global_position.x:
+	if origin_facing.x > 0:
 		player.play("SwingRight" + suffix)
 		direction = Vector2.RIGHT
 	else:
