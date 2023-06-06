@@ -19,13 +19,13 @@ func _ready():
 	if sound:
 		audio_stream_player.pitch_scale = 1.0 + pitch_increase * 0.01
 		audio_stream_player.play()
-	
+
 	if blips:
 		animated_sprite_2d.frame = 0
 		animated_sprite_2d.play("default")
 		animated_player.play("default")
 		gpu_particle_2d.emitting = true
-	
+
 	timer.start()
 	label.text = last_key
 	label.modulate = Color(randf_range(0,2), randf_range(0,2), randf_range(0,2))

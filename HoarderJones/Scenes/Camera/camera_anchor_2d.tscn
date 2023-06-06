@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://yjv1bnvctyir"]
 
-[ext_resource type="Script" path="res://Scenes/CameraAnchor2D.gd" id="1_r7qt5"]
+[ext_resource type="Script" path="res://Scenes/Camera/CameraAnchor2D.gd" id="1_r7qt5"]
 
 [node name="CameraAnchor2D" type="Marker2D"]
 position = Vector2(-66, -2)

@@ -48,6 +48,7 @@ func set_anchor(new_anchor: CameraAnchor2D) -> void:
 	if tw:
 		tw.stop()
 	tw = create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+
 	tw.tween_property(self, "anchor_position", new_anchor.position, duration)
 	tw.tween_property(self, "anchor_size", new_anchor.size, duration)
 	tw.tween_property(self, "zoom", Vector2.ONE * new_anchor.zoom, duration)

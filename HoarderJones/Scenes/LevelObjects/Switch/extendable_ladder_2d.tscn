@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvu0afaim11m"]
 
-[ext_resource type="Script" path="res://Scenes/ExtendableLadder2D.gd" id="1_ofx8l"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/ExtendableLadder2D.gd" id="1_ofx8l"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/Shapes/RegionTrackingRectangleShape2D.gd" id="2_sg64i"]
 [ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="3_nwuv0"]
-[ext_resource type="Script" path="res://Scenes/ScrollingTileSprite2D.gd" id="4_1db0l"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/ScrollingTileSprite2D.gd" id="4_1db0l"]
 [ext_resource type="AudioStream" uid="uid://ieqtnow1f7m0" path="res://Scenes/LevelObjects/Switch/Damage - Impact 014.wav" id="5_1u2h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1r1"]

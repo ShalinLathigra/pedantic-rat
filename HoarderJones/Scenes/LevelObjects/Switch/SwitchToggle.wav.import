@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://xasitdqx1m7q"
-path="res://.godot/imported/SwitchToggle.wav-06550f086cfa111c798ce0bfc9927861.sample"
+path="res://.godot/imported/SwitchToggle.wav-acd613dc8d56ac3fc432e871f49bbbfc.sample"
 
 [deps]
 
-source_file="res://Scenes/LevelObjects/SwitchToggle.wav"
-dest_files=["res://.godot/imported/SwitchToggle.wav-06550f086cfa111c798ce0bfc9927861.sample"]
+source_file="res://Scenes/LevelObjects/Switch/SwitchToggle.wav"
+dest_files=["res://.godot/imported/SwitchToggle.wav-acd613dc8d56ac3fc432e871f49bbbfc.sample"]
 
 [params]
 

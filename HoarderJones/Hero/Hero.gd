@@ -13,7 +13,7 @@ extends CharacterBody2D
 # Player Specific, to be moved later
 @onready var ground := %StateMachine/Ground as GroundState
 @onready var air := %StateMachine/Air as AirState
-@onready var fringe := %StateMachine/Fringe as PriorityState
+@onready var fringe := %StateMachine/Fringe as PrioritySelectorState
 
 # Player Specific
 var coyote_time_grounded: bool:

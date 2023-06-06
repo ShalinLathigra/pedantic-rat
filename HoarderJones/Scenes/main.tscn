@@ -1,20 +1,20 @@
 [gd_scene load_steps=29 format=3 uid="uid://c6yt51a1bmv2c"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_c3c0n"]
-[ext_resource type="PackedScene" uid="uid://yjv1bnvctyir" path="res://Scenes/Camera/camera_anchor_2d.tscn" id="2_dj8vj"]
-[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="4_tqlkv"]
-[ext_resource type="PackedScene" uid="uid://dvu0afaim11m" path="res://Scenes/LevelObjects/Switch/extendable_ladder_2d.tscn" id="5_y8snv"]
-[ext_resource type="Script" path="res://Scenes/FadeOutArea2D.gd" id="6_eb7qw"]
-[ext_resource type="Texture2D" uid="uid://cywvrckmx87en" path="res://Assets/BlockedTile.png" id="7_lu8gj"]
-[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="8_0hufg"]
-[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="9_6d74c"]
-[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="10_0pcxi"]
-[ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="11_7f0vw"]
-[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="12_0a6m3"]
-[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="13_diyy2"]
-[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="14_nkob6"]
-[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="15_3dqbe"]
-[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="16_0rq3m"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_tjjc5"]
+[ext_resource type="PackedScene" uid="uid://yjv1bnvctyir" path="res://Scenes/Camera/camera_anchor_2d.tscn" id="2_jhasx"]
+[ext_resource type="PackedScene" uid="uid://bmh6fo76jsefe" path="res://Scenes/LevelObjects/Switch/hit_switch.tscn" id="3_buq8l"]
+[ext_resource type="PackedScene" uid="uid://dvu0afaim11m" path="res://Scenes/LevelObjects/Switch/extendable_ladder_2d.tscn" id="4_ctocx"]
+[ext_resource type="Script" path="res://Scenes/LevelObjects/FadeOutArea2D.gd" id="5_py146"]
+[ext_resource type="Texture2D" uid="uid://cywvrckmx87en" path="res://Assets/BlockedTile.png" id="6_5gsmn"]
+[ext_resource type="PackedScene" uid="uid://ca5glf606c4xv" path="res://Scenes/LevelObjects/Switch/switch_door.tscn" id="7_so7ny"]
+[ext_resource type="Texture2D" uid="uid://b6yentidulo8r" path="res://Assets/Tilemap.png" id="8_w52k2"]
+[ext_resource type="PackedScene" uid="uid://8ost280cq5rx" path="res://Scenes/LevelObjects/rope_swing.tscn" id="9_jfpg3"]
+[ext_resource type="Texture2D" uid="uid://lnbt6on8531b" path="res://Assets/Ladder.png" id="10_g5ifv"]
+[ext_resource type="PackedScene" uid="uid://bi0f1g4dak6yx" path="res://Hero/Hero.tscn" id="11_evb7c"]
+[ext_resource type="Script" path="res://Scenes/Camera/AnchorTrackingCamera2D.gd" id="12_ookld"]
+[ext_resource type="Shader" path="res://Scenes/Camera/block_out.gdshader" id="13_2sdmu"]
+[ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="14_kdsup"]
+[ext_resource type="AudioStream" uid="uid://barwlipm6bc8b" path="res://Assets/dire-space-emergency.mp3" id="15_3hubo"]
 
 [sub_resource type="Curve" id="Curve_qqh4p"]
 _data = [Vector2(0, 0), 0.0, 4.57162, 0, 1, Vector2(0.117253, 0.536036), 4.57162, 2.00622, 1, 0, Vector2(0.874372, 0.518018), -2.55694, -4.12342, 0, 1, Vector2(1, 0), -4.12342, 0.0, 1, 0]
@@ -46,7 +46,7 @@ size = Vector2(6, 34)
 size = Vector2(48, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5k6r"]
-texture = ExtResource("9_6d74c")
+texture = ExtResource("8_w52k2")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -172,11 +172,11 @@ texture = ExtResource("9_6d74c")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rj5f0"]
 resource_name = "Basic"
-scenes/1/scene = ExtResource("10_0pcxi")
-scenes/2/scene = ExtResource("4_tqlkv")
+scenes/1/scene = ExtResource("9_jfpg3")
+scenes/2/scene = ExtResource("3_buq8l")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vaskv"]
-texture = ExtResource("11_7f0vw")
+texture = ExtResource("10_g5ifv")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -227,14 +227,14 @@ turbulence_enabled = true
 turbulence_noise_speed = Vector3(0.15, 0.1, 0.3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4pr1"]
-shader = ExtResource("14_nkob6")
+shader = ExtResource("13_2sdmu")
 shader_parameter/background_color = null
 shader_parameter/camera_size = Vector2(256, 160)
 shader_parameter/rect_pos = Vector2(-64, 0)
 shader_parameter/rect_size = Vector2(128, 160)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_c3c0n")
+script = ExtResource("1_tjjc5")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -50
@@ -254,8 +254,8 @@ unique_name_in_owner = true
 layer = -1
 follow_viewport_enabled = true
 
-[node name="CameraAnchor2D1" parent="RoomLayer" instance=ExtResource("2_dj8vj")]
-zoom = 1
+[node name="CameraAnchor2D1" parent="RoomLayer" instance=ExtResource("2_jhasx")]
+zoom = 2
 
 [node name="Area2D" type="Area2D" parent="RoomLayer/CameraAnchor2D1"]
 position = Vector2(51, 54)
@@ -274,7 +274,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/CameraAnchor2D1/Area2D2"]
 shape = SubResource("RectangleShape2D_4egqw")
 
-[node name="CameraAnchor2D2" parent="RoomLayer" instance=ExtResource("2_dj8vj")]
+[node name="CameraAnchor2D2" parent="RoomLayer" instance=ExtResource("2_jhasx")]
 position = Vector2(112, -2)
 zoom = 1
 size = Vector2(240, 152)
@@ -305,10 +305,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/CameraAnchor2D2/Area2D3"]
 shape = SubResource("RectangleShape2D_4egqw")
 
-[node name="LadderSwitch" parent="RoomLayer/CameraAnchor2D2" instance=ExtResource("4_tqlkv")]
+[node name="LadderSwitch" parent="RoomLayer/CameraAnchor2D2" instance=ExtResource("3_buq8l")]
 position = Vector2(56, -22)
 
-[node name="ExtendableLadder2D" parent="RoomLayer/CameraAnchor2D2" instance=ExtResource("5_y8snv")]
+[node name="ExtendableLadder2D" parent="RoomLayer/CameraAnchor2D2" instance=ExtResource("4_ctocx")]
 position = Vector2(56, 10)
 end_tile_size = Vector2(1, 3.5)
 start_tile_size = Vector2(1, 0)
@@ -322,7 +322,7 @@ z_index = 1
 position = Vector2(72, -6)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("6_eb7qw")
+script = ExtResource("5_py146")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/CameraAnchor2D2/FadeOutArea2D"]
 position = Vector2(0, 8)
@@ -330,20 +330,20 @@ shape = SubResource("RectangleShape2D_fonyr")
 
 [node name="BlockedTile2" type="Sprite2D" parent="RoomLayer/CameraAnchor2D2/FadeOutArea2D"]
 position = Vector2(0, 32)
-texture = ExtResource("7_lu8gj")
+texture = ExtResource("6_5gsmn")
 
 [node name="BlockedTile3" type="Sprite2D" parent="RoomLayer/CameraAnchor2D2/FadeOutArea2D"]
 position = Vector2(-16, 16)
-texture = ExtResource("7_lu8gj")
+texture = ExtResource("6_5gsmn")
 
 [node name="BlockedTile" type="Sprite2D" parent="RoomLayer/CameraAnchor2D2/FadeOutArea2D"]
 texture_repeat = 2
 position = Vector2(8, 8)
-texture = ExtResource("7_lu8gj")
+texture = ExtResource("6_5gsmn")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="CameraAnchor2D3" parent="RoomLayer" instance=ExtResource("2_dj8vj")]
+[node name="CameraAnchor2D3" parent="RoomLayer" instance=ExtResource("2_jhasx")]
 position = Vector2(312, 27)
 zoom = 1
 size = Vector2(160, 94)
@@ -375,13 +375,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/CameraAnchor2D3/Area2D2"]
 shape = SubResource("RectangleShape2D_4egqw")
 
-[node name="DoorSwitch" parent="RoomLayer/CameraAnchor2D3" instance=ExtResource("4_tqlkv")]
+[node name="DoorSwitch" parent="RoomLayer/CameraAnchor2D3" instance=ExtResource("3_buq8l")]
 position = Vector2(32, -19)
 
-[node name="Door" parent="RoomLayer/CameraAnchor2D3" instance=ExtResource("8_0hufg")]
+[node name="Door" parent="RoomLayer/CameraAnchor2D3" instance=ExtResource("7_so7ny")]
 position = Vector2(80, 37)
 
-[node name="CameraAnchor2D4" parent="RoomLayer" instance=ExtResource("2_dj8vj")]
+[node name="CameraAnchor2D4" parent="RoomLayer" instance=ExtResource("2_jhasx")]
 position = Vector2(458, 27)
 zoom = 1
 size = Vector2(132, 94)
@@ -405,7 +405,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLayer/CameraAnchor2D4/Area2D2"]
 shape = SubResource("RectangleShape2D_4egqw")
 
-[node name="CameraAnchor2D5" parent="RoomLayer" instance=ExtResource("2_dj8vj")]
+[node name="CameraAnchor2D5" parent="RoomLayer" instance=ExtResource("2_jhasx")]
 position = Vector2(369, -42)
 zoom = 1
 size = Vector2(292, 72)
@@ -443,11 +443,12 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 
-[node name="Hero" parent="RoomLayer" instance=ExtResource("12_0a6m3")]
+[node name="Hero" parent="RoomLayer" instance=ExtResource("11_evb7c")]
 unique_name_in_owner = true
-position = Vector2(186, -21)
+position = Vector2(187, -36)
 rotation = 0.0152468
 collision_mask = 281
+can_early_exit = null
 
 [node name="AudioListener2D" type="AudioListener2D" parent="RoomLayer/Hero"]
 current = true
@@ -471,8 +472,8 @@ follow_viewport_enabled = true
 
 [node name="MainCamera" type="Camera2D" parent="CameraLayer" node_paths=PackedStringArray("core", "room_layer")]
 unique_name_in_owner = true
-position = Vector2(-66, -2)
-script = ExtResource("13_diyy2")
+position = Vector2(-106, -273)
+script = ExtResource("12_ookld")
 core = NodePath("../../RoomLayer/Hero")
 room_layer = NodePath("../../RoomLayer")
 
@@ -482,10 +483,10 @@ z_index = 8
 texture_repeat = 2
 material = SubResource("ShaderMaterial_e4pr1")
 scale = Vector2(4, 2.25)
-texture = ExtResource("15_3dqbe")
+texture = ExtResource("14_kdsup")
 
 [node name="BackgroundPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_0rq3m")
+stream = ExtResource("15_3hubo")
 volume_db = -35.0
 
 [connection signal="body_entered" from="RoomLayer/CameraAnchor2D1/Area2D" to="RoomLayer/CameraAnchor2D1" method="_on_area_2d_body_entered"]

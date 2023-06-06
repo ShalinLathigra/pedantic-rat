@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d04dad3rgrd4f" path="res://icon.svg" id="1_dqks8"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/AreaVisualizer.gd" id="2_xb7q8"]
-[ext_resource type="AudioStream" uid="uid://xasitdqx1m7q" path="res://Scenes/LevelObjects/SwitchToggle.wav" id="3_enggg"]
+[ext_resource type="AudioStream" uid="uid://xasitdqx1m7q" path="res://Scenes/LevelObjects/Switch/SwitchToggle.wav" id="3_enggg"]
 [ext_resource type="Script" path="res://Scenes/LevelObjects/Switch/AreaTriggeredAudioStreamPlayer2D.gd" id="4_vr1ly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evevy"]

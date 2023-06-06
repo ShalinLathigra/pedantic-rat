@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/AirState.gd" id="16_00c6s"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/FallState.gd" id="17_dl0ku"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/JumpState.gd" id="18_8gw4v"]
-[ext_resource type="Script" path="res://Hero/PriorityBasedStateSelector.gd" id="19_slsbh"]
+[ext_resource type="Script" path="res://Scenes/NodeVariants/States/PrioritySelectorState.gd" id="19_smlx6"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/LedgeGrabState.gd" id="20_i4xjg"]
 [ext_resource type="PackedScene" uid="uid://cqitui35p4ybl" path="res://Scenes/EntityComponents/Detectors/ledge_detector.tscn" id="21_umllr"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/LadderClimbState.gd" id="22_2en3u"]
@@ -820,7 +820,7 @@ script = ExtResource("18_8gw4v")
 anim = "Jet Pack"
 
 [node name="Fringe" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_set")]
-script = ExtResource("19_slsbh")
+script = ExtResource("19_smlx6")
 state_set = [NodePath("Ledge"), NodePath("LadderClimb"), NodePath("RopeSwingState")]
 
 [node name="Ledge" type="Node2D" parent="StateMachine/Fringe"]

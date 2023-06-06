@@ -1,4 +1,4 @@
-class_name PriorityState
+class_name PrioritySelectorState
 extends State
 
 @export var state_set: Array[State]
