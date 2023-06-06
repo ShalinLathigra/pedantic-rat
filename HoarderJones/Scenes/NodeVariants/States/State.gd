@@ -17,6 +17,9 @@ var tween: Tween
 func should_process() -> bool:
 	return false
 
+func startup() -> void:
+	pass
+
 func enter():
 	if anim != "":
 		core.animator.stop()
@@ -36,7 +39,7 @@ func pre_exit(do_release: bool = false) -> void:
 		core.release()
 
 func get_child_states() -> Array[State]:
-	var state_set: Array[State]
+	var state_set: Array[State] = []
 	var children = get_children().filter(func (child): return child is State)
 	for child in children:
 		state_set.push_back(child as State)

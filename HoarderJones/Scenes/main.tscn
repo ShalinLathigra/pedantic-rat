@@ -448,7 +448,6 @@ unique_name_in_owner = true
 position = Vector2(187, -36)
 rotation = 0.0152468
 collision_mask = 281
-can_early_exit = null
 
 [node name="AudioListener2D" type="AudioListener2D" parent="RoomLayer/Hero"]
 current = true

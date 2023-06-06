@@ -7,13 +7,9 @@ extends CharacterBody2D
 @onready var shape := %CollisionShape2D.shape as RectangleShape2D
 @onready var animator := %Animator as AnimationPlayer
 @onready var sprite := %Sprite as Sprite2D
-@onready var machine := %StateMachine as StateMachine
+@onready var machine := %PlayerBrain as StateMachine
 # exported to expose to animator
 @export var can_early_exit: bool
-# Player Specific, to be moved later
-@onready var ground := %StateMachine/Ground as GroundState
-@onready var air := %StateMachine/Air as AirState
-@onready var fringe := %StateMachine/Fringe as PrioritySelectorState
 
 # Player Specific
 var coyote_time_grounded: bool:
@@ -30,6 +26,9 @@ var is_direction_locked: bool
 # Player Specific
 var coyote_time_start: int
 
+func _ready() -> void:
+	machine.startup()
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
@@ -40,14 +39,6 @@ func _physics_process(delta: float) -> void:
 		if direction_raw.x != 0:
 			facing.x = direction_raw.x
 
-	# basic movement inputs
-	if not is_state_locked:
-		if fringe.should_process():
-			machine.set_state(fringe)
-		elif air.should_jump or not is_on_floor():
-			machine.set_state(air)
-		else:
-			machine.set_state(ground)
 	machine.do(delta)
 	move_and_slide()
 
