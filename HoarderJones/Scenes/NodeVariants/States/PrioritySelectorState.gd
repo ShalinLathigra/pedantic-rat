@@ -1,9 +1,12 @@
 class_name PrioritySelectorState
 extends State
 
-@export var state_set: Array[State]
+var state_set: Array[State]
 
 var state: State
+
+func _ready() -> void:
+	state_set = get_child_states()
 
 func should_process() -> bool:
 	for s in state_set:

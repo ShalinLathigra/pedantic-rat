@@ -34,3 +34,10 @@ func pre_exit(do_release: bool = false) -> void:
 	time_of_last_exit = Time.get_ticks_msec()
 	if do_release:
 		core.release()
+
+func get_child_states() -> Array[State]:
+	var state_set: Array[State]
+	var children = get_children().filter(func (child): return child is State)
+	for child in children:
+		state_set.push_back(child as State)
+	return state_set

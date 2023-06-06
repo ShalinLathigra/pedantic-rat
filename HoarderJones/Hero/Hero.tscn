@@ -770,9 +770,8 @@ anim = "Idle"
 script = ExtResource("12_gnp0n")
 anim = "Run"
 
-[node name="LightCombo" type="Node2D" parent="StateMachine/Ground" node_paths=PackedStringArray("sub_states")]
+[node name="LightCombo" type="Node2D" parent="StateMachine/Ground"]
 script = ExtResource("13_ib20y")
-sub_states = [NodePath("Strike 1"), NodePath("Strike 2"), NodePath("Strike 3")]
 
 [node name="Strike 1" type="Node2D" parent="StateMachine/Ground/LightCombo" node_paths=PackedStringArray("hitbox")]
 script = ExtResource("14_a1egp")
@@ -819,9 +818,9 @@ anim = "Jet Stop"
 script = ExtResource("18_8gw4v")
 anim = "Jet Pack"
 
-[node name="Fringe" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("state_set")]
+[node name="Fringe" type="Node2D" parent="StateMachine"]
 script = ExtResource("19_smlx6")
-state_set = [NodePath("Ledge"), NodePath("LadderClimb"), NodePath("RopeSwingState")]
+anim = null
 
 [node name="Ledge" type="Node2D" parent="StateMachine/Fringe"]
 script = ExtResource("20_i4xjg")

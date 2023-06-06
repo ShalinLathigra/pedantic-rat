@@ -9,7 +9,7 @@ var combo_input_window: int:
 var input_buffer: int:
 	get: return core.stats.input_buffer_ticks
 
-@export var sub_states: Array[State]
+var sub_states: Array[State]
 
 var within_combo_window: bool:
 	get: return tick_of_last_attack_input + combo_input_window > Time.get_ticks_msec()
@@ -23,6 +23,7 @@ var entry_direction: Vector2
 
 func _ready():
 	super._ready()
+	sub_states = get_child_states()
 
 func should_process() -> bool:
 	return in_progress or (not core.is_state_locked and is_ready_to_reenter and (index > 0 and within_combo_window or entry_input_buffered))
