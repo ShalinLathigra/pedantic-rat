@@ -895,7 +895,5 @@ disabled = true
 script = ExtResource("31_8f14y")
 core = NodePath("..")
 
-[connection signal="on_entered" from="PlayerBrain/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [true]]
-[connection signal="on_exited" from="PlayerBrain/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [false]]
 [connection signal="on_hit_ground" from="LandingEffects" to="LandingEffects/OnGroundPlayer" method="play" flags=18]
 [connection signal="on_hit_ground_hard" from="LandingEffects" to="LandingEffects/ParticleSpawner" method="emit"]

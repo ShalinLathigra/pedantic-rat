@@ -37,10 +37,8 @@ func _physics_process(delta: float) -> void:
 	machine.do(delta)
 	move_and_slide()
 
-func release() -> void:
-	machine.is_locked = false
+func release_direction() -> void:
 	is_direction_locked = false
 
-func lock_components(dir_lock: bool=true) -> void:
-	machine.is_locked = true
-	is_direction_locked = dir_lock
+func lock_direction() -> void:
+	is_direction_locked = true

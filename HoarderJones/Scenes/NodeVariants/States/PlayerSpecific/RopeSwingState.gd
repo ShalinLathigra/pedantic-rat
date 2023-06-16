@@ -22,7 +22,7 @@ func enter() -> void:
 #	else:
 #		rope.trigger_rope_swing(core.facing)
 	rope.trigger_rope_swing(core.facing)
-	core.lock_components(true)
+	core.lock_direction()
 	core.velocity = Vector2.ZERO
 	# Hack to ensure that the rope state exits on time despite the detector
 	# still being covered.

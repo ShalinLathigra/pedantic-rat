@@ -1,7 +1,6 @@
 class_name LadderClimbState
 extends State
 
-
 var speed: int:
 	get: return core.stats.climb_speed
 
@@ -21,7 +20,7 @@ func should_process() -> bool:
 
 func enter() -> void:
 	super.enter()
-	core.lock_components(false)
+	lock()
 	core.velocity = Vector2.ZERO
 	if tween: tween.stop()
 	tween = create_tween().set_parallel()
@@ -34,13 +33,16 @@ func do(_delta) -> void:
 		tween = create_tween().set_parallel()
 		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2.0 - 1)
 		tween.tween_property(core, "global_position:y", snap_point.y, 0.25)
-		tween.tween_callback(core.release)
+		tween.tween_callback(func():
+			core.release_direction
+			release())
 	# Other Ladder Exit logic
 	elif InputManager.is_action_just_pressed("jump") \
 		or InputManager.is_action_just_pressed("drop") \
 		or (detector.at_ladder_ground and abs(core.direction.x) > core.stats.threshold and core.direction.y > 0) \
 		or (detector.at_bottom_of_ladder and InputManager.is_action_just_pressed("down")):
-		core.release()
+			core.release_direction()
+			release()
 	# Ladder movement and animation logic
 	if detector.can_climb_in_direction(core.direction_raw):
 		if not core.animator.is_playing():
@@ -53,5 +55,5 @@ func do(_delta) -> void:
 
 func exit() -> void:
 	super.exit()
-	core.release()
+	core.release_direction()
 

@@ -7,6 +7,7 @@ var started_mantle_animation: bool
 var exit_callable: Callable
 
 func _ready() -> void:
+	super._ready()
 	exit_callable = pre_exit.bind(true)
 
 func should_process() -> bool:
@@ -20,7 +21,7 @@ func should_process() -> bool:
 
 func enter() -> void:
 	super.enter()
-	core.lock_components()
+	core.lock_direction()
 	if tween: tween.stop()
 	tween = create_tween().set_parallel()
 	tween.tween_property(core, "global_position", detector.find_hanging_spot(), 0.25)

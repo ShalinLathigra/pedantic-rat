@@ -31,7 +31,7 @@ func should_process() -> bool:
 # when you enter the combo, lock this up.
 func enter() -> void:
 	super.enter()
-	core.lock_components(true)
+	core.lock_direction()
 	index = 0
 	tick_of_last_attack_input = 0
 	set_state(sub_states[index])
@@ -48,7 +48,7 @@ func do(delta: float) -> void:
 	if not core.animator.is_playing():
 		in_progress = false
 		tick_of_last_attack_input = 0
-		core.release()
+		core.release_direction()
 
 	if not core.can_early_exit:
 		return

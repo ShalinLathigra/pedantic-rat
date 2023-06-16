@@ -441,7 +441,7 @@ layer_1/tile_data = PackedInt32Array(-262138, 1, 65536)
 
 [node name="Hero" parent="RoomLayer" instance=ExtResource("11_evb7c")]
 unique_name_in_owner = true
-position = Vector2(187, -36)
+position = Vector2(33, -8)
 rotation = 0.0152468
 collision_mask = 281
 

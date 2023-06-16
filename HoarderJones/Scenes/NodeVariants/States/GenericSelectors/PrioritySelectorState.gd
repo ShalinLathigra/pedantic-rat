@@ -6,6 +6,7 @@ var state_set: Array[State]
 @export var state: State
 
 func _ready() -> void:
+	super._ready()
 	state_set = get_child_states()
 
 func should_process() -> bool:
