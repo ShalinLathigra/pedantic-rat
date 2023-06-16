@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animator := %Animator as AnimationPlayer
 @onready var sprite := %Sprite as Sprite2D
 @onready var machine := %PlayerBrain as StateMachine
+
 # exported to expose to animator
 @export var can_early_exit: bool
 
@@ -32,12 +33,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_time_start = Time.get_ticks_msec()
-
-	if not is_direction_locked:
-		direction = InputManager.get_vector("left", "right", "up", "down")
-		direction_raw = InputManager.get_vector_raw("left", "right", "up", "down", 0.5)
-		if direction_raw.x != 0:
-			facing.x = direction_raw.x
 
 	machine.do(delta)
 	move_and_slide()

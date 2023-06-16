@@ -3,7 +3,7 @@ extends State
 
 var state_set: Array[State]
 
-var state: State
+@export var state: State
 
 func _ready() -> void:
 	state_set = get_child_states()

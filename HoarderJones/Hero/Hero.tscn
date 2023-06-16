@@ -1,6 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://bi0f1g4dak6yx"]
+[gd_scene load_steps=57 format=3 uid="uid://bi0f1g4dak6yx"]
 
-[ext_resource type="Script" path="res://Hero/Hero.gd" id="1_p1k5w"]
+[ext_resource type="Script" path="res://Scenes/EntityComponents/Character.gd" id="1_kgh3t"]
 [ext_resource type="Resource" uid="uid://bfjbjja2qch54" path="res://Hero/HeroStats.tres" id="2_c5e43"]
 [ext_resource type="Texture2D" uid="uid://bf43pevntu6xc" path="res://Hero/Hero.png" id="3_1amlt"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/Sprites/FlipSprite.gd" id="4_eb5vb"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/PlayerSpecific/PlayerBrain.gd" id="9_coh6j"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/PlayerSpecific/GroundState.gd" id="10_i1e7d"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/State.gd" id="11_mox6p"]
+[ext_resource type="Script" path="res://Hero/SpecialHitState.gd" id="11_wplol"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/LeafStates/RunState.gd" id="12_4m5uu"]
+[ext_resource type="Script" path="res://Hero/PlayerChargeUp.gd" id="12_ctf7p"]
 [ext_resource type="Script" path="res://Scenes/NodeVariants/States/PlayerSpecific/PlayerLightComboState.gd" id="13_28rfv"]
 [ext_resource type="Script" path="res://HitBoxState.gd" id="14_a1egp"]
 [ext_resource type="Script" path="res://Hero/ShapeWrapper2D.gd" id="15_kn5fy"]
@@ -30,6 +32,7 @@
 [ext_resource type="Script" path="res://Scenes/EntityComponents/Particles/ParticleSpawner.gd" id="28_gbqc6"]
 [ext_resource type="PackedScene" uid="uid://c52qtu2hkkh2c" path="res://Scenes/EntityComponents/Particles/landing_particles_2d.tscn" id="29_wapvj"]
 [ext_resource type="Gradient" uid="uid://bsm67je3hst1f" path="res://Scenes/EntityComponents/Particles/dust_gradient.tres" id="30_1djcr"]
+[ext_resource type="Script" path="res://Hero/DirectionListener.gd" id="31_8f14y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qvwf"]
 size = Vector2(6, 11)
@@ -728,7 +731,7 @@ size = Vector2(16, 20)
 [node name="Hero" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_p1k5w")
+script = ExtResource("1_kgh3t")
 stats = ExtResource("2_c5e43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -762,13 +765,11 @@ core = NodePath("..")
 [node name="Ground" type="Node2D" parent="PlayerBrain"]
 script = ExtResource("10_i1e7d")
 
-[node name="Idle" type="Node2D" parent="PlayerBrain/Ground"]
-script = ExtResource("11_mox6p")
-anim = "Idle"
+[node name="Special" type="Node2D" parent="PlayerBrain/Ground"]
+script = ExtResource("11_wplol")
 
-[node name="Run" type="Node2D" parent="PlayerBrain/Ground"]
-script = ExtResource("12_4m5uu")
-anim = "Run"
+[node name="PlayerChargeUp" type="Node2D" parent="PlayerBrain/Ground/Special"]
+script = ExtResource("12_ctf7p")
 
 [node name="LightCombo" type="Node2D" parent="PlayerBrain/Ground"]
 script = ExtResource("13_28rfv")
@@ -806,6 +807,14 @@ position = Vector2(5, -10)
 script = ExtResource("15_kn5fy")
 size = Vector2(36, 20)
 
+[node name="Run" type="Node2D" parent="PlayerBrain/Ground"]
+script = ExtResource("12_4m5uu")
+anim = "Run"
+
+[node name="Idle" type="Node2D" parent="PlayerBrain/Ground"]
+script = ExtResource("11_mox6p")
+anim = "Idle"
+
 [node name="Air" type="Node2D" parent="PlayerBrain"]
 script = ExtResource("16_6pnpf")
 
@@ -820,7 +829,6 @@ anim = "Jet Pack"
 
 [node name="Fringe" type="Node2D" parent="PlayerBrain"]
 script = ExtResource("19_y4rmg")
-anim = null
 
 [node name="Ledge" type="Node2D" parent="PlayerBrain/Fringe"]
 script = ExtResource("20_6ausj")
@@ -882,6 +890,10 @@ visible = false
 position = Vector2(18, -10)
 shape = SubResource("RectangleShape2D_qouij")
 disabled = true
+
+[node name="DirectionListener" type="Node" parent="." node_paths=PackedStringArray("core")]
+script = ExtResource("31_8f14y")
+core = NodePath("..")
 
 [connection signal="on_entered" from="PlayerBrain/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [true]]
 [connection signal="on_exited" from="PlayerBrain/Ground/Run" to="RunEffects/RunParticles2D" method="set_emitting" binds= [false]]

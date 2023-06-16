@@ -3,8 +3,16 @@ extends Node2D
 
 @export var core: Character
 
+signal locked(status: bool)
+
 var current: State
-var is_locked: bool
+var is_locked: bool:
+	get:
+		return is_locked
+	set(value):
+		is_locked = value
+		locked.emit(is_locked)
+
 
 func _ready():
 	if core == null:
@@ -35,8 +43,8 @@ func set_state(target: State, override: bool = false) -> void:
 	if target == current and not override:
 		return
 	if current:
-#		prints("exiting state: ", current.name)
+		prints("exiting state: ", current.name)
 		current.exit()
 	current = target
-#	prints("entering state: ", current.name)
+	prints("entering state:", current.name, current is State)
 	current.enter()

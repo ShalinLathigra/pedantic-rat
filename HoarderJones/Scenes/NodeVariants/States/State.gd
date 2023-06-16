@@ -17,9 +17,6 @@ var tween: Tween
 func should_process() -> bool:
 	return false
 
-func startup() -> void:
-	pass
-
 func enter():
 	if anim != "":
 		core.animator.stop()
