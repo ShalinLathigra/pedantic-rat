@@ -1,8 +1,6 @@
 class_name LedgeDetector
 extends Node2D
 
-signal reached_grabbable_ledge
-
 @export var core: Character
 @onready var ledge_origin := $LedgeOrigin as ChildFlipper
 @onready var high_checker := $LedgeOrigin/HighChecker as Area2D

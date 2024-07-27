@@ -16,3 +16,6 @@ func should_process() -> bool:
 func enter() -> void:
 	super.enter()
 	start_tick = Time.get_ticks_msec()
+
+func do(_delta: float) -> void:
+	pass

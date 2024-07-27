@@ -34,7 +34,7 @@ func do(_delta) -> void:
 		snap_point = World.find_highest_ladder_center(core.global_position) + Vector2.DOWN * (World.TILE_SIZE / 2.0 - 1)
 		tween.tween_property(core, "global_position:y", snap_point.y, 0.25)
 		tween.tween_callback(func():
-			core.release_direction
+			core.release_direction()
 			release())
 	# Other Ladder Exit logic
 	elif InputManager.is_action_just_pressed("jump") \
@@ -56,4 +56,3 @@ func do(_delta) -> void:
 func exit() -> void:
 	super.exit()
 	core.release_direction()
-
